@@ -1,4 +1,53 @@
-style.css
-script.js
-logo.png
-favicon.ico
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>TourVietnam — Экскурсии по Вьетнаму</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="TourVietnam">
+      <span>TourVietnam</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="logo.png" alt="TourVietnam">
+    <h1>Экскурсии по Вьетнаму</h1>
+    <p>Острова • Море • Снорклинг • Хон Там</p>
+
+    <a href="https://wa.me/84778532223?text=Здравствуйте! Хочу забронировать экскурсию"
+       class="btn-book" target="_blank">
+       Забронировать в WhatsApp
+    </a>
+
+    <a href="https://t.me/+84777770759" class="btn-tg" target="_blank">
+       Telegram
+    </a>
+  </section>
+
+  <!-- TOURS (сюда JS подставит карточки) -->
+  <section class="tours"></section>
+
+  <!-- FOOTER -->
+  <footer>
+    © TourVietnam · Экскурсии по Вьетнаму
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+
+</body>
+</html>
