@@ -1,122 +1,111 @@
-/* ===============================
-   TOURVIETNAM — PREMIUM MOBILE UI
-   =============================== */
-
-/* 🎨 Цветовая система (Canva-style) */
 :root {
-  --bg-main: #f5f6f2;        /* светлый фон */
-  --bg-card: #ffffff;       /* карточки */
-  --bg-soft: #eef1ec;       /* мягкие блоки */
-  --text-main: #1f2a24;     /* основной текст */
-  --text-muted: #6b756f;    /* вторичный текст */
+  --bg-main: #f3f1ea;
+  --card-bg: #ffffff;
 
-  --accent-main: #3a6f64;   /* основной акцент (оливково-зелёный) */
-  --accent-soft: #6f9c91;   /* мягкий акцент */
-  --accent-blue: #2e8bc0;   /* Telegram */
+  --text-main: #2f2f2f;
+  --text-muted: #6b6b6b;
+
+  --olive: #6f7f4f;
+  --olive-dark: #5e6d43;
+
+  --sea: #4f8fb3;
+  --sea-dark: #417a9a;
 }
 
-/* === Base === */
+/* RESET */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* BODY */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--bg-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-main);
 }
 
-/* === Header === */
-header {
-  background: var(--bg-main);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-}
-
-/* === Language Switch === */
+/* LANG SWITCH */
 .lang-switch {
   display: flex;
   gap: 6px;
+  justify-content: center;
+  padding: 10px;
 }
 
 .lang-switch button {
   border: none;
-  background: var(--bg-soft);
-  color: var(--text-main);
+  background: #fff;
   padding: 6px 10px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
-.lang-switch button.active {
-  background: var(--accent-main);
-  color: #fff;
-}
-
-/* === Hero === */
-.hero {
-  padding: 24px 16px 16px;
+/* HEADER */
+.header {
   text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  max-width: 180px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 20px;
 }
 
 .hero h1 {
-  margin: 12px 0 6px;
   font-size: 26px;
 }
 
 .hero p {
+  margin: 10px 0 20px;
   color: var(--text-muted);
-  font-size: 15px;
 }
 
-/* === CTA Buttons === */
-.cta {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.cta a {
-  text-decoration: none;
+/* BUTTONS */
+.btn {
+  display: block;
+  margin: 10px auto;
+  max-width: 320px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 18px;
+  color: #fff;
+  text-decoration: none;
   font-weight: 600;
-  text-align: center;
 }
 
-.cta .wa {
-  background: var(--accent-main);
-  color: #fff;
+.btn.wa {
+  background: var(--olive);
 }
 
-.cta .tg {
-  background: var(--accent-blue);
-  color: #fff;
+.btn.wa:hover {
+  background: var(--olive-dark);
 }
 
-/* === Tours === */
+.btn.tg {
+  background: var(--sea);
+}
+
+.btn.tg:hover {
+  background: var(--sea-dark);
+}
+
+/* TOURS */
 .tours {
-  padding: 16px;
-  display: grid;
-  gap: 16px;
+  padding: 20px;
 }
 
 .tour {
-  background: var(--bg-card);
-  border-radius: 18px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  margin-bottom: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .tour img {
@@ -125,75 +114,36 @@ header {
 }
 
 .tour-content {
-  padding: 14px;
+  padding: 16px;
 }
 
-.tour h3 {
-  margin: 0 0 6px;
+.tour h2 {
+  font-size: 20px;
 }
 
 .tour p {
-  margin: 0 0 10px;
+  margin: 8px 0;
   color: var(--text-muted);
+}
+
+.details {
+  display: none;
+  margin-top: 10px;
   font-size: 14px;
 }
 
-/* === Program block === */
-.program {
-  background: var(--bg-soft);
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-/* === Book button === */
-.book {
-  display: block;
-  background: var(--accent-main);
-  color: #fff;
-  text-align: center;
-  padding: 12px;
-  border-radius: 12px;
+.toggle {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: var(--sea);
   font-weight: 600;
-  text-decoration: none;
 }
 
-/* === Footer === */
-footer {
+/* FOOTER */
+.footer {
   text-align: center;
-  padding: 18px;
-  font-size: 13px;
+  padding: 20px;
+  font-size: 14px;
   color: var(--text-muted);
 }
-/* =========================
-   BUTTON OVERRIDE — FINAL
-   ========================= */
-
-a,
-button {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button,
-.btn,
-.book,
-.cta a,
-.cta .wa,
-.cta .tg {
-  background: #3f6f66 !important;
-  color: #ffffff !important;
-  border-radius: 16px !important;
-  border: none !important;
-  font-weight: 600 !important;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.12) !important;
-}
-
-/* Telegram — мягкий синий */
-.cta .tg {
-  background: #4a8fbf !important;
-}
-
-/* Hover / tap (мобилка тоже чувствует) */
-button:active,
-.book:active
