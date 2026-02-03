@@ -1,46 +1,60 @@
-const translations = {
-  ru: {
-    title: "Экскурсии по Вьетнаму",
-    subtitle: "Острова • Море • Снорклинг • Хон Там",
-    book_whatsapp: "Забронировать в WhatsApp"
-  },
-  en: {
-    title: "Tours in Vietnam",
-    subtitle: "Islands • Sea • Snorkeling • Hon Tam",
-    book_whatsapp: "Book via WhatsApp"
-  },
-  vi: {
-    title: "Tour tại Việt Nam",
-    subtitle: "Đảo • Biển • Lặn biển • Hòn Tằm",
-    book_whatsapp: "Đặt tour qua WhatsApp"
-  },
-  zh: {
-    title: "越南旅游",
-    subtitle: "岛屿 • 大海 • 浮潜 • 红岛",
-    book_whatsapp: "通过 WhatsApp 预订"
-  },
-  ko: {
-    title: "베트남 투어",
-    subtitle: "섬 • 바다 • 스노클링 • 혼탐",
-    book_whatsapp: "WhatsApp으로 예약"
-  },
-  fr: {
-    title: "Excursions au Vietnam",
-    subtitle: "Îles • Mer • Snorkeling • Hon Tam",
-    book_whatsapp: "Réserver via WhatsApp"
-  },
-  hi: {
-    title: "वियतनाम टूर",
-    subtitle: "द्वीप • समुद्र • स्नॉर्कलिंग • होन टैम",
-    book_whatsapp: "WhatsApp से बुक करें"
+const tours = [
+  {
+    img: "img/de-luxe/1.jpg",
+    title: {
+      ru: "De Luxe островной тур",
+      en: "De Luxe Island Tour",
+      vi: "Tour đảo De Luxe",
+      zh: "豪华岛屿之旅",
+      ko: "디럭스 아일랜드 투어",
+      fr: "Tour îles De Luxe",
+      hi: "डीलक्स द्वीप टूर"
+    },
+    desc: {
+      ru: "Комфортная морская экскурсия с пляжем Вай Чай и рыбацкой деревней.",
+      en: "Comfortable sea tour with Bai Chay beach and fishing village."
+    },
+    time: "08:00 – 16:00",
+    take: "Купальник, полотенце, солнцезащитный крем",
+    include: "Трансфер, катер, входные билеты, англоговорящий гид",
+    exclude: "Личные расходы"
   }
-};
+];
 
-function setLang(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n;
-    if (translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
+let currentLang = "ru";
+
+function renderTours() {
+  const container = document.querySelector(".tours");
+  container.innerHTML = "";
+
+  tours.forEach(t => {
+    container.innerHTML += `
+      <div class="tour">
+        <img src="${t.img}">
+        <div class="tour-content">
+          <h3>${t.title[currentLang]}</h3>
+          <p>${t.desc[currentLang]}</p>
+
+          <div class="program">
+            <strong>Время:</strong> ${t.time}<br>
+            <strong>Что взять:</strong> ${t.take}<br>
+            <strong>Включено:</strong> ${t.include}<br>
+            <strong>Не включено:</strong> ${t.exclude}
+          </div>
+
+          <a class="book" href="https://wa.me/84778532223">Забронировать</a>
+        </div>
+      </div>
+    `;
   });
 }
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll(".lang-switch button")
+    .forEach(b => b.classList.remove("active"));
+  document.querySelector(`[onclick="setLang('${lang}')"]`).classList.add("active");
+  renderTours();
+}
+
+renderTours();
