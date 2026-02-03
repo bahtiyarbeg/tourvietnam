@@ -4,61 +4,48 @@
   <meta charset="UTF-8">
   <title>TourVietnam — Экскурсии по Вьетнаму</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
-
 </head>
-  <script src="script.js"></script>
-</body>
-</html>
+
 <body>
-  <div class="lang-switch">
+
+<!-- LANGUAGE SWITCH -->
+<div class="lang-switch">
   <button onclick="setLang('ru')">RU</button>
   <button onclick="setLang('en')">EN</button>
   <button onclick="setLang('vi')">VI</button>
   <button onclick="setLang('zh')">中文</button>
-  <button onclick="setLang('ko')">KR</button>
+  <button onclick="setLang('kr')">KR</button>
   <button onclick="setLang('fr')">FR</button>
   <button onclick="setLang('hi')">HI</button>
 </div>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="TourVietnam">
-      <span>TourVietnam</span>
-    </div>
-  </header>
+<!-- HEADER -->
+<header class="header">
+  <img src="logo.png" alt="TourVietnam logo" class="logo">
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img src="logo.png" alt="TourVietnam">
+<!-- HERO -->
+<section class="hero">
+  <h1>Экскурсии по Вьетнаму</h1>
+  <p>Острова • Море • Снорклинг • Хон Там</p>
 
-<h1 data-i18n="title">Экскурсии по Вьетнаму</h1>
-<p data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
-    <a href="https://wa.me/84778532223?text=Здравствуйте! Хочу забронировать экскурсию"
-       class="btn-book" target="_blank">
-       Забронировать в WhatsApp
-    </a>
+  <a class="btn wa" href="https://wa.me/84778532223" target="_blank">
+    Забронировать в WhatsApp
+  </a>
 
-    <a href="https://t.me/+84777770759" class="btn-tg" target="_blank">
-       Telegram
-    </a>
-  </section>
+  <a class="btn tg" href="https://t.me/84777770759" target="_blank">
+    Telegram
+  </a>
+</section>
 
-  <!-- TOURS (сюда JS подставит карточки) -->
-  <section class="tours"></section>
+<!-- TOURS -->
+<section class="tours" id="tours"></section>
 
-  <!-- FOOTER -->
-  <footer>
-    © TourVietnam · Экскурсии по Вьетнаму
-  </footer>
+<footer class="footer">
+  © TourVietnam · Экскурсии по Вьетнаму
+</footer>
 
-  <!-- Script -->
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
