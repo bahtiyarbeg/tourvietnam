@@ -166,3 +166,34 @@ footer {
   font-size: 13px;
   color: var(--text-muted);
 }
+/* =========================
+   BUTTON OVERRIDE — FINAL
+   ========================= */
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+.btn,
+.book,
+.cta a,
+.cta .wa,
+.cta .tg {
+  background: #3f6f66 !important;
+  color: #ffffff !important;
+  border-radius: 16px !important;
+  border: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12) !important;
+}
+
+/* Telegram — мягкий синий */
+.cta .tg {
+  background: #4a8fbf !important;
+}
+
+/* Hover / tap (мобилка тоже чувствует) */
+button:active,
+.book:active
