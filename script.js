@@ -226,3 +226,49 @@ tours.forEach(tour => {
 
   container.appendChild(div);
 });
+const translations = {
+  ru: {
+    title: "Экскурсии по Вьетнаму",
+    book: "Забронировать",
+    program: "Программа тура"
+  },
+  en: {
+    title: "Tours in Vietnam",
+    book: "Book now",
+    program: "Tour program"
+  },
+  vi: {
+    title: "Tour tại Việt Nam",
+    book: "Đặt tour",
+    program: "Chương trình tour"
+  },
+  zh: {
+    title: "越南旅游",
+    book: "预订",
+    program: "行程安排"
+  },
+  ko: {
+    title: "베트남 투어",
+    book: "예약하기",
+    program: "투어 일정"
+  },
+  fr: {
+    title: "Excursions au Vietnam",
+    book: "Réserver",
+    program: "Programme du tour"
+  },
+  hi: {
+    title: "वियतनाम टूर",
+    book: "बुक करें",
+    program: "टूर कार्यक्रम"
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
+  });
+}
