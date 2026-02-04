@@ -1,45 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TourVietnam — Тур</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Tour</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="lang-switch">
-  <button onclick="setLang('ru')">RU</button>
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('vi')">VI</button>
-  <button onclick="setLang('zh')">中文</button>
-  <button onclick="setLang('ko')">KR</button>
-  <button onclick="setLang('fr')">FR</button>
-  <button onclick="setLang('tr')">TR</button>
-</div>
+<header class="top">
+  <div class="langs">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('vi')">VI</button>
+    <button onclick="setLang('zh')">中文</button>
+    <button onclick="setLang('ko')">KR</button>
+    <button onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('tr')">TR</button>
+  </div>
+  <a href="index.html">← Назад</a>
+</header>
 
-<a href="index.html" class="back">← Назад</a>
-
-<div class="tour-page">
-  <img id="tourImg" alt="">
-  <h1 id="tourTitle"></h1>
-
-  <p><b data-i18n="time">Время:</b> <span id="tourTime"></span></p>
-  <p><b data-i18n="guide">Гид:</b> <span id="tourGuide"></span></p>
-  <p><b data-i18n="take">Что взять:</b> <span id="tourTake"></span></p>
-  <p><b data-i18n="include">Включено:</b> <span id="tourInclude"></span></p>
-  <p><b data-i18n="exclude">Не включено:</b> <span id="tourExclude"></span></p>
-
-  <details class="program">
-    <summary data-i18n="program">Программа тура</summary>
-    <ul id="tourProgram"></ul>
-  </details>
-
-  <a class="btn wa big" href="https://wa.me/84777770759" target="_blank">
-    Забронировать в WhatsApp
-  </a>
-</div>
+<main id="tour"></main>
 
 <script src="script.js"></script>
 </body>
