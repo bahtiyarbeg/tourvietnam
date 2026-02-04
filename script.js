@@ -1,110 +1,120 @@
-// ===== ЯЗЫК =====
+const tours = {
+  deluxe: {
+    img: "img/de-luxe/1.jpg",
+    time: "08:00 – 16:00",
+    take: "Купальник, полотенце, крем",
+    included: "Трансфер, катер, гид",
+    not: "Личные расходы",
+    title: {
+      ru: "De Luxe островной тур",
+      en: "De Luxe Island Tour",
+      vi: "Tour đảo De Luxe",
+      zh: "豪华岛屿之旅",
+      ko: "디럭스 섬 투어",
+      fr: "Tour île De Luxe",
+      tr: "De Luxe Ada Turu"
+    }
+  },
+
+  "vip-hon-tam-1": {
+    img: "img/vip-hon-tam-1/1.jpg",
+    time: "08:00 – 16:00",
+    take: "Купальник",
+    included: "Катер, гид",
+    not: "Личные расходы",
+    title: {
+      ru: "VIP Хон Там 1",
+      en: "VIP Hon Tam 1",
+      vi: "VIP Hòn Tằm 1",
+      zh: "VIP 汉潭 1",
+      ko: "VIP 혼땀 1",
+      fr: "VIP Hon Tam 1",
+      tr: "VIP Hon Tam 1"
+    }
+  },
+
+  robinson: {
+    img: "img/robinson/1.jpg",
+    time: "08:00 – 15:30",
+    take: "Купальник",
+    included: "Катер, гид",
+    not: "Личные расходы",
+    title: {
+      ru: "Робинзон тур",
+      en: "Robinson Tour",
+      vi: "Tour Robinson",
+      zh: "鲁宾逊之旅",
+      ko: "로빈슨 투어",
+      fr: "Tour Robinson",
+      tr: "Robinson Turu"
+    }
+  },
+
+  nemo: {
+    img: "img/nemo/1.jpg",
+    time: "08:00 – 14:00",
+    take: "Купальник",
+    included: "Снорклинг, катер",
+    not: "Личные расходы",
+    title: {
+      ru: "Nemo Trip",
+      en: "Nemo Trip",
+      vi: "Tour Nemo",
+      zh: "尼莫之旅",
+      ko: "니모 투어",
+      fr: "Nemo Trip",
+      tr: "Nemo Turu"
+    }
+  }
+};
+
 let lang = localStorage.getItem("lang") || "ru";
 
 function setLang(l) {
   lang = l;
   localStorage.setItem("lang", l);
-
-  renderIndex();
-  renderTour();
+  applyLang();
 }
 
-// ===== ГЛАВНАЯ =====
-function renderIndex() {
-  const box = document.getElementById("tours");
-  if (!box) return;
-
-  box.innerHTML = "";
-
-  TOURS.forEach(t => {
-    box.innerHTML += `
-      <a class="tour-card" href="tour.html?id=${t.id}">
-        <img src="${t.img}" alt="${t.title[lang]}">
-        <h3>${t.title[lang]}</h3>
-      </a>
-    `;
+function applyLang() {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n;
+    if (translations[key]) el.innerText = translations[key][lang];
   });
 }
 
-// ===== СТРАНИЦА ТУРА =====
-function renderTour() {
-  const container = document.getElementById("tour");
-  if (!container) return;
-
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-
-  const t = TOURS.find(x => x.id === id);
-  if (!t) {
-    container.innerHTML = "<p>Тур не найден</p>";
-    return;
+const translations = {
+  title: {
+    ru: "Экскурсии по Вьетнаму",
+    en: "Vietnam Tours",
+    vi: "Tour Việt Nam",
+    zh: "越南旅游",
+    ko: "베트남 투어",
+    fr: "Excursions au Vietnam",
+    tr: "Vietnam Turları"
+  },
+  subtitle: {
+    ru: "Острова • Море • Снорклинг • Хон Там",
+    en: "Islands • Sea • Snorkeling • Hon Tam",
+    vi: "Đảo • Biển • Lặn biển • Hòn Tằm",
+    zh: "岛屿 • 大海 • 浮潜 • 汉潭",
+    ko: "섬 • 바다 • 스노클링 • 혼땀",
+    fr: "Îles • Mer • Snorkeling • Hon Tam",
+    tr: "Adalar • Deniz • Şnorkel • Hon Tam"
   }
+};
 
-  container.innerHTML = `
-    <img src="${t.img}" class="tour-img">
+applyLang();
 
-    <h1>${t.title[lang]}</h1>
+// СТРАНИЦА ТУРА
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
 
-    <p><b>${text("time")}:</b> ${t.time}</p>
-    <p><b>${text("take")}:</b> ${t.take.join(", ")}</p>
-    <p><b>${text("include")}:</b> ${t.include.join(", ")}</p>
-    <p><b>${text("exclude")}:</b> ${t.exclude.join(", ")}</p>
-
-    <h3>${text("program")}:</h3>
-    <ul>
-      ${t.program.map(p => `<li>${p}</li>`).join("")}
-    </ul>
-  `;
+if (id && tours[id]) {
+  document.getElementById("tourImg").src = tours[id].img;
+  document.getElementById("tourTitle").innerText = tours[id].title[lang];
+  document.getElementById("time").innerText = tours[id].time;
+  document.getElementById("take").innerText = tours[id].take;
+  document.getElementById("included").innerText = tours[id].included;
+  document.getElementById("not").innerText = tours[id].not;
 }
-
-// ===== ТЕКСТЫ ИНТЕРФЕЙСА =====
-function text(key) {
-  const dict = {
-    time: {
-      ru: "Время",
-      en: "Time",
-      vi: "Thời gian",
-      zh: "时间",
-      ko: "시간",
-      fr: "Heure",
-      tr: "Saat"
-    },
-    take: {
-      ru: "Что взять",
-      en: "What to bring",
-      vi: "Mang theo",
-      zh: "携带物品",
-      ko: "준비물",
-      fr: "À prendre",
-      tr: "Yanınıza alın"
-    },
-    include: {
-      ru: "Включено",
-      en: "Included",
-      vi: "Bao gồm",
-      zh: "包含",
-      ko: "포함",
-      fr: "Inclus",
-      tr: "Dahil"
-    },
-    exclude: {
-      ru: "Не включено",
-      en: "Not included",
-      vi: "Không bao gồm",
-      zh: "不包含",
-      ko: "불포함",
-      fr: "Non inclus",
-      tr: "Hariç"
-    },
-    program: {
-      ru: "Программа тура",
-      en: "Tour program",
-      vi: "Chương trình tour",
-      zh: "行程",
-      ko: "투어 일정",
-      fr: "Programme",
-      tr: "Tur programı"
-    }
-  };
-
-  return dict[key][lang] ||
