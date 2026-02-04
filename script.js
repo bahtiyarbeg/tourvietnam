@@ -1,14 +1,12 @@
+// ===== ЯЗЫК =====
 let lang = localStorage.getItem("lang") || "ru";
-
 function setLang(l){
   lang = l;
   localStorage.setItem("lang", l);
-  renderIndex();
-  renderTour();
-  translateUI();
+  render();
 }
 
-/* ===== ПЕРЕВОД ИНТЕРФЕЙСА ===== */
+// ===== UI ТЕКСТЫ =====
 const UI = {
   title:{
     ru:"Экскурсии по Вьетнаму",
@@ -36,131 +34,167 @@ const UI = {
   program:{ru:"Программа тура",en:"Tour program",vi:"Chương trình tour",zh:"行程安排",ko:"투어 일정",fr:"Programme",tr:"Tur programı"}
 };
 
-/* ===== ВСЕ ТУРЫ ===== */
-const TOURS = [
-{
-id:"deluxe",
-img:"img/de-luxe/1.jpg",
-title:{
-ru:"De Luxe островной тур",
-en:"De Luxe Island Tour"
-},
-time:"08:00 – 16:00",
-guide:"English-speaking guide",
-take:"Swimsuit, towel, sunscreen",
-include:"Transfer, boat, English-speaking guide",
-exclude:"Personal expenses",
-program:[
-"Hotel pickup and transfer",
-"Boat trip along the coast",
-"Bai Chai beach — swimming & relax",
-"Fishing village visit",
-"Return to hotel"
-]
-},
+// ===== ДАННЫЕ ТУРА (ЭТАЛОН) =====
+const TOURS = {
+  robinson:{
+    id:"robinson",
+    image:"img/robinson.jpg",
+    duration:"08:00 – 15:30",
+    guide:"English-speaking guide",
+    take:{
+      ru:["Купальник","Полотенце","Солнцезащитный крем","Головной убор"],
+      en:["Swimsuit","Towel","Sunscreen","Hat"],
+      vi:["Đồ bơi","Khăn","Kem chống nắng","Mũ"],
+      zh:["泳衣","毛巾","防晒霜","帽子"],
+      ko:["수영복","수건","선크림","모자"],
+      fr:["Maillot","Serviette","Crème solaire","Chapeau"],
+      tr:["Mayo","Havlu","Güneş kremi","Şapka"]
+    },
+    include:{
+      ru:["Трансфер","Катер","Снорклинг","English-speaking guide"],
+      en:["Transfer","Boat","Snorkeling","English-speaking guide"],
+      vi:["Xe đưa đón","Tàu","Lặn biển","Hướng dẫn tiếng Anh"],
+      zh:["接送","快艇","浮潜","英文导游"],
+      ko:["픽업","보트","스노클링","영어 가이드"],
+      fr:["Transfert","Bateau","Snorkeling","Guide anglophone"],
+      tr:["Transfer","Tekne","Şnorkel","İngilizce rehber"]
+    },
+    exclude:{
+      ru:["Личные расходы"],
+      en:["Personal expenses"],
+      vi:["Chi phí cá nhân"],
+      zh:["个人消费"],
+      ko:["개인 비용"],
+      fr:["Dépenses personnelles"],
+      tr:["Kişisel harcamalar"]
+    },
+    text:{
+      ru:{
+        title:"Robinson Tour",
+        subtitle:"Уединённый остров без толп туристов",
+        program:[
+          "Сбор и трансфер из отеля",
+          "Морская прогулка на катере к дикому острову",
+          "Снорклинг в кристально чистой воде",
+          "Свободное время: купание, отдых, фото",
+          "Возвращение в отель"
+        ]
+      },
+      en:{
+        title:"Robinson Tour",
+        subtitle:"A quiet island escape away from crowds",
+        program:[
+          "Hotel pickup and transfer",
+          "Boat trip to a wild island",
+          "Snorkeling in crystal-clear water",
+          "Free time: swimming, relaxing, photos",
+          "Return to hotel"
+        ]
+      },
+      vi:{ title:"Tour Robinson", subtitle:"Hòn đảo yên tĩnh, tránh xa đám đông", program:[
+        "Đón khách tại khách sạn","Đi tàu ra đảo hoang","Lặn biển ngắm san hô",
+        "Thời gian tự do: tắm biển, nghỉ ngơi, chụp ảnh","Trở về khách sạn"
+      ]},
+      zh:{ title:"鲁宾逊之旅", subtitle:"远离人群的宁静海岛", program:[
+        "酒店接送","乘船前往原始岛屿","清澈海水中浮潜",
+        "自由活动：游泳、休息、拍照","返回酒店"
+      ]},
+      ko:{ title:"로빈슨 투어", subtitle:"사람 없는 한적한 섬", program:[
+        "호텔 픽업","무인도로 보트 이동","맑은 바다 스노클링",
+        "자유 시간: 수영, 휴식, 사진","호텔 복귀"
+      ]},
+      fr:{ title:"Tour Robinson", subtitle:"Île paisible loin de la foule", program:[
+        "Prise en charge à l’hôtel","Bateau vers une île sauvage","Snorkeling en eau claire",
+        "Temps libre : baignade, détente, photos","Retour à l’hôtel"
+      ]},
+      tr:{ title:"Robinson Turu", subtitle:"Kalabalıktan uzak sakin ada", program:[
+        "Otelden transfer","Vahşi adaya tekne yolculuğu","Berrak suda şnorkel",
+        "Serbest zaman: yüzme, dinlenme, fotoğraf","Otele dönüş"
+      ]}
+    }
+  }
+};
 
-{
-id:"vip-hon-tam-1",
-img:"img/vip-hon-tam-1/1.jpg",
-title:{
-ru:"VIP тур — Хон Там 1",
-en:"VIP Hon Tam 1"
-},
-time:"08:00 – 16:30",
-guide:"English-speaking guide",
-take:"Swimsuit, towel",
-include:"Transfer, boat, snorkeling, English-speaking guide",
-exclude:"Extra services",
-program:[
-"Bai Chai beach",
-"Coral bay snorkeling",
-"Fishing village",
-"Hon Tam island — mud bath & sea",
-"Return"
-]
-},
+// ===== РЕНДЕР =====
+function render(){
+  // UI
+  const t = UI;
+  const ttl = document.getElementById("ui-title");
+  const sub = document.getElementById("ui-subtitle");
+  if(ttl) ttl.innerText = t.title[lang];
+  if(sub) sub.innerText = t.subtitle[lang];
 
-{
-id:"robinson",
-img:"img/robinson/1.jpg",
-title:{
-ru:"Робинзон тур",
-en:"Robinson Island Tour"
-},
-time:"08:00 – 15:30",
-guide:"English-speaking guide",
-take:"Swimsuit, towel, sunscreen",
-include:"Boat, English-speaking guide",
-exclude:"Personal expenses",
-program:[
-"Boat transfer to wild island",
-"Empty beach without tourists",
-"Swimming & snorkeling",
-"Relax and nature time"
-]
-},
-
-{
-id:"nemo",
-img:"img/nemo/1.jpg",
-title:{
-ru:"Nemo Trip",
-en:"Nemo Trip"
-},
-time:"08:00 – 14:00",
-guide:"English-speaking guide",
-take:"Swimsuit, towel",
-include:"Snorkeling gear, boat, English-speaking guide",
-exclude:"Personal expenses",
-program:[
-"Safe snorkeling zone",
-"Colorful fish and corals",
-"Swimming",
-"Underwater photos"
-]
+  renderIndex();
+  renderTour();
 }
-];
 
-/* ===== РЕНДЕР ===== */
 function renderIndex(){
   const box = document.getElementById("tours");
   if(!box) return;
-  box.innerHTML="";
-  TOURS.forEach(t=>{
-    box.innerHTML+=`
+  box.innerHTML = "";
+
+  Object.values(TOURS).forEach(t=>{
+    const tx = t.text[lang] || t.text.ru;
+    box.innerHTML += `
       <a class="tour-card" href="tour.html?id=${t.id}">
-        <img src="${t.img}">
-        <h3>${t.title[lang] || t.title.ru}</h3>
+        <img src="${t.image}" alt="">
+        <div class="card-body">
+          <h3>${tx.title}</h3>
+          <p>${tx.subtitle}</p>
+        </div>
       </a>`;
   });
 }
 
 function renderTour(){
+  const app = document.getElementById("app");
+  if(!app) return;
+
   const id = new URLSearchParams(location.search).get("id");
-  if(!id) return;
-  const t = TOURS.find(x=>x.id===id);
-  if(!t) return;
+  const t = TOURS[id];
+  if(!t){
+    app.innerHTML = "<p style='padding:14px'>Tour not found</p>";
+    return;
+  }
+  const tx = t.text[lang] || t.text.ru;
 
-  document.getElementById("tourImg").src=t.img;
-  document.getElementById("tourTitle").innerText=t.title[lang]||t.title.ru;
-  document.getElementById("tourTime").innerText=t.time;
-  document.getElementById("tourGuide").innerText=t.guide;
-  document.getElementById("tourTake").innerText=t.take;
-  document.getElementById("tourInclude").innerText=t.include;
-  document.getElementById("tourExclude").innerText=t.exclude;
+  app.innerHTML = `
+    <section class="tour">
+      <img src="${t.image}" alt="">
+      <h1>${tx.title}</h1>
+      <p>${tx.subtitle}</p>
 
-  const ul=document.getElementById("tourProgram");
-  ul.innerHTML="";
-  t.program.forEach(p=>ul.innerHTML+=`<li>${p}</li>`);
+      <div class="meta">
+        <div class="block"><h4>${UI.time[lang]}</h4><p>${t.duration}</p></div>
+        <div class="block"><h4>${UI.guide[lang]}</h4><p>${t.guide}</p></div>
+      </div>
+
+      <div class="block">
+        <h4>${UI.take[lang]}</h4>
+        <ul>${t.take[lang].map(x=>`<li>${x}</li>`).join("")}</ul>
+      </div>
+
+      <div class="block">
+        <h4>${UI.include[lang]}</h4>
+        <ul>${t.include[lang].map(x=>`<li>${x}</li>`).join("")}</ul>
+      </div>
+
+      <div class="block">
+        <h4>${UI.exclude[lang]}</h4>
+        <ul>${t.exclude[lang].map(x=>`<li>${x}</li>`).join("")}</ul>
+      </div>
+
+      <div class="program">
+        <h4>${UI.program[lang]}</h4>
+        <ul>${tx.program.map(x=>`<li>${x}</li>`).join("")}</ul>
+      </div>
+
+      <a class="cta" href="https://wa.me/84777770759" target="_blank">
+        Book via WhatsApp
+      </a>
+    </section>
+  `;
 }
 
-function translateUI(){
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key=el.dataset.i18n;
-    if(UI[key]) el.innerText=UI[key][lang];
-  });
-}
-
-translateUI();
-renderIndex();
-renderTour();
+// init
+render();
