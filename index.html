@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>TourVietnam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>TourVietnam — Экскурсии по Вьетнаму</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -14,9 +14,9 @@
   <button onclick="setLang('en')">EN</button>
   <button onclick="setLang('vi')">VI</button>
   <button onclick="setLang('zh')">中文</button>
-  <button onclick="setLang('kr')">KR</button>
+  <button onclick="setLang('ko')">KR</button>
   <button onclick="setLang('fr')">FR</button>
-  <button onclick="setLang('hi')">HI</button>
+  <button onclick="setLang('tr')">TR</button>
 </div>
 
 <!-- ЛОГО -->
@@ -25,31 +25,20 @@
 </div>
 
 <!-- HERO -->
-<h1 id="title"></h1>
-<p id="subtitle"></p>
+<section class="hero">
+  <h1 id="pageTitle">Экскурсии по Вьетнаму</h1>
+  <p id="pageSub">Острова • Море • Снорклинг • Хон Там</p>
 
-<div class="buttons">
-  <a id="waBtn" target="_blank" class="btn wa">WhatsApp</a>
-  <a href="https://t.me/eco_voyaj" target="_blank" class="btn tg">Telegram</a>
-</div>
+  <a class="btn wa" href="https://wa.me/84777770759" target="_blank">WhatsApp</a>
+  <a class="btn tg" href="https://t.me/+84777770759" target="_blank">Telegram</a>
+</section>
 
-<!-- ТУР -->
-<div class="tour">
-  <img src="img/de-luxe/1.jpg" alt="De Luxe">
-  <h2 id="tourTitle"></h2>
-  <p id="tourDesc"></p>
+<!-- ТУРЫ -->
+<section id="tours" class="tours"></section>
 
-  <button class="toggle" onclick="toggleProgram()">▶ Программа тура</button>
-
-  <div id="program" class="program">
-    <p><b id="time"></b></p>
-    <p><b id="take"></b></p>
-    <p><b id="include"></b></p>
-    <p><b id="exclude"></b></p>
-  </div>
-</div>
-
-<footer>© TourVietnam</footer>
+<footer>
+  © TourVietnam
+</footer>
 
 <script src="script.js"></script>
 </body>
