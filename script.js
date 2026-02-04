@@ -1,33 +1,21 @@
-import TOURS from "./data/tours.js";
+const container = document.getElementById("tours");
 
-const app = document.getElementById("app");
-if (!app) {
-  console.error("❌ Контейнер #app не найден");
+if (!container) {
+  console.error("Контейнер #tours не найден");
 }
 
-let currentLang = "ru";
+TOURS.forEach(tour => {
+  const card = document.createElement("a");
+  card.className = "card";
+  card.href = `tour.html?id=${tour.id}`;
 
-function renderTours() {
-  app.innerHTML = "";
+  card.innerHTML = `
+    <img src="${tour.img}" alt="${tour.title}">
+    <div class="card-body">
+      <h3>${tour.title}</h3>
+      <p>${tour.desc}</p>
+    </div>
+  `;
 
-  TOURS.forEach(tour => {
-    const card = document.createElement("a");
-    card.className = "card";
-    card.href = `tour.html?id=${tour.id}`;
-
-    card.innerHTML = `
-      <img src="${tour.image}" alt="${tour.title[currentLang]}">
-      <h3>${tour.title[currentLang]}</h3>
-      <p>${tour.subtitle[currentLang]}</p>
-    `;
-
-    app.appendChild(card);
-  });
-}
-
-window.setLang = function (lang) {
-  currentLang = lang;
-  renderTours();
-};
-
-renderTours();
+  container.appendChild(card);
+});
