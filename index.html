@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour Vietnam</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="lang">
+<header class="top">
+  <div class="langs">
     <button onclick="setLang('ru')">RU</button>
     <button onclick="setLang('en')">EN</button>
     <button onclick="setLang('vi')">VI</button>
@@ -19,16 +19,15 @@
     <button onclick="setLang('tr')">TR</button>
   </div>
 
-  <img src="logo.png" class="logo" />
+  <img src="img/logo.png" class="logo">
 
-  <h1>Экскурсии по Вьетнаму</h1>
-<p>Острова • Море • Снорклинг • Хон Там</p>
+  <h1 data-i18n="title">Экскурсии по Вьетнаму</h1>
+  <p data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
+</header>
 
-<main id="app"></main>
-  
-<!-- 🔥 ВАЖНО: ИМЕННО ЭТО -->
-<main id="app" class="cards"></main>
+<main class="tours" id="tours"></main>
 
-<script type="module" src="script.js"></script>
+<script src="data/tours.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
