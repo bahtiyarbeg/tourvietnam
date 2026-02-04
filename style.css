@@ -1,64 +1,57 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f1e8;
+  font-family: system-ui, sans-serif;
+  background: #f6f2e9;
+  color: #222;
+}
+
+.top {
   text-align: center;
+  padding: 20px;
 }
 
-.lang-switch {
-  margin: 10px;
-}
-
-.lang-switch button {
-  border: none;
-  padding: 6px 10px;
+.langs button {
+  margin: 4px;
+  padding: 6px 12px;
   border-radius: 20px;
-  margin: 2px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
 }
 
-.logo img {
-  width: 180px;
+.logo {
+  max-width: 160px;
+  margin: 10px auto;
 }
-
-.buttons {
-  margin: 20px;
-}
-
-.btn {
-  padding: 12px 20px;
-  border-radius: 30px;
-  color: #fff;
-  text-decoration: none;
-  margin: 5px;
-  display: inline-block;
-}
-
-.wa { background: #6b7f4a; }
-.tg { background: #4f8fb3; }
 
 .tours {
   display: grid;
-  gap: 15px;
-  padding: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.tour img {
+.tour-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.tour-card img {
   width: 100%;
-  border-radius: 20px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.tour-card h3 {
+  padding: 14px;
+  text-align: center;
 }
 
 .tour-page img {
   width: 100%;
-}
-
-.program {
-  background: #eef0ea;
-  padding: 15px;
-  margin: 15px;
-  border-radius: 15px;
-}
-
-.back {
-  display: block;
-  margin: 10px;
+  border-radius: 18px;
 }
