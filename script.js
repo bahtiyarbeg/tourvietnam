@@ -1,73 +1,73 @@
+import TOURS from "./data/tours.js";
+
 let currentLang = localStorage.getItem("lang") || "ru";
 
-function setLang(lang) {
+window.setLang = function (lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
-  renderIndex();
-  renderTour();
+  renderPage();
+};
+
+function getTourId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
 }
 
-function renderIndex() {
-  const container = document.getElementById("tours");
-  if (!container || !window.tours) return;
+function renderPage() {
+  const tourId = getTourId();
+  if (!tourId) return;
 
-  container.innerHTML = "";
+  const tour = TOURS[tourId];
+  if (!tour) return;
 
-  Object.keys(tours).forEach(id => {
-    const t = tours[id][currentLang] || tours[id]["ru"];
+  const t = tour[currentLang] || tour["ru"];
 
-    container.innerHTML += `
-      <a href="tour.html?id=${id}" class="card">
-        <img src="${tours[id].image}" onerror="this.src='logo.png'">
-        <div class="card-body">
-          <h3>${t.title}</h3>
-          <p>${t.subtitle}</p>
-        </div>
-      </a>
-    `;
-  });
-}
+  const app = document.getElementById("app");
+  if (!app) return;
 
-function renderTour() {
-  const el = document.getElementById("tour");
-  if (!el) return;
+  app.innerHTML = `
+    <div class="tour-hero">
+      <img src="${tour.image}" alt="${t.title}">
+    </div>
 
-  const id = new URLSearchParams(window.location.search).get("id");
-  if (!id || !tours[id]) return;
-
-  const t = tours[id][currentLang] || tours[id]["ru"];
-
-  el.innerHTML = `
-    <img class="hero" src="${tours[id].image}">
     <h1>${t.title}</h1>
-    <p>${t.subtitle}</p>
+    <p class="subtitle">${t.subtitle}</p>
 
-    <div class="box"><b>Время:</b> ${t.time}</div>
-    <div class="box"><b>Гид:</b> ${t.guide}</div>
+    <div class="info-grid">
+      <div class="info-box">
+        <strong>Time</strong><br>${tour.time}
+      </div>
+      <div class="info-box">
+        <strong>Guide</strong><br>${tour.guide}
+      </div>
+    </div>
 
-    <div class="box">
-      <b>Что взять:</b>
+    <div class="block">
+      <h3>What to bring</h3>
       <ul>${t.take.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
 
-    <div class="box">
-      <b>Включено:</b>
-      <ul>${t.include.map(i => `<li>${i}</li>`).join("")}</ul>
+    <div class="block">
+      <h3>Included</h3>
+      <ul>${t.included.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
 
-    <div class="box">
-      <b>Не включено:</b>
-      <ul>${t.exclude.map(i => `<li>${i}</li>`).join("")}</ul>
+    <div class="block">
+      <h3>Not included</h3>
+      <ul>${t.excluded.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
 
-    <div class="box">
-      <b>Программа тура:</b>
+    <div class="block">
+      <h3>Program</h3>
       <ul>${t.program.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
 
-    <a class="whatsapp" href="https://wa.me/84777770759">Book via WhatsApp</a>
+    <a class="whatsapp-btn"
+       href="https://wa.me/84777770759"
+       target="_blank">
+       Book via WhatsApp
+    </a>
   `;
 }
 
-renderIndex();
-renderTour();
+document.addEventListener("DOMContentLoaded", renderPage);
