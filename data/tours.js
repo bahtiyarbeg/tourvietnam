@@ -1,41 +1,122 @@
-const TOURS = {
-  robinson: {
-    id: "robinson",
+const tours = {
+  "robinson": {
     image: "img/robinson.jpg",
-    duration: "08:00 – 15:30",
+    time: "08:00 – 15:30",
     guide: "English-speaking guide",
-    text: {
-      ru: {
-        title: "Робинзон тур",
-        subtitle: "Уединённый остров без толп туристов",
-        program: [
-          "Сбор туристов и трансфер из отеля",
-          "Морская прогулка на катере",
-          "Прибытие на дикий остров",
-          "Снорклинг и купание",
-          "Свободное время для отдыха и фото",
-          "Возвращение в отель"
-        ],
-        take: ["Купальник", "Полотенце", "Солнцезащитный крем", "Головной убор"],
-        include: ["Трансфер", "Катер", "Снорклинг", "English-speaking guide"],
-        exclude: ["Личные расходы"]
-      },
+    ru: {
+      title: "Робинзон тур",
+      subtitle: "Уединённый остров вдали от толп",
+      take: ["Купальник", "Полотенце", "Солнцезащитный крем", "Головной убор"],
+      include: ["Трансфер", "Лодка", "Снорклинг", "Англоговорящий гид"],
+      exclude: ["Личные расходы"],
+      program: [
+        "Трансфер из отеля",
+        "Морская прогулка к дикому острову",
+        "Снорклинг в прозрачной воде",
+        "Свободное время: купание, отдых, фото",
+        "Возвращение в отель"
+      ]
+    }
+  },
 
-      en: {
-        title: "Robinson Tour",
-        subtitle: "A quiet island escape with no crowds",
-        program: [
-          "Hotel pickup and transfer",
-          "Boat trip to a wild island",
-          "Arrival at the island",
-          "Snorkeling and swimming",
-          "Free time for relaxation and photos",
-          "Return to hotel"
-        ],
-        take: ["Swimsuit", "Towel", "Sunscreen", "Hat"],
-        include: ["Transfer", "Boat", "Snorkeling", "English-speaking guide"],
-        exclude: ["Personal expenses"]
-      }
+  "de-luxe": {
+    image: "img/de-luxe/1.jpg",
+    time: "08:00 – 16:00",
+    guide: "English-speaking guide",
+    ru: {
+      title: "De Luxe островной тур",
+      subtitle: "Комфорт, острова и лучший сервис",
+      take: ["Купальник", "Полотенце", "Солнцезащитный крем"],
+      include: ["Трансфер", "Катер", "Обед", "Снорклинг", "Гид"],
+      exclude: ["Напитки", "Личные расходы"],
+      program: [
+        "Комфортабельный трансфер",
+        "Катер к островам",
+        "Снорклинг",
+        "Обед на острове",
+        "Отдых и купание",
+        "Возвращение"
+      ]
+    }
+  },
+
+  "diving": {
+    image: "img/diving/1.jpg",
+    time: "07:30 – 14:00",
+    guide: "English-speaking instructor",
+    ru: {
+      title: "Дайвинг тур",
+      subtitle: "Погружение с аквалангом",
+      take: ["Купальник", "Полотенце"],
+      include: ["Инструктор", "Снаряжение", "Лодка"],
+      exclude: ["Видео и фото"],
+      program: [
+        "Инструктаж",
+        "Выход в море",
+        "Погружение с инструктором",
+        "Отдых на лодке",
+        "Возвращение"
+      ]
+    }
+  },
+
+  "nemo": {
+    image: "img/nemo/1.jpg",
+    time: "08:00 – 15:00",
+    guide: "English-speaking guide",
+    ru: {
+      title: "Nemo Trip",
+      subtitle: "Лучший снорклинг для всей семьи",
+      take: ["Купальник", "Полотенце"],
+      include: ["Трансфер", "Лодка", "Снорклинг", "Гид"],
+      exclude: ["Личные расходы"],
+      program: [
+        "Трансфер",
+        "Снорклинг у кораллов",
+        "Развлечения на воде",
+        "Отдых",
+        "Возвращение"
+      ]
+    }
+  },
+
+  "vip-hon-tam-1": {
+    image: "img/vip-hon-tam-1/1.jpg",
+    time: "08:00 – 16:00",
+    guide: "English-speaking guide",
+    ru: {
+      title: "VIP тур — Хон Там 1",
+      subtitle: "Премиальный отдых и грязевые ванны",
+      take: ["Купальник"],
+      include: ["VIP трансфер", "Катер", "Грязевые ванны", "Гид"],
+      exclude: ["Личные расходы"],
+      program: [
+        "VIP трансфер",
+        "Катер на Хон Там",
+        "Грязевые ванны",
+        "Отдых на пляже",
+        "Возвращение"
+      ]
+    }
+  },
+
+  "vip-hon-tam-2": {
+    image: "img/vip-hon-tam-2/1.jpg",
+    time: "08:00 – 16:00",
+    guide: "English-speaking guide",
+    ru: {
+      title: "VIP тур — Хон Там 2",
+      subtitle: "Максимальный комфорт",
+      take: ["Купальник"],
+      include: ["Трансфер", "Катер", "SPA", "Гид"],
+      exclude: ["Личные расходы"],
+      program: [
+        "Трансфер",
+        "Катер",
+        "SPA-зона",
+        "Свободное время",
+        "Возвращение"
+      ]
     }
   }
 };
