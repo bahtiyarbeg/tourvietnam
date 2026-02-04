@@ -1,107 +1,72 @@
-:root {
-  --bg: #f6f1e7;
-  --green: #6f8452;
-  --blue: #4f8fb3;
-  --text: #2f2f2f;
-  --card: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
+  font-family: Arial, sans-serif;
+  background: #f6f2ea;
+  color: #2e2e2e;
+  text-align: center;
 }
 
 .lang-switch {
-  text-align: center;
   padding: 10px;
 }
-
 .lang-switch button {
+  margin: 3px;
+  padding: 6px 10px;
+  border-radius: 20px;
   border: none;
   background: #fff;
-  padding: 6px 10px;
-  margin: 2px;
-  border-radius: 8px;
   cursor: pointer;
 }
 
-.hero {
-  text-align: center;
-  padding: 30px 15px;
-}
-
-.logo {
+.logo img {
   max-width: 180px;
-  margin-bottom: 10px;
+  margin: 20px auto;
 }
 
-.hero h1 {
-  font-size: 28px;
-  margin: 10px 0;
+.buttons {
+  margin: 20px;
 }
-
-.hero p {
-  opacity: 0.8;
-}
-
 .btn {
-  display: block;
-  max-width: 280px;
-  margin: 12px auto;
-  padding: 14px;
-  border-radius: 14px;
-  text-decoration: none;
+  display: inline-block;
+  padding: 14px 22px;
+  margin: 8px;
+  border-radius: 30px;
   color: #fff;
-  font-weight: 600;
+  text-decoration: none;
 }
+.wa { background: #6b7f4a; }
+.tg { background: #4f8fb3; }
 
-.btn.whatsapp {
-  background: var(--green);
-}
-
-.btn.telegram {
-  background: var(--blue);
-}
-
-.tours {
-  padding: 20px;
-}
-
-.tour-card {
-  background: var(--card);
-  border-radius: 18px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.tour-card img {
-  width: 100%;
-  display: block;
-}
-
-.tour-body {
+.tour {
+  max-width: 500px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 20px;
   padding: 15px;
 }
-
-.tour-body h3 {
-  margin: 0 0 8px;
+.tour img {
+  width: 100%;
+  border-radius: 15px;
 }
 
-.tour-info {
-  font-size: 14px;
-  line-height: 1.5;
+.toggle {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.program {
+  display: none;
+  background: #eef1ea;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 13px;
+  margin: 30px 0;
+  font-size: 14px;
   opacity: 0.6;
 }
