@@ -2,29 +2,62 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TourVietnam</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!-- ЯЗЫКИ -->
 <div class="lang-switch">
-<button onclick="setLang('ru')">RU</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('vi')">VI</button>
-<button onclick="setLang('zh')">中文</button>
-<button onclick="setLang('ko')">KR</button>
-<button onclick="setLang('fr')">FR</button>
-<button onclick="setLang('tr')">TR</button>
+  <button onclick="setLang('ru')">RU</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('vi')">VI</button>
+  <button onclick="setLang('zh')">中文</button>
+  <button onclick="setLang('ko')">KR</button>
+  <button onclick="setLang('fr')">FR</button>
+  <button onclick="setLang('tr')">TR</button>
 </div>
 
-<img src="logo.png" class="logo">
+<!-- ЛОГО -->
+<div class="logo">
+  <img src="logo.png" alt="TourVietnam">
+</div>
 
-<h1 id="title">Экскурсии по Вьетнаму</h1>
+<h1 data-i18n="title">Экскурсии по Вьетнаму</h1>
+<p data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
 
-<div id="tours"></div>
+<div class="buttons">
+  <a class="btn wa" href="https://wa.me/84777770759" target="_blank">WhatsApp</a>
+  <a class="btn tg" href="https://t.me/+84777770759" target="_blank">Telegram</a>
+</div>
 
-<script src="data/tours.js"></script>
+<!-- ТУРЫ -->
+<div class="tours">
+
+<a href="tour.html?id=deluxe" class="tour">
+  <img src="img/de-luxe/1.jpg">
+  <h3 data-i18n="deluxe">De Luxe островной тур</h3>
+</a>
+
+<a href="tour.html?id=vip-hon-tam-1" class="tour">
+  <img src="img/vip-hon-tam-1/1.jpg">
+  <h3 data-i18n="vip1">VIP Хон Там 1</h3>
+</a>
+
+<a href="tour.html?id=robinson" class="tour">
+  <img src="img/robinson/1.jpg">
+  <h3 data-i18n="robinson">Робинзон тур</h3>
+</a>
+
+<a href="tour.html?id=nemo" class="tour">
+  <img src="img/nemo/1.jpg">
+  <h3 data-i18n="nemo">Nemo Trip</h3>
+</a>
+
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
