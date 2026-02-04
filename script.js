@@ -1,21 +1,31 @@
-const container = document.getElementById("tours");
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("tours");
 
-if (!container) {
-  console.error("Контейнер #tours не найден");
-}
+  if (!container) {
+    console.error("❌ Контейнер #tours не найден");
+    return;
+  }
 
-TOURS.forEach(tour => {
-  const card = document.createElement("a");
-  card.className = "card";
-  card.href = `tour.html?id=${tour.id}`;
+  if (!window.TOURS || !Array.isArray(TOURS)) {
+    console.error("❌ TOURS не найден или не массив");
+    return;
+  }
 
-  card.innerHTML = `
-    <img src="${tour.img}" alt="${tour.title}">
-    <div class="card-body">
-      <h3>${tour.title}</h3>
-      <p>${tour.desc}</p>
-    </div>
-  `;
+  TOURS.forEach(tour => {
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = `tour.html?id=${tour.id}`;
 
-  container.appendChild(card);
+    card.innerHTML = `
+      <img src="${tour.img}" alt="${tour.title}">
+      <div class="card-body">
+        <h3>${tour.title}</h3>
+        <p>${tour.desc}</p>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  console.log("✅ Туры успешно загружены:", TOURS.length);
 });
