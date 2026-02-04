@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TourVietnam — Экскурсии</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>TourVietnam</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="lang-switch">
-  <button onclick="setLang('ru')">RU</button>
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('vi')">VI</button>
-  <button onclick="setLang('zh')">中文</button>
-  <button onclick="setLang('ko')">KR</button>
-  <button onclick="setLang('fr')">FR</button>
-  <button onclick="setLang('tr')">TR</button>
-</div>
+<header class="top">
+  <div class="langs">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('vi')">VI</button>
+    <button onclick="setLang('zh')">中文</button>
+    <button onclick="setLang('ko')">KR</button>
+    <button onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('tr')">TR</button>
+  </div>
 
-<div class="logo">
-  <img src="logo.png" alt="TourVietnam">
-</div>
+  <img src="logo.png" class="logo" />
 
-<h1 data-i18n="title">Экскурсии по Вьетнаму</h1>
-<p data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
+  <h1 data-i18n="title">Экскурсии по Вьетнаму</h1>
+  <p data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
+</header>
 
-<div class="buttons">
-  <a class="btn wa" href="https://wa.me/84777770759" target="_blank">WhatsApp</a>
-  <a class="btn tg" href="https://t.me/+84777770759" target="_blank">Telegram</a>
-</div>
-
-<div id="tours" class="tours"></div>
+<main>
+  <div id="tours" class="tours"></div>
+</main>
 
 <script src="script.js"></script>
 </body>
