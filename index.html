@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TourVietnam</title>
+  <title>Tour Vietnam</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header class="top">
-  <div class="langs">
+<header class="header">
+  <div class="lang">
     <button onclick="setLang('ru')">RU</button>
     <button onclick="setLang('en')">EN</button>
     <button onclick="setLang('vi')">VI</button>
@@ -19,17 +19,15 @@
     <button onclick="setLang('tr')">TR</button>
   </div>
 
-  <img src="logo.png" class="logo" alt="TourVietnam">
+  <img src="logo.png" class="logo" />
 
-  <h1 id="main-title">Экскурсии по Вьетнаму</h1>
-  <p id="main-sub">Острова • Море • Снорклинг • Хон Там</p>
+  <h1>Экскурсии по Вьетнаму</h1>
+  <p>Острова • Море • Снорклинг • Хон Там</p>
 </header>
 
-<main>
-  <div id="tours" class="grid"></div>
-</main>
+<!-- 🔥 ВАЖНО: ИМЕННО ЭТО -->
+<main id="app" class="cards"></main>
 
-<script src="data/tours.js"></script>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
