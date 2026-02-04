@@ -1,39 +1,38 @@
-* { box-sizing: border-box; font-family: system-ui, sans-serif; }
-
 body {
   margin: 0;
-  background: #f6f1e7;
+  font-family: Arial, sans-serif;
+  background: #f6efdf;
   color: #222;
 }
 
-.header {
-  text-align: center;
-  padding: 20px;
+.top {
+  padding: 10px 16px;
 }
 
 .logo {
-  max-width: 160px;
-  margin: 10px auto;
-  display: block;
+  max-width: 220px;
 }
 
-.subtitle { color: #555; }
+.langs button {
+  margin-right: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  border: none;
+  background: #fff;
+}
 
-.lang button {
-  margin: 4px;
-  padding: 6px 10px;
-  border-radius: 20px;
-  border: 0;
-  cursor: pointer;
+.container {
+  padding: 16px;
+}
+
+.subtitle {
+  margin-bottom: 20px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  padding: 16px;
-  max-width: 900px;
-  margin: auto;
 }
 
 .card {
@@ -42,7 +41,7 @@ body {
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
 }
 
 .card img {
@@ -52,20 +51,9 @@ body {
 }
 
 .card-body {
-  padding: 14px;
+  padding: 12px;
 }
 
-.card h3 {
+.card-body h3 {
   margin: 0 0 6px;
-}
-
-.card p {
-  margin: 0;
-  color: #666;
-  font-size: 14px;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
 }
