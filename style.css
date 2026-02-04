@@ -1,57 +1,95 @@
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #f6f2e9;
-  color: #222;
+/* ===== ЯЗЫК ===== */
+let currentLang = localStorage.getItem("lang") || "ru";
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  render();
 }
 
-.top {
-  text-align: center;
-  padding: 20px;
+/* ===== ТУРЫ ===== */
+const tours = {
+  deluxe: {
+    img: "img/deluxe.jpg",
+    text: {
+      ru: {
+        title: "De Luxe островной тур",
+        program: "08:00–16:00 • Пляж Бай Чай • Рыбацкая деревня • Англоговорящий гид"
+      },
+      en: {
+        title: "De Luxe Island Tour",
+        program: "08:00–16:00 • Bai Tranh • Fishing Village • English guide"
+      }
+    }
+  },
+  robinson: {
+    img: "img/robinson.jpg",
+    text: {
+      ru: {
+        title: "Робинзон тур",
+        program: "08:00–15:30 • Дикий остров • Снорклинг • Англоговорящий гид"
+      },
+      en: {
+        title: "Robinson Tour",
+        program: "08:00–15:30 • Wild island • Snorkeling • English guide"
+      }
+    }
+  },
+  nemo: {
+    img: "img/nemo.jpg",
+    text: {
+      ru: {
+        title: "Nemo Trip",
+        program: "Снорклинг • Рыбы • Кораллы • Англоговорящий гид"
+      },
+      en: {
+        title: "Nemo Trip",
+        program: "Snorkeling • Fish • Corals • English guide"
+      }
+    }
+  }
+};
+
+/* ===== РЕНДЕР ===== */
+function renderIndex() {
+  const wrap = document.getElementById("tours");
+  if (!wrap) return;
+
+  wrap.innerHTML = "";
+
+  Object.entries(tours).forEach(([id, tour]) => {
+    const t = tour.text[currentLang] || tour.text.ru;
+    wrap.innerHTML += `
+      <a class="tour-card" href="tour.html?id=${id}">
+        <img src="${tour.img}">
+        <h3>${t.title}</h3>
+      </a>
+    `;
+  });
 }
 
-.langs button {
-  margin: 4px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: none;
-  background: #fff;
-  cursor: pointer;
+function renderTour() {
+  const el = document.getElementById("tour");
+  if (!el) return;
+
+  const id = new URLSearchParams(location.search).get("id");
+  const tour = tours[id];
+  if (!tour) return;
+
+  const t = tour.text[currentLang] || tour.text.ru;
+
+  el.innerHTML = `
+    <div class="tour-page">
+      <img src="${tour.img}">
+      <h1>${t.title}</h1>
+      <p>${t.program}</p>
+    </div>
+  `;
 }
 
-.logo {
-  max-width: 160px;
-  margin: 10px auto;
+function render() {
+  renderIndex();
+  renderTour();
 }
 
-.tours {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.tour-card {
-  background: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
-}
-
-.tour-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.tour-card h3 {
-  padding: 14px;
-  text-align: center;
-}
-
-.tour-page img {
-  width: 100%;
-  border-radius: 18px;
-}
+render();
