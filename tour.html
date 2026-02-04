@@ -2,16 +2,41 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tour</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<a href="index.html">← Назад</a>
-<div id="tour"></div>
+<div class="lang-switch">
+  <button onclick="setLang('ru')">RU</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('vi')">VI</button>
+  <button onclick="setLang('zh')">中文</button>
+  <button onclick="setLang('ko')">KR</button>
+  <button onclick="setLang('fr')">FR</button>
+  <button onclick="setLang('tr')">TR</button>
+</div>
 
-<script src="data/tours.js"></script>
+<a href="index.html" class="back">← Назад</a>
+
+<div class="tour-page">
+  <img id="tourImg">
+  <h1 id="tourTitle"></h1>
+
+  <div class="program">
+    <p><b data-i18n="time">Время:</b> <span id="time"></span></p>
+    <p><b data-i18n="take">Что взять:</b> <span id="take"></span></p>
+    <p><b data-i18n="included">Включено:</b> <span id="included"></span></p>
+    <p><b data-i18n="not">Не включено:</b> <span id="not"></span></p>
+  </div>
+
+  <a class="btn wa big" href="https://wa.me/84777770759" target="_blank">
+    Забронировать в WhatsApp
+  </a>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
