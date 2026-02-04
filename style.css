@@ -1,113 +1,64 @@
-* {
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
 body {
   margin: 0;
-  background: #f6f1e7;
-  color: #2e2e2e;
+  font-family: Arial, sans-serif;
+  background: #f5f1e8;
+  text-align: center;
 }
 
 .lang-switch {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  padding: 10px;
+  margin: 10px;
 }
 
 .lang-switch button {
   border: none;
   padding: 6px 10px;
-  border-radius: 14px;
-  background: #fff;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.logo {
-  text-align: center;
-  margin-top: 10px;
+  border-radius: 20px;
+  margin: 2px;
 }
 
 .logo img {
-  max-width: 160px;
+  width: 180px;
 }
 
-.hero {
-  text-align: center;
-  padding: 20px;
-}
-
-.hero h1 {
-  font-size: 26px;
-}
-
-.hero p {
-  color: #666;
+.buttons {
+  margin: 20px;
 }
 
 .btn {
-  display: inline-block;
-  margin: 8px;
-  padding: 14px 22px;
+  padding: 12px 20px;
   border-radius: 30px;
   color: #fff;
   text-decoration: none;
-  font-weight: bold;
+  margin: 5px;
+  display: inline-block;
 }
 
-.btn.wa {
-  background: #6f8050;
-}
-
-.btn.tg {
-  background: #4f8fb2;
-}
+.wa { background: #6b7f4a; }
+.tg { background: #4f8fb3; }
 
 .tours {
-  padding: 16px;
-}
-
-.tour {
-  background: #fff;
-  border-radius: 18px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display: grid;
+  gap: 15px;
+  padding: 15px;
 }
 
 .tour img {
   width: 100%;
-  display: block;
+  border-radius: 20px;
 }
 
-.tour-content {
-  padding: 16px;
-}
-
-.tour h3 {
-  margin: 0 0 8px;
-}
-
-.toggle {
-  background: none;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  color: #6f8050;
+.tour-page img {
+  width: 100%;
 }
 
 .program {
-  display: none;
-  margin-top: 10px;
-  background: #f2f4ec;
-  padding: 12px;
-  border-radius: 12px;
+  background: #eef0ea;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 15px;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
+.back {
+  display: block;
+  margin: 10px;
 }
