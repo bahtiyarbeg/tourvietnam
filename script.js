@@ -1,54 +1,73 @@
-let lang = localStorage.getItem("lang") || "ru";
+let currentLang = localStorage.getItem("lang") || "ru";
 
-function setLang(l) {
-  lang = l;
-  localStorage.setItem("lang", l);
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  renderIndex();
   renderTour();
 }
 
+function renderIndex() {
+  const container = document.getElementById("tours");
+  if (!container || !window.tours) return;
+
+  container.innerHTML = "";
+
+  Object.keys(tours).forEach(id => {
+    const t = tours[id][currentLang] || tours[id]["ru"];
+
+    container.innerHTML += `
+      <a href="tour.html?id=${id}" class="card">
+        <img src="${tours[id].image}" onerror="this.src='logo.png'">
+        <div class="card-body">
+          <h3>${t.title}</h3>
+          <p>${t.subtitle}</p>
+        </div>
+      </a>
+    `;
+  });
+}
+
 function renderTour() {
-  const app = document.getElementById("app");
-  if (!app) return;
+  const el = document.getElementById("tour");
+  if (!el) return;
 
   const id = new URLSearchParams(window.location.search).get("id");
-  const tour = TOURS[id];
-  if (!tour) {
-    app.innerHTML = "<p>Tour not found</p>";
-    return;
-  }
+  if (!id || !tours[id]) return;
 
-  const t = tour.text[lang] || tour.text.ru;
+  const t = tours[id][currentLang] || tours[id]["ru"];
 
-  app.innerHTML = `
-    <div class="tour">
-      <img src="${tour.image}">
-      <h1>${t.title}</h1>
-      <p>${t.subtitle}</p>
+  el.innerHTML = `
+    <img class="hero" src="${tours[id].image}">
+    <h1>${t.title}</h1>
+    <p>${t.subtitle}</p>
 
-      <div class="block"><b>Time:</b> ${tour.duration}</div>
-      <div class="block"><b>Guide:</b> ${tour.guide}</div>
+    <div class="box"><b>Время:</b> ${t.time}</div>
+    <div class="box"><b>Гид:</b> ${t.guide}</div>
 
-      <div class="block">
-        <b>What to bring:</b>
-        <ul>${t.take.map(i => `<li>${i}</li>`).join("")}</ul>
-      </div>
-
-      <div class="block">
-        <b>Included:</b>
-        <ul>${t.include.map(i => `<li>${i}</li>`).join("")}</ul>
-      </div>
-
-      <div class="block">
-        <b>Not included:</b>
-        <ul>${t.exclude.map(i => `<li>${i}</li>`).join("")}</ul>
-      </div>
-
-      <div class="block">
-        <b>Program:</b>
-        <ul>${t.program.map(i => `<li>${i}</li>`).join("")}</ul>
-      </div>
+    <div class="box">
+      <b>Что взять:</b>
+      <ul>${t.take.map(i => `<li>${i}</li>`).join("")}</ul>
     </div>
+
+    <div class="box">
+      <b>Включено:</b>
+      <ul>${t.include.map(i => `<li>${i}</li>`).join("")}</ul>
+    </div>
+
+    <div class="box">
+      <b>Не включено:</b>
+      <ul>${t.exclude.map(i => `<li>${i}</li>`).join("")}</ul>
+    </div>
+
+    <div class="box">
+      <b>Программа тура:</b>
+      <ul>${t.program.map(i => `<li>${i}</li>`).join("")}</ul>
+    </div>
+
+    <a class="whatsapp" href="https://wa.me/84777770759">Book via WhatsApp</a>
   `;
 }
 
+renderIndex();
 renderTour();
