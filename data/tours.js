@@ -1,122 +1,30 @@
-const tours = {
-  "robinson": {
-    image: "img/robinson.jpg",
-    time: "08:00 – 15:30",
-    guide: "English-speaking guide",
-    ru: {
-      title: "Робинзон тур",
-      subtitle: "Уединённый остров вдали от толп",
-      take: ["Купальник", "Полотенце", "Солнцезащитный крем", "Головной убор"],
-      include: ["Трансфер", "Лодка", "Снорклинг", "Англоговорящий гид"],
-      exclude: ["Личные расходы"],
-      program: [
-        "Трансфер из отеля",
-        "Морская прогулка к дикому острову",
-        "Снорклинг в прозрачной воде",
-        "Свободное время: купание, отдых, фото",
-        "Возвращение в отель"
-      ]
-    }
-  },
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tour</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-  "de-luxe": {
-    image: "img/de-luxe/1.jpg",
-    time: "08:00 – 16:00",
-    guide: "English-speaking guide",
-    ru: {
-      title: "De Luxe островной тур",
-      subtitle: "Комфорт, острова и лучший сервис",
-      take: ["Купальник", "Полотенце", "Солнцезащитный крем"],
-      include: ["Трансфер", "Катер", "Обед", "Снорклинг", "Гид"],
-      exclude: ["Напитки", "Личные расходы"],
-      program: [
-        "Комфортабельный трансфер",
-        "Катер к островам",
-        "Снорклинг",
-        "Обед на острове",
-        "Отдых и купание",
-        "Возвращение"
-      ]
-    }
-  },
+<header class="top">
+  <div class="langs">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('vi')">VI</button>
+    <button onclick="setLang('zh')">中文</button>
+    <button onclick="setLang('ko')">KR</button>
+    <button onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('tr')">TR</button>
+  </div>
 
-  "diving": {
-    image: "img/diving/1.jpg",
-    time: "07:30 – 14:00",
-    guide: "English-speaking instructor",
-    ru: {
-      title: "Дайвинг тур",
-      subtitle: "Погружение с аквалангом",
-      take: ["Купальник", "Полотенце"],
-      include: ["Инструктор", "Снаряжение", "Лодка"],
-      exclude: ["Видео и фото"],
-      program: [
-        "Инструктаж",
-        "Выход в море",
-        "Погружение с инструктором",
-        "Отдых на лодке",
-        "Возвращение"
-      ]
-    }
-  },
+  <a href="index.html" class="back">← Back</a>
+</header>
 
-  "nemo": {
-    image: "img/nemo/1.jpg",
-    time: "08:00 – 15:00",
-    guide: "English-speaking guide",
-    ru: {
-      title: "Nemo Trip",
-      subtitle: "Лучший снорклинг для всей семьи",
-      take: ["Купальник", "Полотенце"],
-      include: ["Трансфер", "Лодка", "Снорклинг", "Гид"],
-      exclude: ["Личные расходы"],
-      program: [
-        "Трансфер",
-        "Снорклинг у кораллов",
-        "Развлечения на воде",
-        "Отдых",
-        "Возвращение"
-      ]
-    }
-  },
+<main id="tour"></main>
 
-  "vip-hon-tam-1": {
-    image: "img/vip-hon-tam-1/1.jpg",
-    time: "08:00 – 16:00",
-    guide: "English-speaking guide",
-    ru: {
-      title: "VIP тур — Хон Там 1",
-      subtitle: "Премиальный отдых и грязевые ванны",
-      take: ["Купальник"],
-      include: ["VIP трансфер", "Катер", "Грязевые ванны", "Гид"],
-      exclude: ["Личные расходы"],
-      program: [
-        "VIP трансфер",
-        "Катер на Хон Там",
-        "Грязевые ванны",
-        "Отдых на пляже",
-        "Возвращение"
-      ]
-    }
-  },
-
-  "vip-hon-tam-2": {
-    image: "img/vip-hon-tam-2/1.jpg",
-    time: "08:00 – 16:00",
-    guide: "English-speaking guide",
-    ru: {
-      title: "VIP тур — Хон Там 2",
-      subtitle: "Максимальный комфорт",
-      take: ["Купальник"],
-      include: ["Трансфер", "Катер", "SPA", "Гид"],
-      exclude: ["Личные расходы"],
-      program: [
-        "Трансфер",
-        "Катер",
-        "SPA-зона",
-        "Свободное время",
-        "Возвращение"
-      ]
-    }
-  }
-};
+<script src="data/tours.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
