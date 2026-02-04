@@ -1,74 +1,57 @@
-const tours = [
-  {
-    title: "De Luxe островной тур",
-    img: "img/de-luxe/1.jpg",
-    desc: "Комфортабельная морская экскурсия с пляжем Бай Чань.",
-    time: "08:00 – 16:00",
-    route: [
-      "Трансфер",
-      "Катер",
-      "Пляж Бай Чань",
-      "Отдых и купание"
-    ],
-    include: [
-      "Трансфер",
-      "Катер",
-      "Входные билеты",
-      "Англоговорящий гид"
-    ],
-    exclude: [
-      "Дополнительные услуги"
-    ],
-    take: [
-      "Купальник",
-      "Полотенце",
-      "Солнцезащитный крем"
-    ]
+const texts = {
+  ru: {
+    title: "Экскурсии по Вьетнаму",
+    subtitle: "Острова • Море • Снорклинг • Хон Там",
+    tourTitle: "De Luxe островной тур",
+    tourDesc: "Комфортабельная морская экскурсия с пляжем Бай Чай.",
+    time: "Время: 08:00 – 16:00",
+    take: "Что взять: купальник, полотенце, крем",
+    include: "Включено: трансфер, катер, гид",
+    exclude: "Не включено: личные расходы"
+  },
+  en: {
+    title: "Tours in Vietnam",
+    subtitle: "Islands • Sea • Snorkeling • Hon Tam",
+    tourTitle: "De Luxe Island Tour",
+    tourDesc: "Comfortable sea excursion with beach stop.",
+    time: "Time: 08:00 – 16:00",
+    take: "Bring: swimsuit, towel, sunscreen",
+    include: "Included: transfer, boat, guide",
+    exclude: "Not included: personal expenses"
+  },
+  vi: {
+    title: "Tour du lịch Việt Nam",
+    subtitle: "Đảo • Biển • Lặn biển • Hòn Tằm",
+    tourTitle: "Tour đảo cao cấp",
+    tourDesc: "Chuyến tham quan biển thoải mái.",
+    time: "Thời gian: 08:00 – 16:00",
+    take: "Mang theo: đồ bơi, khăn, kem chống nắng",
+    include: "Bao gồm: xe đưa đón, tàu, hướng dẫn viên",
+    exclude: "Không bao gồm: chi phí cá nhân"
   }
-];
-
-const container = document.getElementById("tours");
-
-tours.forEach(t => {
-  const div = document.createElement("div");
-  div.className = "tour";
-
-  div.innerHTML = `
-    <img src="${t.img}">
-    <div class="tour-content">
-      <h2>${t.title}</h2>
-      <p>${t.desc}</p>
-
-      <button class="toggle">▶ Программа тура</button>
-
-      <div class="details">
-        <p><b>Время:</b> ${t.time}</p>
-
-        <p><b>Маршрут:</b></p>
-        <ul>${t.route.map(i => `<li>${i}</li>`).join("")}</ul>
-
-        <p><b>Что входит:</b></p>
-        <ul>${t.include.map(i => `<li>${i}</li>`).join("")}</ul>
-
-        <p><b>Что не входит:</b></p>
-        <ul>${t.exclude.map(i => `<li>${i}</li>`).join("")}</ul>
-
-        <p><b>Что взять с собой:</b></p>
-        <ul>${t.take.map(i => `<li>${i}</li>`).join("")}</ul>
-      </div>
-
-      <a class="btn wa" href="https://wa.me/84778532223">Забронировать</a>
-    </div>
-  `;
-
-  div.querySelector(".toggle").onclick = () => {
-    const d = div.querySelector(".details");
-    d.style.display = d.style.display === "block" ? "none" : "block";
-  };
-
-  container.appendChild(div);
-});
+};
 
 function setLang(lang) {
-  alert("Язык переключён: " + lang);
+  const t = texts[lang];
+  if (!t) return;
+
+  document.getElementById("title").innerText = t.title;
+  document.getElementById("subtitle").innerText = t.subtitle;
+  document.getElementById("tourTitle").innerText = t.tourTitle;
+  document.getElementById("tourDesc").innerText = t.tourDesc;
+  document.getElementById("time").innerText = t.time;
+  document.getElementById("take").innerText = t.take;
+  document.getElementById("include").innerText = t.include;
+  document.getElementById("exclude").innerText = t.exclude;
+
+  document.getElementById("waBtn").href =
+    "https://wa.me/84777770759?text=Здравствуйте!%20Хочу%20забронировать%20тур";
 }
+
+function toggleProgram() {
+  const p = document.getElementById("program");
+  p.style.display = p.style.display === "block" ? "none" : "block";
+}
+
+// язык по умолчанию
+setLang("ru");
