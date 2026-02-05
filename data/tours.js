@@ -5,42 +5,42 @@ const TOURS = {
     whatsapp: "84342134941",
     texts: {
       en: {
-        title: "Tour Robinson",
+        title: "Robinson Island",
         short: "Quiet island away from crowds",
-        description: "A full-day trip to a peaceful island with swimming, beach time, snorkeling and lunch included."
+        description: "A relaxing day on a peaceful island. Swimming, beach time, lunch included."
       },
       ru: {
-        title: "Тур Робинзон",
-        short: "Тихий остров вдали от толп",
-        description: "Однодневная экскурсия на спокойный остров: купание, пляжный отдых, снорклинг и обед включены."
+        title: "Остров Робинзон",
+        short: "Тихий остров без толп туристов",
+        description: "Спокойный однодневный тур: пляж, купание, обед включён."
       },
       vi: {
-        title: "Tour Robinson",
-        short: "Hòn đảo yên tĩnh, tránh xa đám đông",
-        description: "Chuyến đi trong ngày đến hòn đảo yên bình, bao gồm tắm biển, thư giãn và ăn trưa."
+        title: "Đảo Robinson",
+        short: "Hòn đảo yên tĩnh",
+        description: "Chuyến đi thư giãn trong ngày, bao gồm ăn trưa."
       }
     }
   },
 
   deluxe: {
-    price: "$80",
+    price: "$75",
     image: "img/deluxe.jpg",
     whatsapp: "84342134941",
     texts: {
       en: {
-        title: "De Luxe Tour",
+        title: "De Luxe Sea Tour",
         short: "Premium sea experience",
-        description: "Luxury boat tour with snorkeling, seafood lunch, drinks and professional crew."
+        description: "Luxury boat, snorkeling, seafood lunch, best spots."
       },
       ru: {
-        title: "De Luxe тур",
+        title: "De Luxe Морской Тур",
         short: "Премиальный морской отдых",
-        description: "Роскошная морская экскурсия: яхта, снорклинг, морепродукты, напитки и сервис."
+        description: "Комфортабельная лодка, снорклинг, морепродукты."
       },
       vi: {
-        title: "Tour De Luxe",
+        title: "Tour Biển Cao Cấp",
         short: "Trải nghiệm biển cao cấp",
-        description: "Tour du thuyền cao cấp với lặn biển, hải sản và phục vụ chuyên nghiệp."
+        description: "Tàu sang trọng, lặn biển, ăn trưa hải sản."
       }
     }
   }
