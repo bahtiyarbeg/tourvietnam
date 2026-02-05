@@ -1,31 +1,53 @@
-.hero {
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f1e7;
+}
+
+.top {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  max-width: 200px;
+}
+
+.langs button {
+  margin: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: black;
+}
+
+.card img {
   width: 100%;
-  border-radius: 18px;
-  max-height: 420px;
+  height: 180px;
   object-fit: cover;
 }
 
-.subtitle {
-  color: #666;
-  font-size: 18px;
-  margin-bottom: 16px;
+.card-body {
+  padding: 12px;
 }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 16px 0;
-}
-
-.whatsapp {
-  display: block;
-  margin: 24px 0;
-  padding: 14px;
-  background: #25d366;
-  color: white;
-  text-align: center;
-  font-size: 18px;
+.hero {
+  width: 100%;
   border-radius: 12px;
-  text-decoration: none;
+}
+
+.back {
+  display: inline-block;
+  margin: 12px;
 }
