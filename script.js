@@ -1,105 +1,50 @@
-// ===============================
-// GLOBAL SETTINGS
-// ===============================
-const DEFAULT_LANG = "en";
-const LANGS = ["en", "ru", "vi", "zh", "ko", "fr", "tr"];
-const WHATSAPP_PHONE = "+84777770759";
+const LANGS = ["en","ru","vi","zh","ko","fr","tr"];
+let lang = localStorage.getItem("lang") || "en";
+if (!LANGS.includes(lang)) lang = "en";
+localStorage.setItem("lang", lang);
 
-// ===============================
-// LANGUAGE
-// ===============================
-let lang = localStorage.getItem("lang");
-if (!LANGS.includes(lang)) {
-  lang = DEFAULT_LANG;
-  localStorage.setItem("lang", lang);
-}
-
-// ===============================
-// LANGUAGE BUTTONS
-// ===============================
-document.querySelectorAll("[data-lang]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const l = btn.dataset.lang;
-    if (LANGS.includes(l)) {
-      localStorage.setItem("lang", l);
-      location.reload();
-    }
-  });
+document.querySelectorAll("[data-lang]").forEach(b=>{
+  b.onclick=()=>{localStorage.setItem("lang",b.dataset.lang);location.reload();}
 });
 
-// ===============================
-// HELPERS
-// ===============================
-function safe(value) {
-  return value && value !== "" ? value : "—";
-}
+const phone = "+84777770759";
+const waBase = "https://wa.me/84777770759?text=";
 
-function t(tour, field) {
-  return safe(tour?.texts?.[lang]?.[field]);
-}
-
-// ===============================
-// INDEX PAGE (TOURS LIST)
-// ===============================
-const toursGrid = document.getElementById("tours");
-
-if (toursGrid && typeof TOURS === "object") {
-  toursGrid.innerHTML = "";
-
-  Object.entries(TOURS).forEach(([id, tour]) => {
-    const text = tour.texts?.[lang];
-    if (!text) return;
-
-    const card = document.createElement("a");
-    card.className = "card";
-    card.href = `tour.html?id=${id}`;
-
-    card.innerHTML = `
-      <img src="${tour.image}" alt="${text.title}">
-      <div class="card-body">
-        <h3>${text.title}</h3>
-        <p>${text.short}</p>
-      </div>
+const grid = document.getElementById("tours");
+if (grid) {
+  Object.entries(TOURS).forEach(([id,t])=>{
+    const d = t.texts[lang] || t.texts.en;
+    grid.innerHTML += `
+      <a class="card" href="tour.html?id=${id}">
+        <img src="${t.image}">
+        <h3>${d.title}</h3>
+        <p>${d.short}</p>
+      </a>
     `;
-
-    toursGrid.appendChild(card);
   });
 }
 
-// ===============================
-// TOUR PAGE
-// ===============================
-const tourContainer = document.getElementById("tour");
-
-if (tourContainer && typeof TOURS === "object") {
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
-  const tour = TOURS[id];
-
-  if (!tour || !tour.texts?.[lang]) {
-    tourContainer.innerHTML = `<p>Tour not found</p>`;
-  } else {
-    const text = tour.texts[lang];
-
-    tourContainer.innerHTML = `
-      <img src="${tour.image}" class="big" alt="${text.title}">
-      
-      <h1>${text.title}</h1>
-      <p class="subtitle">${text.short}</p>
-
-      <ul class="tour-info">
-        <li>⏰ <b>${lang === "ru" ? "Время" : "Time"}:</b> ${safe(text.time)}</li>
-        <li>🗺️ <b>${lang === "ru" ? "Программа" : "Program"}:</b><br>${safe(text.program)}</li>
-        <li>🎒 <b>${lang === "ru" ? "Что взять" : "What to take"}:</b><br>${safe(text.take)}</li>
-        <li>✅ <b>${lang === "ru" ? "Включено" : "Included"}:</b><br>${safe(text.included)}</li>
-        <li>❌ <b>${lang === "ru" ? "Не включено" : "Not included"}:</b><br>${safe(text.notIncluded)}</li>
-      </ul>
-
-      <a class="whatsapp-link"
-         href="https://wa.me/${WHATSAPP_PHONE.replace("+", "")}?text=${encodeURIComponent(text.title)}"
-         target="_blank">
-        ${lang === "ru" ? "Забронировать через WhatsApp" : "Book via WhatsApp"}
+const box = document.getElementById("tour");
+if (box) {
+  const id = new URLSearchParams(location.search).get("id");
+  const t = TOURS[id];
+  if (t) {
+    const d = t.texts[lang] || t.texts.en;
+    box.innerHTML = `
+      <img src="${t.image}" class="big">
+      <h1>${d.title}</h1>
+      <p>${d.short}</p>
+      <p>⏰ <b>${d.time}</b></p>
+      <p>🗺 <b>Program:</b> ${d.program}</p>
+      <p>🎒 <b>What to take:</b> ${d.take}</p>
+      <p>✅ <b>Included:</b> ${d.included}</p>
+      <p>❌ <b>Not included:</b> ${d.notIncluded}</p>
+      <a class="btn" href="${waBase}${encodeURIComponent(d.title)}" target="_blank">
+        Book via WhatsApp
       </a>
     `;
   }
 }
+
+const wa = document.getElementById("wa");
+if (wa) wa.href = waBase + encodeURIComponent("Hello! I want to book a tour.");
