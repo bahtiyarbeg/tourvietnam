@@ -1,1 +1,54 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>TourVietnam — Tours in Vietnam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ СТИЛИ (ОБЯЗАТЕЛЬНО) -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header class="header">
+  <div class="lang-switch">
+    <button data-lang="en">EN</button>
+    <button data-lang="ru">RU</button>
+    <button data-lang="vi">VI</button>
+    <button data-lang="zh">中文</button>
+    <button data-lang="kr">KR</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="tr">TR</button>
+  </div>
+
+  <img src="logo.png" class="logo" alt="TourVietnam">
+
+  <div class="hero">
+    <h1>Туры по Вьетнаму</h1>
+    <p>Острова • Море • Подводное плавание • Хон Там</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- 🔒 ФИКСИРОВАННАЯ СЕТКА -->
+  <section class="tours-grid" id="toursGrid">
+    <!-- карточки добавляет JS -->
+  </section>
+
+</main>
+
+<!-- 🟢 WhatsApp -->
+<a class="whatsapp" href="https://wa.me/84777770759" target="_blank">
+  WhatsApp
+</a>
+
+<!-- ✅ ДАННЫЕ -->
+<script src="data/tours.js"></script>
+
+<!-- ✅ ЛОГИКА -->
+<script src="script.js"></script>
+
+</body>
+</html>
