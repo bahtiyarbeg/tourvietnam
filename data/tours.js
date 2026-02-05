@@ -6,12 +6,12 @@ const tours = [
       en: {
         title: "Tour Robinson",
         subtitle: "Quiet island away from crowds",
-        description: "Relaxing trip to a peaceful island.",
+        description: "A relaxing trip to a peaceful island with beach time and swimming."
       },
       ru: {
         title: "Тур Робинзон",
         subtitle: "Тихий остров вдали от толп",
-        description: "Спокойная экскурсия на уединённый остров.",
+        description: "Спокойная экскурсия на уединённый остров с отдыхом и купанием."
       }
     }
   },
@@ -21,13 +21,13 @@ const tours = [
     i18n: {
       en: {
         title: "De Luxe",
-        subtitle: "Premium отдых",
-        description: "Luxury sea tour with comfort boat.",
+        subtitle: "Premium sea experience",
+        description: "Luxury boat tour with comfort, swimming and relaxing atmosphere."
       },
       ru: {
         title: "De Luxe",
         subtitle: "Премиум отдых",
-        description: "Люкс-тур по морю на комфортной лодке.",
+        description: "Люкс-экскурсия на комфортной лодке с купанием и отдыхом."
       }
     }
   }
