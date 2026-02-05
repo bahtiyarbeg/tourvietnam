@@ -1,108 +1,105 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ===============================
+// GLOBAL SETTINGS
+// ===============================
+const DEFAULT_LANG = "en";
+const LANGS = ["en", "ru", "vi", "zh", "ko", "fr", "tr"];
+const WHATSAPP_PHONE = "+84777770759";
 
-  /**********************
-   * LANGUAGE
-   **********************/
-  let lang = localStorage.getItem("lang") || "en";
+// ===============================
+// LANGUAGE
+// ===============================
+let lang = localStorage.getItem("lang");
+if (!LANGS.includes(lang)) {
+  lang = DEFAULT_LANG;
   localStorage.setItem("lang", lang);
+}
 
-  document.querySelectorAll(".lang").forEach(btn => {
-    btn.addEventListener("click", () => {
-      localStorage.setItem("lang", btn.dataset.lang);
+// ===============================
+// LANGUAGE BUTTONS
+// ===============================
+document.querySelectorAll("[data-lang]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const l = btn.dataset.lang;
+    if (LANGS.includes(l)) {
+      localStorage.setItem("lang", l);
       location.reload();
-    });
+    }
   });
+});
 
-  /**********************
-   * STATIC TEXT
-   **********************/
-  const TITLE = {
-    en: "Tours in Vietnam",
-    ru: "Туры по Вьетнаму",
-    vi: "Tour tại Việt Nam"
-  };
+// ===============================
+// HELPERS
+// ===============================
+function safe(value) {
+  return value && value !== "" ? value : "—";
+}
 
-  const SUBTITLE = {
-    en: "Islands • Sea • Snorkeling • Hon Tam",
-    ru: "Острова • Море • Снорклинг • Хон Там",
-    vi: "Đảo • Biển • Lặn ngắm san hô • Hòn Tằm"
-  };
+function t(tour, field) {
+  return safe(tour?.texts?.[lang]?.[field]);
+}
 
-  const titleEl = document.getElementById("title");
-  const subtitleEl = document.getElementById("subtitle");
+// ===============================
+// INDEX PAGE (TOURS LIST)
+// ===============================
+const toursGrid = document.getElementById("tours");
 
-  if (titleEl) titleEl.textContent = TITLE[lang];
-  if (subtitleEl) subtitleEl.textContent = SUBTITLE[lang];
+if (toursGrid && typeof TOURS === "object") {
+  toursGrid.innerHTML = "";
 
-  /**********************
-   * INDEX PAGE — TOURS
-   **********************/
-  const grid = document.getElementById("tours");
+  Object.entries(TOURS).forEach(([id, tour]) => {
+    const text = tour.texts?.[lang];
+    if (!text) return;
 
-  if (grid) {
-    if (typeof TOURS !== "object") {
-      grid.innerHTML = "<p style='color:red'>TOURS not loaded</p>";
-      return;
-    }
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = `tour.html?id=${id}`;
 
-    grid.innerHTML = "";
+    card.innerHTML = `
+      <img src="${tour.image}" alt="${text.title}">
+      <div class="card-body">
+        <h3>${text.title}</h3>
+        <p>${text.short}</p>
+      </div>
+    `;
 
-    Object.keys(TOURS).forEach(id => {
-      const tour = TOURS[id];
-      const t = tour.texts?.[lang];
+    toursGrid.appendChild(card);
+  });
+}
 
-      if (!t) return;
+// ===============================
+// TOUR PAGE
+// ===============================
+const tourContainer = document.getElementById("tour");
 
-      const card = document.createElement("a");
-      card.className = "card";
-      card.href = `tour.html?id=${id}`;
+if (tourContainer && typeof TOURS === "object") {
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const tour = TOURS[id];
 
-      card.innerHTML = `
-        <img src="${tour.image}" alt="${t.title}">
-        <h3>${t.title}</h3>
-        <p>${t.short}</p>
-      `;
+  if (!tour || !tour.texts?.[lang]) {
+    tourContainer.innerHTML = `<p>Tour not found</p>`;
+  } else {
+    const text = tour.texts[lang];
 
-      grid.appendChild(card);
-    });
+    tourContainer.innerHTML = `
+      <img src="${tour.image}" class="big" alt="${text.title}">
+      
+      <h1>${text.title}</h1>
+      <p class="subtitle">${text.short}</p>
 
-    if (!grid.children.length) {
-      grid.innerHTML = "<p>No tours for this language</p>";
-    }
-  }
+      <ul class="tour-info">
+        <li>⏰ <b>${lang === "ru" ? "Время" : "Time"}:</b> ${safe(text.time)}</li>
+        <li>🗺️ <b>${lang === "ru" ? "Программа" : "Program"}:</b><br>${safe(text.program)}</li>
+        <li>🎒 <b>${lang === "ru" ? "Что взять" : "What to take"}:</b><br>${safe(text.take)}</li>
+        <li>✅ <b>${lang === "ru" ? "Включено" : "Included"}:</b><br>${safe(text.included)}</li>
+        <li>❌ <b>${lang === "ru" ? "Не включено" : "Not included"}:</b><br>${safe(text.notIncluded)}</li>
+      </ul>
 
-  /**********************
-   * TOUR PAGE
-   **********************/
-  const tourBox = document.getElementById("tour");
-
-  if (tourBox) {
-    const id = new URLSearchParams(location.search).get("id");
-    const tour = TOURS?.[id];
-    const t = tour?.texts?.[lang];
-
-    if (!tour || !t) {
-      tourBox.innerHTML = "<p>Tour not found</p>";
-      return;
-    }
-
-    tourBox.innerHTML = `
-      <img src="${tour.image}" class="big-image">
-      <h1>${t.title}</h1>
-      <p>${t.short}</p>
-
-      <p><b>⏰ Time:</b> ${t.time}</p>
-      <p><b>🗺 Program:</b> ${t.program}</p>
-      <p><b>🎒 What to take:</b> ${t.take}</p>
-      <p><b>✅ Included:</b> ${t.included}</p>
-      <p><b>❌ Not included:</b> ${t.not_included}</p>
-
-      <a class="book-btn"
-         href="https://wa.me/84777770759?text=Hello! I want to book ${encodeURIComponent(t.title)}"
+      <a class="whatsapp-link"
+         href="https://wa.me/${WHATSAPP_PHONE.replace("+", "")}?text=${encodeURIComponent(text.title)}"
          target="_blank">
-         Book via WhatsApp
+        ${lang === "ru" ? "Забронировать через WhatsApp" : "Book via WhatsApp"}
       </a>
     `;
   }
-
-});
+}
