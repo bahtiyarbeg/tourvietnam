@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8">
   <title>Tour</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="top">
-  <div class="langs">
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('ru')">RU</button>
-    <button onclick="setLang('vi')">VI</button>
-    <button onclick="setLang('zh')">中文</button>
-    <button onclick="setLang('ko')">KR</button>
-    <button onclick="setLang('fr')">FR</button>
-    <button onclick="setLang('tr')">TR</button>
-  </div>
+<div class="lang">
+  <button data-lang="en">EN</button>
+  <button data-lang="ru">RU</button>
+  <button data-lang="vi">VI</button>
+</div>
 
-  <a href="index.html" class="back">← Back</a>
-</header>
+<a href="index.html" class="back">← Back</a>
 
-<main id="tour-page" class="tour-page"></main>
+<div id="tour"></div>
 
 <script src="data/tours.js"></script>
-<script src="script.js"></script>
+<script src="js/tour.js"></script>
 </body>
 </html>
