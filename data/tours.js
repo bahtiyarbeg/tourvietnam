@@ -2,40 +2,33 @@ const tours = [
   {
     id: "robinson",
     image: "img/robinson/1.jpg",
-    title: {
-      ru: "Tour Robinson",
-      en: "Robinson Island",
-      vi: "Đảo Robinson"
-    },
-    subtitle: {
-      ru: "Тихий остров вдали от толп",
-      en: "Quiet island away from crowds",
-      vi: "Hòn đảo yên tĩnh"
-    },
-    description: {
-      ru: "Уединённый остров с белым песком и прозрачной водой.",
-      en: "A secluded island with white sand and clear water.",
-      vi: "Hòn đảo hoang sơ với cát trắng và nước trong xanh."
+    i18n: {
+      en: {
+        title: "Tour Robinson",
+        subtitle: "Quiet island away from crowds",
+        description: "Relaxing trip to a peaceful island.",
+      },
+      ru: {
+        title: "Тур Робинзон",
+        subtitle: "Тихий остров вдали от толп",
+        description: "Спокойная экскурсия на уединённый остров.",
+      }
     }
   },
-
   {
     id: "de-luxe",
     image: "img/de-luxe/1.jpg",
-    title: {
-      ru: "De Luxe",
-      en: "De Luxe",
-      vi: "Cao Cấp"
-    },
-    subtitle: {
-      ru: "Премиум отдых",
-      en: "Premium experience",
-      vi: "Trải nghiệm cao cấp"
-    },
-    description: {
-      ru: "Комфортный тур на скоростной лодке.",
-      en: "Comfortable speedboat tour.",
-      vi: "Tour cano cao cấp."
+    i18n: {
+      en: {
+        title: "De Luxe",
+        subtitle: "Premium отдых",
+        description: "Luxury sea tour with comfort boat.",
+      },
+      ru: {
+        title: "De Luxe",
+        subtitle: "Премиум отдых",
+        description: "Люкс-тур по морю на комфортной лодке.",
+      }
     }
   }
 ];
