@@ -1,20 +1,19 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f6efdf;
+  background: #f6eddc;
   margin: 0;
   padding: 20px;
   text-align: center;
 }
 
 .logo {
-  max-width: 180px;
-  margin: 10px auto;
+  width: 180px;
+  margin: 20px auto;
 }
 
-.lang button {
+.langs button {
   margin: 5px;
-  padding: 6px 12px;
-  cursor: pointer;
+  padding: 8px 12px;
 }
 
 .grid {
@@ -27,23 +26,14 @@ body {
 .card {
   background: #fff;
   border-radius: 16px;
-  overflow: hidden;
+  padding: 15px;
   text-decoration: none;
   color: #000;
 }
 
 .card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card h3 {
-  margin: 10px;
-}
-
-.card p {
-  margin: 0 10px 15px;
+  border-radius: 12px;
 }
 
 .big {
