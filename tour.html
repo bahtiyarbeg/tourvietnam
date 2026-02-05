@@ -2,43 +2,30 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour</title>
-  <link rel="stylesheet" href="style.css?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="top">
-  <div class="langs">
-    <button>RU</button><button>EN</button><button>VI</button>
-    <button>中文</button><button>KR</button><button>FR</button><button>TR</button>
-  </div>
+<a href="index.html" class="back">← Back</a>
 
-  <a href="index.html" style="display:block;margin:10px 0;">← Back</a>
-</header>
+<div id="tour"></div>
 
-<main id="tour"></main>
-
-<script src="data/tours.js?v=999"></script>
+<script src="data/tours.js"></script>
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+const lang = params.get("lang") || "ru";
 
-  const tour = tours.find(t => t.id === id);
+const tour = tours.find(t => t.id === id);
 
-  const container = document.getElementById("tour");
-
-  if (!tour) {
-    container.innerHTML = "<h2>Тур не найден</h2>";
-  } else {
-    container.innerHTML = `
-      <img src="${tour.image}" style="width:100%;border-radius:16px;">
-      <h1>${tour.title}</h1>
-      <p>${tour.subtitle}</p>
-      <p>${tour.description}</p>
-    `;
-  }
+document.getElementById("tour").innerHTML = `
+  <img src="${tour.image}" class="hero">
+  <h1>${tour.title[lang]}</h1>
+  <h3>${tour.subtitle[lang]}</h3>
+  <p>${tour.description[lang]}</p>
+`;
 </script>
-
 </body>
 </html>
