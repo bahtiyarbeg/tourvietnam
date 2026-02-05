@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tour</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<a href="index.html" class="back">← Back</a>
+<header class="top">
+  <div class="langs">
+    <button data-lang="en">EN</button>
+    <button data-lang="ru">RU</button>
+    <button data-lang="vi">VI</button>
+    <button data-lang="zh">中文</button>
+    <button data-lang="kr">KR</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="tr">TR</button>
+  </div>
 
-<div id="tour"></div>
+  <a href="index.html" class="back">← Back</a>
+</header>
+
+<main id="tour"></main>
 
 <script src="data/tours.js"></script>
-<script>
-const params = new URLSearchParams(location.search);
-const id = params.get("id");
-const lang = params.get("lang") || "ru";
-
-const tour = tours.find(t => t.id === id);
-
-document.getElementById("tour").innerHTML = `
-  <img src="${tour.image}" class="hero">
-  <h1>${tour.title[lang]}</h1>
-  <h3>${tour.subtitle[lang]}</h3>
-  <p>${tour.description[lang]}</p>
-`;
-</script>
+<script src="script.js"></script>
 </body>
 </html>
