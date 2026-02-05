@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tour</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="top">
-  <div class="langs">
-    <button>RU</button><button>EN</button><button>VI</button>
-    <button>中文</button><button>KR</button><button>FR</button><button>TR</button>
-  </div>
-
-  <a href="index.html" style="text-decoration:none;color:#0066cc;">← Back</a>
-</header>
-
-<main id="tour" style="padding:16px;max-width:900px;margin:auto;"></main>
-
 <script src="data/tours.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
@@ -31,16 +10,30 @@
     container.innerHTML = "<h2>Экскурсия не найдена</h2>";
   } else {
     container.innerHTML = `
-      <img src="${tour.image}" style="width:100%;border-radius:16px;max-height:400px;object-fit:cover;">
-      <h1 style="margin-top:16px;">${tour.title}</h1>
-      <p style="color:#666;font-size:18px;">${tour.subtitle}</p>
-      <p style="margin-top:16px;">
-        Подробное описание экскурсии будет здесь.
-        Можно добавить программу, время, что включено, цену и кнопку WhatsApp.
-      </p>
+      <img src="${tour.image}" class="hero">
+
+      <h1>${tour.title}</h1>
+      <p class="subtitle">${tour.subtitle}</p>
+
+      <div class="info-grid">
+        <div><strong>🕘 Время:</strong><br>${tour.time}</div>
+        <div><strong>🧑‍✈️ Гид:</strong><br>${tour.guide}</div>
+      </div>
+
+      <h3>🎒 Что взять с собой</h3>
+      <ul>${tour.bring.map(i => `<li>${i}</li>`).join("")}</ul>
+
+      <h3>✅ Включено</h3>
+      <ul>${tour.included.map(i => `<li>${i}</li>`).join("")}</ul>
+
+      <h3>❌ Не включено</h3>
+      <ul>${tour.notIncluded.map(i => `<li>${i}</li>`).join("")}</ul>
+
+      <a class="whatsapp"
+         href="https://wa.me/84342134941"
+         target="_blank">
+        📲 Забронировать в WhatsApp
+      </a>
     `;
   }
 </script>
-
-</body>
-</html>
