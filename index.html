@@ -1,56 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tours in Vietnam | TourVietnam</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Excursions and tours in Vietnam. Islands, snorkeling, sea trips, Hon Tam. Book via WhatsApp.">
-  <meta name="keywords" content="Vietnam tours, Nha Trang tours, snorkeling Vietnam, island tours">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Tours in Vietnam: islands, snorkeling, diving, city tours. Book via WhatsApp." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- LANGUAGE SWITCH -->
-  <div class="lang-bar">
-    <button class="lang" data-lang="en">EN</button>
-    <button class="lang" data-lang="ru">RU</button>
-    <button class="lang" data-lang="vi">VI</button>
+<header class="top">
+  <div class="lang">
+    <button data-lang="en">EN</button>
+    <button data-lang="ru">RU</button>
+    <button data-lang="vi">VI</button>
+    <button data-lang="zh">中文</button>
+    <button data-lang="ko">KR</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="tr">TR</button>
   </div>
 
-  <!-- LOGO -->
-  <header class="header">
-    <img src="logo.png" alt="TourVietnam logo" class="logo">
-  </header>
+  <img src="logo.png" class="logo" alt="TourVietnam logo" />
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1 id="title">Tours in Vietnam</h1>
-    <p id="subtitle">Islands • Sea • Snorkeling • Hon Tam</p>
-  </section>
+  <h1 id="title">Tours in Vietnam</h1>
+  <p id="subtitle">Islands • Sea • Snorkeling • Hon Tam</p>
+</header>
 
-  <!-- TOURS GRID -->
-  <main class="container">
-    <div id="tours" class="grid">
-      <!-- TOURS ARE INSERTED BY script.js -->
-    </div>
-  </main>
+<main>
+  <div id="tours" class="grid"></div>
+</main>
 
-  <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/84777770759"
-     class="whatsapp"
-     target="_blank"
-     aria-label="WhatsApp">
-    WhatsApp
-  </a>
+<a id="wa" class="wa" href="#" target="_blank">WhatsApp</a>
 
-  <!-- SCRIPTS (ORDER IS CRITICAL) -->
-  <script src="data/tours.js"></script>
-  <script src="script.js"></script>
-
+<script src="data/tours.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
