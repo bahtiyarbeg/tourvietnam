@@ -10,21 +10,37 @@
 
 <header class="top">
   <div class="langs">
-    <button onclick="setLang('ru')">RU</button>
-    <button onclick="setLang('en')">EN</button>
-    <button onclick="setLang('vi')">VI</button>
-    <button onclick="setLang('zh')">中文</button>
-    <button onclick="setLang('ko')">KR</button>
-    <button onclick="setLang('fr')">FR</button>
-    <button onclick="setLang('tr')">TR</button>
+    <button>RU</button><button>EN</button><button>VI</button>
+    <button>中文</button><button>KR</button><button>FR</button><button>TR</button>
   </div>
 
-  <a href="index.html" class="back">← Back</a>
+  <a href="index.html" style="text-decoration:none;color:#0066cc;">← Back</a>
 </header>
 
-<main id="tour"></main>
+<main id="tour" style="padding:16px;max-width:900px;margin:auto;"></main>
 
 <script src="data/tours.js"></script>
-<script src="script.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  const tour = tours.find(t => t.id === id);
+  const container = document.getElementById("tour");
+
+  if (!tour) {
+    container.innerHTML = "<h2>Экскурсия не найдена</h2>";
+  } else {
+    container.innerHTML = `
+      <img src="${tour.image}" style="width:100%;border-radius:16px;max-height:400px;object-fit:cover;">
+      <h1 style="margin-top:16px;">${tour.title}</h1>
+      <p style="color:#666;font-size:18px;">${tour.subtitle}</p>
+      <p style="margin-top:16px;">
+        Подробное описание экскурсии будет здесь.
+        Можно добавить программу, время, что включено, цену и кнопку WhatsApp.
+      </p>
+    `;
+  }
+</script>
+
 </body>
 </html>
