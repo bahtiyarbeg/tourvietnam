@@ -1,48 +1,43 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f6eddc;
-  margin: 0;
-  padding: 20px;
+  background: #f5eedc;
   text-align: center;
 }
 
-.logo {
-  width: 180px;
-  margin: 20px auto;
-}
+.logo { width: 180px; margin: 20px auto; }
 
 .langs button {
   margin: 5px;
-  padding: 8px 12px;
+  padding: 6px 10px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
-  margin-top: 30px;
+  padding: 20px;
 }
 
 .card {
   background: #fff;
-  border-radius: 16px;
   padding: 15px;
+  border-radius: 12px;
   text-decoration: none;
   color: #000;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 12px;
-}
+.card img { width: 100%; border-radius: 10px; }
 
-.big {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 20px;
-}
+.big { width: 90%; max-width: 700px; border-radius: 15px; }
 
-.back {
+.price { font-size: 20px; font-weight: bold; }
+
+.wa {
   display: inline-block;
-  margin: 15px;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
 }
