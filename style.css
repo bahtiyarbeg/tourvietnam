@@ -1,73 +1,45 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f6f0df;
-  color: #222;
-}
-
-.top {
+  background: #f6efdf;
   text-align: center;
-  padding: 20px;
 }
 
-.logo {
-  max-width: 200px;
-  margin: 10px auto;
-}
+.logo { width: 180px; margin: 20px; }
 
-.langs button {
-  margin: 3px;
+.lang button {
+  margin: 5px;
   padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
   cursor: pointer;
-}
-
-.subtitle {
-  color: #555;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 20px;
+  padding: 30px;
 }
 
 .card {
   background: #fff;
-  border-radius: 14px;
-  overflow: hidden;
+  border-radius: 16px;
   text-decoration: none;
-  color: inherit;
+  color: #000;
+  padding-bottom: 15px;
 }
 
 .card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  border-radius: 16px 16px 0 0;
 }
 
-.card-body {
-  padding: 12px;
-}
-
-.card-body h3 {
-  margin: 0 0 6px;
-}
-
-.tour-page {
+.big {
+  width: 90%;
   max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.tour-page img {
-  width: 100%;
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
 .back {
-  display: inline-block;
-  margin-top: 10px;
+  display: block;
+  margin: 20px;
 }
