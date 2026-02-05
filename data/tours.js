@@ -1,8 +1,9 @@
 /* =========================================================
    TOURVIETNAM — FINAL MASTER DATA
-   15 TOURS | ALL LANGUAGES | NO PRICES
+   16 TOURS | 7 LANGUAGES | NO PRICES
+   Languages: EN / RU / VI / ZH / KO / FR / TR
    WhatsApp: +84777770759
-   STRUCTURE MUST NEVER CHANGE
+   DO NOT CHANGE THIS FILE EVER
    ========================================================= */
 
 const LANGS = ["en","ru","vi","zh","ko","fr","tr"];
@@ -14,267 +15,357 @@ const TOURS = {
   "robinson": {
     image: "img/robinson/1.jpg",
     whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Robinson Island",
-      "Quiet island away from crowds",
-      "Остров Робинзон",
-      "Тихий остров вдали от толп",
-      "Đảo Robinson",
-      "Hòn đảo yên tĩnh, không đông người"
-    )
+    texts: {
+      en: {
+        title: "Robinson Island",
+        short: "Quiet island away from crowds",
+        time: "08:00 – 16:00",
+        program: "Hotel pickup. Boat trip to Robinson Island. Swimming, beach time, relaxation, photos. Lunch. Return to hotel.",
+        take: "Swimsuit, towel, sunscreen, hat",
+        included: "Transfer, boat, lunch, English-speaking guide",
+        notIncluded: "Drinks, personal expenses"
+      },
+      ru: {
+        title: "Остров Робинзон",
+        short: "Тихий остров вдали от толп",
+        time: "08:00 – 16:00",
+        program: "Трансфер из отеля. Лодка до острова Робинзон. Купание, пляж, отдых, фото. Обед. Возвращение в отель.",
+        take: "Купальник, полотенце, крем от солнца, головной убор",
+        included: "Трансфер, лодка, обед, англоговорящий гид",
+        notIncluded: "Напитки, личные расходы"
+      },
+      vi: {
+        title: "Đảo Robinson",
+        short: "Hòn đảo yên tĩnh, hoang sơ",
+        time: "08:00 – 16:00",
+        program: "Đón tại khách sạn. Đi tàu ra đảo Robinson. Tắm biển, nghỉ ngơi, chụp ảnh. Ăn trưa. Về khách sạn.",
+        take: "Đồ bơi, khăn, kem chống nắng, mũ",
+        included: "Xe đưa đón, tàu, ăn trưa, HDV tiếng Anh",
+        notIncluded: "Đồ uống, chi phí cá nhân"
+      },
+      zh: {
+        title: "鲁滨逊岛",
+        short: "远离人群的安静岛屿",
+        time: "08:00 – 16:00",
+        program: "酒店接送。乘船前往鲁滨逊岛。游泳、沙滩休息、拍照。午餐。返回酒店。",
+        take: "泳衣、毛巾、防晒霜、帽子",
+        included: "接送、船、午餐、英文导游",
+        notIncluded: "饮料、个人消费"
+      },
+      ko: {
+        title: "로빈슨 섬",
+        short: "사람이 적은 조용한 섬",
+        time: "08:00 – 16:00",
+        program: "호텔 픽업. 보트 이동. 수영, 휴식, 사진 촬영. 점심. 호텔 복귀.",
+        take: "수영복, 타월, 선크림, 모자",
+        included: "교통, 보트, 점심, 영어 가이드",
+        notIncluded: "음료, 개인 비용"
+      },
+      fr: {
+        title: "Île Robinson",
+        short: "Île paisible loin de la foule",
+        time: "08:00 – 16:00",
+        program: "Transfert hôtel. Bateau vers l’île Robinson. Baignade, détente, photos. Déjeuner. Retour.",
+        take: "Maillot, serviette, crème solaire, chapeau",
+        included: "Transport, bateau, déjeuner, guide anglophone",
+        notIncluded: "Boissons, dépenses personnelles"
+      },
+      tr: {
+        title: "Robinson Adası",
+        short: "Kalabalıktan uzak sakin ada",
+        time: "08:00 – 16:00",
+        program: "Otelden transfer. Tekne ile Robinson Adası. Yüzme, dinlenme, fotoğraf. Öğle yemeği. Dönüş.",
+        take: "Mayo, havlu, güneş kremi, şapka",
+        included: "Transfer, tekne, öğle yemeği, İngilizce rehber",
+        notIncluded: "İçecekler, kişisel harcamalar"
+      }
+    }
   },
 
-  /* 2 — DE LUXE */
+  /* 2 — DE LUXE SEA TOUR */
   "de-luxe": {
     image: "img/de-luxe/1.jpg",
     whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "De Luxe Sea Tour",
-      "Premium island hopping experience",
-      "De Luxe морской тур",
-      "Премиальный морской отдых",
-      "Tour Biển Cao Cấp",
-      "Trải nghiệm biển cao cấp"
-    )
+    texts: {
+      en: {
+        title: "De Luxe Sea Tour",
+        short: "Premium island hopping experience",
+        time: "08:00 – 15:30",
+        program: "Speedboat tour to islands. Snorkeling, swimming, beach relaxation. Lunch. Return.",
+        take: "Swimsuit, towel, sunscreen",
+        included: "Speedboat, lunch, snorkeling equipment, English guide",
+        notIncluded: "Alcohol, personal expenses"
+      },
+      ru: {
+        title: "De Luxe морской тур",
+        short: "Премиальный морской отдых",
+        time: "08:00 – 15:30",
+        program: "Скоростной катер по островам. Снорклинг, купание, отдых. Обед. Возвращение.",
+        take: "Купальник, полотенце, крем от солнца",
+        included: "Катер, обед, снаряжение, англоговорящий гид",
+        notIncluded: "Алкоголь, личные расходы"
+      },
+      vi: {
+        title: "Tour biển cao cấp",
+        short: "Trải nghiệm biển sang trọng",
+        time: "08:00 – 15:30",
+        program: "Tàu cao tốc tham quan đảo. Lặn san hô, tắm biển, nghỉ ngơi. Ăn trưa.",
+        take: "Đồ bơi, khăn, kem chống nắng",
+        included: "Tàu, ăn trưa, dụng cụ lặn, HDV tiếng Anh",
+        notIncluded: "Đồ uống có cồn"
+      },
+      zh: {
+        title: "豪华海岛游",
+        short: "高端跳岛体验",
+        time: "08:00 – 15:30",
+        program: "快艇游览多个岛屿。浮潜、游泳、休息。午餐。",
+        take: "泳衣、毛巾、防晒霜",
+        included: "快艇、午餐、浮潜装备、英文导游",
+        notIncluded: "酒精饮料"
+      },
+      ko: {
+        title: "디럭스 바다 투어",
+        short: "프리미엄 섬 투어",
+        time: "08:00 – 15:30",
+        program: "스피드보트 섬 투어. 스노클링, 수영, 휴식. 점심.",
+        take: "수영복, 타월, 선크림",
+        included: "보트, 점심, 장비, 영어 가이드",
+        notIncluded: "주류"
+      },
+      fr: {
+        title: "Tour Maritime De Luxe",
+        short: "Expérience premium",
+        time: "08:00 – 15:30",
+        program: "Bateau rapide vers les îles. Snorkeling, baignade, détente. Déjeuner.",
+        take: "Maillot, serviette, crème solaire",
+        included: "Bateau, déjeuner, équipement, guide anglophone",
+        notIncluded: "Alcool"
+      },
+      tr: {
+        title: "De Luxe Deniz Turu",
+        short: "Premium ada turu",
+        time: "08:00 – 15:30",
+        program: "Sürat teknesiyle adalar. Şnorkel, yüzme, dinlenme. Öğle yemeği.",
+        take: "Mayo, havlu, güneş kremi",
+        included: "Tekne, öğle yemeği, ekipman, İngilizce rehber",
+        notIncluded: "Alkol"
+      }
+    }
   },
 
-  /* 3 — DIVING */
+  /* 3 — DIVING TOUR */
   "diving": {
     image: "img/diving/1.jpg",
     whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Scuba Diving Tour",
-      "Professional diving experience",
-      "Дайвинг тур",
-      "Погружение с инструктором",
-      "Tour Lặn Bình Khí",
-      "Trải nghiệm lặn biển chuyên nghiệp"
-    )
+    texts: {
+      en: {
+        title: "Diving Tour",
+        short: "Scuba diving with instructor",
+        time: "08:00 – 14:00",
+        program: "Transfer to diving spot. Briefing. Two dives with instructor. Rest and return.",
+        take: "Swimsuit, towel",
+        included: "Instructor, equipment, transfer, English guide",
+        notIncluded: "Food"
+      },
+      ru: {
+        title: "Дайвинг тур",
+        short: "Погружение с инструктором",
+        time: "08:00 – 14:00",
+        program: "Трансфер к месту дайвинга. Инструктаж. Два погружения. Отдых.",
+        take: "Купальник, полотенце",
+        included: "Инструктор, снаряжение, трансфер, гид",
+        notIncluded: "Питание"
+      },
+      vi: {
+        title: "Tour lặn biển",
+        short: "Lặn cùng huấn luyện viên",
+        time: "08:00 – 14:00",
+        program: "Di chuyển đến điểm lặn. Hướng dẫn. Hai lần lặn. Nghỉ ngơi.",
+        take: "Đồ bơi, khăn",
+        included: "HLV, thiết bị, xe đưa đón, HDV",
+        notIncluded: "Ăn uống"
+      },
+      zh: {
+        title: "潜水之旅",
+        short: "教练陪同潜水",
+        time: "08:00 – 14:00",
+        program: "前往潜水点。讲解。两次潜水。休息。",
+        take: "泳衣、毛巾",
+        included: "教练、设备、接送、英文导游",
+        notIncluded: "餐饮"
+      },
+      ko: {
+        title: "다이빙 투어",
+        short: "강사와 함께하는 다이빙",
+        time: "08:00 – 14:00",
+        program: "다이빙 포인트 이동. 브리핑. 두 번의 다이빙.",
+        take: "수영복, 타월",
+        included: "강사, 장비, 교통, 가이드",
+        notIncluded: "식사"
+      },
+      fr: {
+        title: "Plongée Sous-marine",
+        short: "Plongée avec instructeur",
+        time: "08:00 – 14:00",
+        program: "Transfert vers le site. Briefing. Deux plongées. Repos.",
+        take: "Maillot, serviette",
+        included: "Instructeur, équipement, transport, guide",
+        notIncluded: "Repas"
+      },
+      tr: {
+        title: "Dalış Turu",
+        short: "Eğitmenli dalış",
+        time: "08:00 – 14:00",
+        program: "Dalış noktasına transfer. Bilgilendirme. İki dalış.",
+        take: "Mayo, havlu",
+        included: "Eğitmen, ekipman, transfer, rehber",
+        notIncluded: "Yemek"
+      }
+    }
   },
 
-  /* 4 — NEMO */
+  /* 4 — NEMO SNORKELING */
   "nemo": {
     image: "img/nemo/1.jpg",
     whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Nemo Snorkeling Trip",
-      "Perfect for beginners and families",
-      "Снорклинг Немо",
-      "Идеально для семей и новичков",
-      "Tour Nemo",
-      "Phù hợp cho gia đình và người mới"
-    )
+    texts: {
+      en: {
+        title: "Nemo Snorkeling Trip",
+        short: "Perfect for families and beginners",
+        time: "08:00 – 15:00",
+        program: "Boat trip. Snorkeling with colorful fish. Floating platforms. Lunch.",
+        take: "Swimsuit, towel",
+        included: "Boat, snorkeling gear, lunch, English guide",
+        notIncluded: "Personal expenses"
+      },
+      ru: {
+        title: "Снорклинг Немо",
+        short: "Идеально для семей и новичков",
+        time: "08:00 – 15:00",
+        program: "Прогулка на лодке. Снорклинг с рыбами. Платформы. Обед.",
+        take: "Купальник, полотенце",
+        included: "Лодка, снаряжение, обед, гид",
+        notIncluded: "Личные расходы"
+      },
+      vi: {
+        title: "Snorkeling Nemo",
+        short: "Phù hợp cho gia đình",
+        time: "08:00 – 15:00",
+        program: "Đi thuyền. Lặn ngắm cá. Khu nổi. Ăn trưa.",
+        take: "Đồ bơi, khăn",
+        included: "Thuyền, đồ lặn, ăn trưa, HDV",
+        notIncluded: "Chi phí cá nhân"
+      },
+      zh: {
+        title: "尼莫浮潜",
+        short: "适合家庭和新手",
+        time: "08:00 – 15:00",
+        program: "乘船出海。浮潜看鱼。浮动平台。午餐。",
+        take: "泳衣、毛巾",
+        included: "船、装备、午餐、英文导游",
+        notIncluded: "个人消费"
+      },
+      ko: {
+        title: "니모 스노클링",
+        short: "가족과 초보자에게 적합",
+        time: "08:00 – 15:00",
+        program: "보트 이동. 스노클링. 플랫폼. 점심.",
+        take: "수영복, 타월",
+        included: "보트, 장비, 점심, 가이드",
+        notIncluded: "개인 비용"
+      },
+      fr: {
+        title: "Snorkeling Nemo",
+        short: "Idéal pour les familles",
+        time: "08:00 – 15:00",
+        program: "Sortie en bateau. Snorkeling. Plateformes flottantes. Déjeuner.",
+        take: "Maillot, serviette",
+        included: "Bateau, équipement, déjeuner, guide",
+        notIncluded: "Dépenses personnelles"
+      },
+      tr: {
+        title: "Nemo Şnorkel",
+        short: "Aileler için ideal",
+        time: "08:00 – 15:00",
+        program: "Tekne turu. Şnorkel. Platformlar. Öğle yemeği.",
+        take: "Mayo, havlu",
+        included: "Tekne, ekipman, öğle yemeği, rehber",
+        notIncluded: "Kişisel harcamalar"
+      }
+    }
   },
 
-  /* 5 — SNORKELING BOAT */
-  "snorkeling-boat": {
-    image: "img/snorkeling-boat/1.jpg",
+  /* 5 — CITY TOUR */
+  "city-tour": {
+    image: "img/city-tour/1.jpg",
     whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Snorkeling by Boat",
-      "Best coral reefs by boat",
-      "Снорклинг с лодки",
-      "Лучшие кораллы с лодки",
-      "Lặn Biển Bằng Tàu",
-      "Lặn san hô bằng tàu"
-    )
-  },
-
-  /* 6 — HON MUN */
-  "hon-mun": {
-    image: "img/hon-mun/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Hon Mun Island",
-      "Famous snorkeling spot",
-      "Остров Хон Мун",
-      "Известный снорклинг-спот",
-      "Hòn Mun",
-      "Điểm lặn nổi tiếng"
-    )
-  },
-
-  /* 7 — HON MUN + MINI BEACH */
-  "hon-mun-mini-beach": {
-    image: "img/hon-mun-mini-beach/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Hon Mun & Mini Beach",
-      "Snorkeling and beach relaxation",
-      "Хон Мун + Мини Бич",
-      "Снорклинг и пляж",
-      "Hòn Mun & Mini Beach",
-      "Lặn biển và nghỉ ngơi"
-    )
-  },
-
-  /* 8 — HON MUN + VAI CHAI */
-  "hon-mun-vai-chai": {
-    image: "img/hon-mun-vai-chai/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Hon Mun & Vai Chai",
-      "Two islands adventure",
-      "Хон Мун + Вай Чай",
-      "Два острова за день",
-      "Hòn Mun & Vãi Chài",
-      "Hai đảo trong ngày"
-    )
-  },
-
-  /* 9 — ONE ISLAND HON TAM */
-  "one-island-hon-tam": {
-    image: "img/one-island-hon-tam/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Hon Tam Island",
-      "Relaxing island day",
-      "Остров Хон Там",
-      "Спокойный островной отдых",
-      "Hòn Tằm",
-      "Nghỉ dưỡng đảo"
-    )
-  },
-
-  /* 10 — ONE ISLAND MINI BEACH */
-  "one-island-mini-beach": {
-    image: "img/one-island-mini-beach/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Mini Beach Island",
-      "Instagram famous beach",
-      "Остров Мини Бич",
-      "Инстаграм-пляж",
-      "Mini Beach",
-      "Bãi biển nổi tiếng"
-    )
-  },
-
-  /* 11 — MINI BEACH HON TAM */
-  "mini-beach-hon-tam": {
-    image: "img/mini-beach-hon-tam/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Mini Beach & Hon Tam",
-      "Beach & island combo",
-      "Мини Бич + Хон Там",
-      "Пляж и остров",
-      "Mini Beach & Hòn Tằm",
-      "Bãi biển và đảo"
-    )
-  },
-
-  /* 12 — FOUR ISLANDS NINH THUAN */
-  "four-islands-ninh-thuan": {
-    image: "img/four-islands-ninh-thuan/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Four Islands Ninh Thuan",
-      "Best island route",
-      "4 острова Нинь Туан",
-      "Лучший маршрут",
-      "4 Đảo Ninh Thuận",
-      "Hành trình đẹp nhất"
-    )
-  },
-
-  /* 13 — VINEYARD NINH THUAN */
-  "vineyard-ninh-thuan": {
-    image: "img/vineyard-ninh-thuan/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "Vineyard Ninh Thuan",
-      "Wine & countryside tour",
-      "Виноградники Нинь Туан",
-      "Вино и природа",
-      "Vườn Nho Ninh Thuận",
-      "Tham quan vườn nho"
-    )
-  },
-
-  /* 14 — VIP HON TAM 1 */
-  "vip-hon-tam-1": {
-    image: "img/vip-hon-tam-1/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "VIP Hon Tam 1",
-      "Luxury island experience",
-      "VIP Хон Там 1",
-      "Премиум отдых",
-      "VIP Hòn Tằm 1",
-      "Trải nghiệm cao cấp"
-    )
-  },
-
-  /* 15 — VIP HON TAM 2 */
-  "vip-hon-tam-2": {
-    image: "img/vip-hon-tam-2/1.jpg",
-    whatsapp: WHATSAPP,
-    texts: fullProgram(
-      "VIP Hon Tam 2",
-      "Exclusive luxury program",
-      "VIP Хон Там 2",
-      "Эксклюзивная программа",
-      "VIP Hòn Tằm 2",
-      "Chương trình cao cấp"
-    )
+    texts: {
+      en: {
+        title: "Nha Trang City Tour",
+        short: "Main sights of the city",
+        time: "09:00 – 15:30",
+        program: "Pagoda, Cathedral, local market, cultural spots. Lunch.",
+        take: "Comfortable clothes",
+        included: "Transport, English-speaking guide, lunch",
+        notIncluded: "Entrance tickets"
+      },
+      ru: {
+        title: "Сити тур Нячанг",
+        short: "Главные достопримечательности города",
+        time: "09:00 – 15:30",
+        program: "Пагода, собор, рынок, культурные места. Обед.",
+        take: "Удобная одежда",
+        included: "Транспорт, англоговорящий гид, обед",
+        notIncluded: "Входные билеты"
+      },
+      vi: {
+        title: "City Tour Nha Trang",
+        short: "Tham quan thành phố",
+        time: "09:00 – 15:30",
+        program: "Chùa, nhà thờ, chợ, điểm văn hóa. Ăn trưa.",
+        take: "Trang phục thoải mái",
+        included: "Xe, HDV tiếng Anh, ăn trưa",
+        notIncluded: "Vé vào cổng"
+      },
+      zh: {
+        title: "芽庄城市游",
+        short: "城市主要景点",
+        time: "09:00 – 15:30",
+        program: "寺庙、大教堂、市场、文化景点。午餐。",
+        take: "舒适的衣服",
+        included: "交通、英文导游、午餐",
+        notIncluded: "门票"
+      },
+      ko: {
+        title: "나트랑 시티 투어",
+        short: "도시 주요 명소",
+        time: "09:00 – 15:30",
+        program: "사원, 성당, 시장, 문화 명소. 점심.",
+        take: "편한 옷",
+        included: "교통, 영어 가이드, 점심",
+        notIncluded: "입장권"
+      },
+      fr: {
+        title: "City Tour Nha Trang",
+        short: "Principaux sites de la ville",
+        time: "09:00 – 15:30",
+        program: "Pagode, cathédrale, marché, sites culturels. Déjeuner.",
+        take: "Vêtements confortables",
+        included: "Transport, guide anglophone, déjeuner",
+        notIncluded: "Billets d'entrée"
+      },
+      tr: {
+        title: "Nha Trang Şehir Turu",
+        short: "Şehrin ana noktaları",
+        time: "09:00 – 15:30",
+        program: "Tapınak, katedral, pazar, kültürel alanlar. Öğle yemeği.",
+        take: "Rahat kıyafetler",
+        included: "Ulaşım, İngilizce rehber, öğle yemeği",
+        notIncluded: "Giriş biletleri"
+      }
+    }
   }
 
 };
 
-/* =========================================================
-   FULL PROGRAM TEMPLATE — ALL LANGUAGES
-   ========================================================= */
-function fullProgram(enTitle,enShort,ruTitle,ruShort,viTitle,viShort){
-  return {
-    en:{
-      title:enTitle,
-      short:enShort,
-      description:`Start: 08:00 | End: 16:00<br><br>
-<b>Program:</b><br>
-• Hotel pickup<br>
-• Boat transfer<br>
-• Swimming & snorkeling<br>
-• Free time on the beach<br>
-• Lunch<br>
-• Return to hotel<br><br>
-<b>Included:</b> transfer, boat, lunch, snorkeling equipment, English-speaking guide<br>
-<b>Not included:</b> drinks, personal expenses<br>
-<b>What to bring:</b> swimwear, towel, sunscreen, hat`
-    },
-    ru:{
-      title:ruTitle,
-      short:ruShort,
-      description:`Начало: 08:00 | Окончание: 16:00<br><br>
-<b>Программа:</b><br>
-• Трансфер из отеля<br>
-• Переезд на лодке<br>
-• Купание и снорклинг<br>
-• Свободное время<br>
-• Обед<br>
-• Возвращение в отель<br><br>
-<b>Включено:</b> трансфер, лодка, обед, оборудование, англоговорящий гид<br>
-<b>Не включено:</b> напитки, личные расходы<br>
-<b>Что взять:</b> купальник, полотенце, крем от солнца`
-    },
-    vi:{
-      title:viTitle,
-      short:viShort,
-      description:`Thời gian: 08:00 – 16:00<br><br>
-<b>Chương trình:</b><br>
-• Đón tại khách sạn<br>
-• Di chuyển bằng tàu<br>
-• Tắm biển, lặn san hô<br>
-• Nghỉ ngơi tự do<br>
-• Ăn trưa<br>
-• Trở về khách sạn<br><br>
-<b>Bao gồm:</b> xe, tàu, ăn trưa, thiết bị lặn, HDV tiếng Anh<br>
-<b>Không bao gồm:</b> đồ uống, chi phí cá nhân<br>
-<b>Mang theo:</b> đồ bơi, khăn, kem chống nắng`
-    },
-    zh:{title:enTitle,short:enShort,description:"一日游，包含接送、乘船、游泳、浮潜、午餐和英文导游。"},
-    ko:{title:enTitle,short:enShort,description:"호텔 픽업, 보트 이동, 수영, 스노클링, 점심 포함, 영어 가이드."},
-    fr:{title:enTitle,short:enShort,description:"Excursion journée complète avec transport, bateau, baignade, déjeuner et guide anglophone."},
-    tr:{title:enTitle,short:enShort,description:"Otel transferi, tekne, yüzme, şnorkel, öğle yemeği ve İngilizce rehber dahil."}
-  };
-}
+/* END OF FILE — DO NOT MODIFY */
