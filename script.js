@@ -1,39 +1,27 @@
-/***********************
- * ЯЗЫК (по умолчанию EN)
- ***********************/
 let lang = localStorage.getItem("lang") || "en";
 localStorage.setItem("lang", lang);
 
-/***********************
- * ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА
- ***********************/
+// переключение языков
 document.querySelectorAll(".lang button").forEach(btn => {
-  btn.addEventListener("click", () => {
+  btn.onclick = () => {
     localStorage.setItem("lang", btn.dataset.lang);
     location.reload();
-  });
+  };
 });
 
-/***********************
- * ОПРЕДЕЛЯЕМ СТРАНИЦУ
- ***********************/
-const isIndex = document.getElementById("tours");
-const isTour = document.getElementById("tour");
-
-/***********************
- * ГЛАВНАЯ СТРАНИЦА
- ***********************/
-if (isIndex) {
-  const grid = document.getElementById("tours");
-  grid.innerHTML = "";
+// ГЛАВНАЯ
+const grid = document.getElementById("tours");
+if (grid) {
+  document.getElementById("title").innerText =
+    TEXTS[lang].title;
+  document.getElementById("subtitle").innerText =
+    TEXTS[lang].subtitle;
 
   Object.entries(TOURS).forEach(([id, tour]) => {
     const t = tour.texts[lang];
-    if (!t) return;
-
     grid.innerHTML += `
       <a class="card" href="tour.html?id=${id}">
-        <img src="${tour.image}" alt="${t.title}">
+        <img src="${tour.image}">
         <h3>${t.title}</h3>
         <p>${t.short}</p>
       </a>
@@ -41,26 +29,17 @@ if (isIndex) {
   });
 }
 
-/***********************
- * СТРАНИЦА ТУРА
- ***********************/
-if (isTour) {
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
+// СТРАНИЦА ТУРА
+const tourBox = document.getElementById("tour");
+if (tourBox) {
+  const id = new URLSearchParams(location.search).get("id");
   const tour = TOURS[id];
+  const t = tour.texts[lang];
 
-  if (!tour || !tour.texts[lang]) {
-    document.getElementById("tour").innerHTML = `
-      <p style="text-align:center">Tour not found</p>
-    `;
-  } else {
-    const t = tour.texts[lang];
-
-    document.getElementById("tour").innerHTML = `
-      <img src="${tour.image}" class="big" alt="${t.title}">
-      <h1>${t.title}</h1>
-      <p class="short">${t.short}</p>
-      <p class="desc">${t.description}</p>
-    `;
-  }
+  tourBox.innerHTML = `
+    <img src="${tour.image}" class="big">
+    <h1>${t.title}</h1>
+    <p><b>${t.short}</b></p>
+    <p>${t.description}</p>
+  `;
 }
