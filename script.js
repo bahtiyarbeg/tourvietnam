@@ -1,71 +1,66 @@
-let currentLang = localStorage.getItem("lang") || "en";
+/***********************
+ * ЯЗЫК (по умолчанию EN)
+ ***********************/
+let lang = localStorage.getItem("lang") || "en";
+localStorage.setItem("lang", lang);
 
-function setLang(lang) {
-  currentLang = lang;
-  localStorage.setItem("lang", lang);
-  render();
-}
+/***********************
+ * ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА
+ ***********************/
+document.querySelectorAll(".lang button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    localStorage.setItem("lang", btn.dataset.lang);
+    location.reload();
+  });
+});
 
-function getParam(name) {
-  return new URLSearchParams(window.location.search).get(name);
-}
+/***********************
+ * ОПРЕДЕЛЯЕМ СТРАНИЦУ
+ ***********************/
+const isIndex = document.getElementById("tours");
+const isTour = document.getElementById("tour");
 
-function renderIndex() {
-  document.getElementById("title").innerText = {
-    en: "Tours in Vietnam",
-    ru: "Экскурсии по Вьетнаму",
-    vi: "Tour du lịch Việt Nam",
-    zh: "越南旅游",
-    ko: "베트남 투어",
-    fr: "Excursions au Vietnam",
-    tr: "Vietnam Turları"
-  }[currentLang];
+/***********************
+ * ГЛАВНАЯ СТРАНИЦА
+ ***********************/
+if (isIndex) {
+  const grid = document.getElementById("tours");
+  grid.innerHTML = "";
 
-  document.getElementById("subtitle").innerText = {
-    en: "Islands • Sea • Snorkeling • Hon Tam",
-    ru: "Острова • Море • Снорклинг • Хон Там",
-    vi: "Đảo • Biển • Lặn biển • Hòn Tằm",
-    zh: "岛屿 • 海 • 浮潜 • 洪潭",
-    ko: "섬 • 바다 • 스노클링",
-    fr: "Îles • Mer • Snorkeling",
-    tr: "Adalar • Deniz • Şnorkel"
-  }[currentLang];
+  Object.entries(TOURS).forEach(([id, tour]) => {
+    const t = tour.texts[lang];
+    if (!t) return;
 
-  const container = document.getElementById("tours");
-  container.innerHTML = "";
-
-  tours.forEach(t => {
-    const a = document.createElement("a");
-    a.className = "card";
-    a.href = `tour.html?id=${t.id}`;
-    a.innerHTML = `
-      <img src="${t.image}">
-      <div class="card-body">
-        <h3>${t.title[currentLang]}</h3>
-        <p>${t.subtitle[currentLang]}</p>
-      </div>
+    grid.innerHTML += `
+      <a class="card" href="tour.html?id=${id}">
+        <img src="${tour.image}" alt="${t.title}">
+        <h3>${t.title}</h3>
+        <p>${t.short}</p>
+      </a>
     `;
-    container.appendChild(a);
   });
 }
 
-function renderTour() {
-  const id = getParam("id");
-  const tour = tours.find(t => t.id === id);
-  if (!tour) return;
+/***********************
+ * СТРАНИЦА ТУРА
+ ***********************/
+if (isTour) {
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const tour = TOURS[id];
 
-  const box = document.getElementById("tour-page");
-  box.innerHTML = `
-    <img src="${tour.image}">
-    <h1>${tour.title[currentLang]}</h1>
-    <p>${tour.subtitle[currentLang]}</p>
-    <p>${tour.description[currentLang]}</p>
-  `;
+  if (!tour || !tour.texts[lang]) {
+    document.getElementById("tour").innerHTML = `
+      <p style="text-align:center">Tour not found</p>
+    `;
+  } else {
+    const t = tour.texts[lang];
+
+    document.getElementById("tour").innerHTML = `
+      <img src="${tour.image}" class="big" alt="${t.title}">
+      <h1>${t.title}</h1>
+      <p class="short">${t.short}</p>
+      <p class="desc">${t.description}</p>
+    `;
+  }
 }
-
-function render() {
-  if (document.getElementById("tours")) renderIndex();
-  if (document.getElementById("tour-page")) renderTour();
-}
-
-render();
