@@ -1,31 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tours in Vietnam | TourVietnam</title>
-  <meta name="description" content="All tours in Vietnam. Islands, snorkeling, sea trips. Book via WhatsApp.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- SEO -->
+  <meta name="description" content="Best tours in Vietnam: islands, snorkeling, sea trips, Hon Tam, Robinson, VIP tours. English-speaking guide. Book via WhatsApp." />
+  <meta name="keywords" content="Vietnam tours, Nha Trang tours, island tours, snorkeling Vietnam, Hon Tam, Robinson island" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- STYLE -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Tours in Vietnam" />
+  <meta property="og:description" content="Islands • Sea • Snorkeling • Hon Tam" />
+  <meta property="og:type" content="website" />
 </head>
+
 <body>
 
-<div id="tours" class="grid"></div>
-  <button class="lang" data-lang="en">EN</button>
-  <button class="lang" data-lang="ru">RU</button>
-  <button class="lang" data-lang="vi">VI</button>
-</div>
+  <!-- HEADER -->
+  <header class="header">
 
-<img src="logo.png" class="logo">
+    <!-- LANGUAGES -->
+    <div class="langs">
+      <button class="lang" data-lang="en">EN</button>
+      <button class="lang" data-lang="ru">RU</button>
+      <button class="lang" data-lang="vi">VI</button>
+      <button class="lang" data-lang="zh">中文</button>
+      <button class="lang" data-lang="ko">KR</button>
+      <button class="lang" data-lang="fr">FR</button>
+      <button class="lang" data-lang="tr">TR</button>
+    </div>
 
-<h1>Tours in Vietnam</h1>
-<p class="subtitle">Islands • Sea • Snorkeling • Hon Tam</p>
+    <!-- LOGO -->
+    <img src="logo.png" alt="TourVietnam logo" class="logo" />
 
-<div id="tours" class="grid"></div>
+  </header>
 
-<!-- WhatsApp -->
-<a id="wa" target="_blank">WhatsApp</a>
+  <!-- HERO -->
+  <section class="hero">
+    <h1 id="title">Tours in Vietnam</h1>
+    <p id="subtitle">Islands • Sea • Snorkeling • Hon Tam</p>
+  </section>
 
-<script src="data/tours.js"></script>
-<script src="script.js"></script>
+  <!-- TOURS GRID -->
+  <main>
+    <div id="tours" class="grid">
+      <!-- JS will inject tour cards here -->
+    </div>
+  </main>
+
+  <!-- WHATSAPP -->
+  <a
+    href="https://wa.me/84777770759"
+    target="_blank"
+    class="whatsapp-btn"
+    aria-label="WhatsApp booking"
+  >
+    WhatsApp
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="data/tours.js"></script>
+  <script src="script.js"></script>
+
 </body>
 </html>
