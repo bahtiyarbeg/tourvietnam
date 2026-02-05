@@ -1,363 +1,346 @@
-const LANGS = ["en","ru","vi","zh","ko","fr","tr"];
-const WHATSAPP = "https://wa.me/84777770759";
-
+Копировать код
 const TOURS = {
 
-  /* 1 — ROBINSON ISLAND */
   "robinson": {
     image: "img/robinson/1.jpg",
-    whatsapp: WHATSAPP,
     texts: {
       en: {
         title: "Robinson Island",
-        short: "Quiet island away from crowds",
-        time: "08:00 – 16:00",
-        program: "Hotel pickup. Boat trip to Robinson Island. Swimming, beach time, relaxation, photos. Lunch. Return to hotel.",
+        short: "Quiet island far from crowds",
+        time: "08:00 – 15:30",
+        program: "Transfer from hotel. Boat trip to Robinson Island. Swimming, snorkeling, beach relaxation. Lunch on the island. Return.",
         take: "Swimsuit, towel, sunscreen, hat",
-        included: "Transfer, boat, lunch, English-speaking guide",
-        notIncluded: "Drinks, personal expenses"
+        included: "Boat, transfer, lunch, snorkeling gear, English-speaking guide",
+        notIncluded: "Personal expenses"
       },
       ru: {
         title: "Остров Робинзон",
         short: "Тихий остров вдали от толп",
-        time: "08:00 – 16:00",
-        program: "Трансфер из отеля. Лодка до острова Робинзон. Купание, пляж, отдых, фото. Обед. Возвращение в отель.",
+        time: "08:00 – 15:30",
+        program: "Трансфер из отеля. Катер на остров Робинзон. Купание, снорклинг, отдых на пляже. Обед. Возвращение.",
         take: "Купальник, полотенце, крем от солнца, головной убор",
-        included: "Трансфер, лодка, обед, англоговорящий гид",
-        notIncluded: "Напитки, личные расходы"
+        included: "Катер, трансфер, обед, снорклинг, англоговорящий гид",
+        notIncluded: "Личные расходы"
       },
       vi: {
         title: "Đảo Robinson",
-        short: "Hòn đảo yên tĩnh, hoang sơ",
-        time: "08:00 – 16:00",
-        program: "Đón tại khách sạn. Đi tàu ra đảo Robinson. Tắm biển, nghỉ ngơi, chụp ảnh. Ăn trưa. Về khách sạn.",
+        short: "Hòn đảo yên tĩnh, ít người",
+        time: "08:00 – 15:30",
+        program: "Đón tại khách sạn. Đi tàu ra đảo Robinson. Tắm biển, lặn ngắm san hô, nghỉ ngơi. Ăn trưa. Trở về.",
         take: "Đồ bơi, khăn, kem chống nắng, mũ",
-        included: "Xe đưa đón, tàu, ăn trưa, HDV tiếng Anh",
-        notIncluded: "Đồ uống, chi phí cá nhân"
+        included: "Tàu, xe đưa đón, ăn trưa, dụng cụ lặn, HDV tiếng Anh",
+        notIncluded: "Chi phí cá nhân"
       },
       zh: {
         title: "鲁滨逊岛",
         short: "远离人群的安静岛屿",
-        time: "08:00 – 16:00",
-        program: "酒店接送。乘船前往鲁滨逊岛。游泳、沙滩休息、拍照。午餐。返回酒店。",
+        time: "08:00 – 15:30",
+        program: "酒店接送。乘船前往鲁滨逊岛。游泳、浮潜、沙滩休息。午餐。返回。",
         take: "泳衣、毛巾、防晒霜、帽子",
-        included: "接送、船、午餐、英文导游",
-        notIncluded: "饮料、个人消费"
+        included: "船、接送、午餐、浮潜装备、英文导游",
+        notIncluded: "个人消费"
       },
       ko: {
         title: "로빈슨 섬",
         short: "사람이 적은 조용한 섬",
-        time: "08:00 – 16:00",
-        program: "호텔 픽업. 보트 이동. 수영, 휴식, 사진 촬영. 점심. 호텔 복귀.",
-        take: "수영복, 타월, 선크림, 모자",
-        included: "교통, 보트, 점심, 영어 가이드",
-        notIncluded: "음료, 개인 비용"
+        time: "08:00 – 15:30",
+        program: "호텔 픽업. 보트로 로빈슨 섬 이동. 수영, 스노클링, 휴식. 점심. 귀환.",
+        take: "수영복, 수건, 선크림, 모자",
+        included: "보트, 픽업, 점심, 스노클링 장비, 영어 가이드",
+        notIncluded: "개인 비용"
       },
       fr: {
         title: "Île Robinson",
-        short: "Île paisible loin de la foule",
-        time: "08:00 – 16:00",
-        program: "Transfert hôtel. Bateau vers l’île Robinson. Baignade, détente, photos. Déjeuner. Retour.",
+        short: "Île calme loin de la foule",
+        time: "08:00 – 15:30",
+        program: "Transfert hôtel. Bateau vers l'île Robinson. Baignade, snorkeling, détente. Déjeuner. Retour.",
         take: "Maillot, serviette, crème solaire, chapeau",
-        included: "Transport, bateau, déjeuner, guide anglophone",
-        notIncluded: "Boissons, dépenses personnelles"
+        included: "Bateau, transfert, déjeuner, snorkeling, guide anglophone",
+        notIncluded: "Dépenses personnelles"
       },
       tr: {
         title: "Robinson Adası",
         short: "Kalabalıktan uzak sakin ada",
-        time: "08:00 – 16:00",
-        program: "Otelden transfer. Tekne ile Robinson Adası. Yüzme, dinlenme, fotoğraf. Öğle yemeği. Dönüş.",
+        time: "08:00 – 15:30",
+        program: "Otelden transfer. Tekneyle Robinson Adası. Yüzme, şnorkel, dinlenme. Öğle yemeği. Dönüş.",
         take: "Mayo, havlu, güneş kremi, şapka",
-        included: "Transfer, tekne, öğle yemeği, İngilizce rehber",
-        notIncluded: "İçecekler, kişisel harcamalar"
+        included: "Tekne, transfer, öğle yemeği, şnorkel ekipmanı, İngilizce rehber",
+        notIncluded: "Kişisel harcamalar"
       }
     }
   },
 
-  /* 2 — DE LUXE SEA TOUR */
   "de-luxe": {
     image: "img/de-luxe/1.jpg",
-    whatsapp: WHATSAPP,
     texts: {
       en: {
-        title: "De Luxe Sea Tour",
-        short: "Premium island hopping experience",
+        title: "Luxury Sea Tour",
+        short: "Premium boat experience",
         time: "08:00 – 15:30",
-        program: "Speedboat tour to islands. Snorkeling, swimming, beach relaxation. Lunch. Return.",
+        program: "Speedboat cruise. Island sightseeing. Snorkeling. Swimming. Lunch on board. Relaxation.",
         take: "Swimsuit, towel, sunscreen",
-        included: "Speedboat, lunch, snorkeling equipment, English guide",
-        notIncluded: "Alcohol, personal expenses"
+        included: "Speedboat, lunch, snorkeling gear, English guide",
+        notIncluded: "Personal expenses"
       },
       ru: {
-        title: "De Luxe морской тур",
-        short: "Премиальный морской отдых",
+        title: "Роскошный морской тур",
+        short: "Премиальный отдых на море",
         time: "08:00 – 15:30",
-        program: "Скоростной катер по островам. Снорклинг, купание, отдых. Обед. Возвращение.",
-        take: "Купальник, полотенце, крем от солнца",
-        included: "Катер, обед, снаряжение, англоговорящий гид",
-        notIncluded: "Алкоголь, личные расходы"
+        program: "Скоростной катер. Острова. Снорклинг. Купание. Обед. Отдых.",
+        take: "Купальник, полотенце, крем",
+        included: "Катер, обед, снорклинг, англоговорящий гид",
+        notIncluded: "Личные расходы"
       },
       vi: {
-        title: "Tour biển cao cấp",
-        short: "Trải nghiệm biển sang trọng",
+        title: "Tour Biển Cao Cấp",
+        short: "Trải nghiệm sang trọng",
         time: "08:00 – 15:30",
-        program: "Tàu cao tốc tham quan đảo. Lặn san hô, tắm biển, nghỉ ngơi. Ăn trưa.",
+        program: "Tàu cao tốc. Tham quan đảo. Lặn biển. Ăn trưa. Nghỉ ngơi.",
         take: "Đồ bơi, khăn, kem chống nắng",
-        included: "Tàu, ăn trưa, dụng cụ lặn, HDV tiếng Anh",
-        notIncluded: "Đồ uống có cồn"
+        included: "Tàu, ăn trưa, lặn biển, HDV tiếng Anh",
+        notIncluded: "Chi phí cá nhân"
       },
       zh: {
-        title: "豪华海岛游",
-        short: "高端跳岛体验",
+        title: "豪华海上之旅",
+        short: "高端海上体验",
         time: "08:00 – 15:30",
-        program: "快艇游览多个岛屿。浮潜、游泳、休息。午餐。",
+        program: "快艇巡游。岛屿观光。浮潜。午餐。休息。",
         take: "泳衣、毛巾、防晒霜",
         included: "快艇、午餐、浮潜装备、英文导游",
-        notIncluded: "酒精饮料"
+        notIncluded: "个人消费"
       },
       ko: {
-        title: "디럭스 바다 투어",
-        short: "프리미엄 섬 투어",
+        title: "럭셔리 바다 투어",
+        short: "프리미엄 보트 투어",
         time: "08:00 – 15:30",
-        program: "스피드보트 섬 투어. 스노클링, 수영, 휴식. 점심.",
-        take: "수영복, 타월, 선크림",
+        program: "스피드보트 투어. 섬 방문. 스노클링. 점심.",
+        take: "수영복, 수건, 선크림",
         included: "보트, 점심, 장비, 영어 가이드",
-        notIncluded: "주류"
+        notIncluded: "개인 비용"
       },
       fr: {
-        title: "Tour Maritime De Luxe",
+        title: "Tour Marin de Luxe",
         short: "Expérience premium",
         time: "08:00 – 15:30",
-        program: "Bateau rapide vers les îles. Snorkeling, baignade, détente. Déjeuner.",
+        program: "Croisière rapide. Îles. Snorkeling. Déjeuner.",
         take: "Maillot, serviette, crème solaire",
-        included: "Bateau, déjeuner, équipement, guide anglophone",
-        notIncluded: "Alcool"
+        included: "Bateau, déjeuner, snorkeling, guide anglophone",
+        notIncluded: "Dépenses personnelles"
       },
       tr: {
-        title: "De Luxe Deniz Turu",
-        short: "Premium ada turu",
+        title: "Lüks Deniz Turu",
+        short: "Premium tekne turu",
         time: "08:00 – 15:30",
-        program: "Sürat teknesiyle adalar. Şnorkel, yüzme, dinlenme. Öğle yemeği.",
+        program: "Hızlı tekne. Adalar. Şnorkel. Öğle yemeği.",
         take: "Mayo, havlu, güneş kremi",
         included: "Tekne, öğle yemeği, ekipman, İngilizce rehber",
-        notIncluded: "Alkol"
+        notIncluded: "Kişisel harcamalar"
       }
     }
-  },
-
-  /* 3 — DIVING TOUR */
-  "diving": {
+  }
+   "diving": {
     image: "img/diving/1.jpg",
-    whatsapp: WHATSAPP,
     texts: {
       en: {
         title: "Diving Tour",
-        short: "Scuba diving with instructor",
+        short: "Diving with instructor",
         time: "08:00 – 14:00",
-        program: "Transfer to diving spot. Briefing. Two dives with instructor. Rest and return.",
+        program: "Hotel transfer. Boat to dive site. Safety briefing. Two dives with instructor. Rest on boat. Return.",
         take: "Swimsuit, towel",
-        included: "Instructor, equipment, transfer, English guide",
-        notIncluded: "Food"
+        included: "Instructor, equipment, boat, transfer, guide",
+        notIncluded: "Personal expenses"
       },
       ru: {
         title: "Дайвинг тур",
         short: "Погружение с инструктором",
         time: "08:00 – 14:00",
-        program: "Трансфер к месту дайвинга. Инструктаж. Два погружения. Отдых.",
+        program: "Трансфер из отеля. Катер к месту дайвинга. Инструктаж. Два погружения. Отдых. Возвращение.",
         take: "Купальник, полотенце",
-        included: "Инструктор, снаряжение, трансфер, гид",
-        notIncluded: "Питание"
+        included: "Инструктор, снаряжение, катер, трансфер, гид",
+        notIncluded: "Личные расходы"
       },
       vi: {
-        title: "Tour lặn biển",
+        title: "Tour Lặn Bình Khí",
         short: "Lặn cùng huấn luyện viên",
         time: "08:00 – 14:00",
-        program: "Di chuyển đến điểm lặn. Hướng dẫn. Hai lần lặn. Nghỉ ngơi.",
+        program: "Đón khách. Đi tàu ra điểm lặn. Hướng dẫn an toàn. Hai lần lặn. Nghỉ ngơi. Trở về.",
         take: "Đồ bơi, khăn",
-        included: "HLV, thiết bị, xe đưa đón, HDV",
-        notIncluded: "Ăn uống"
+        included: "Huấn luyện viên, thiết bị, tàu, xe đưa đón",
+        notIncluded: "Chi phí cá nhân"
       },
       zh: {
         title: "潜水之旅",
         short: "教练陪同潜水",
         time: "08:00 – 14:00",
-        program: "前往潜水点。讲解。两次潜水。休息。",
+        program: "酒店接送。乘船前往潜水点。安全讲解。两次潜水。返回。",
         take: "泳衣、毛巾",
-        included: "教练、设备、接送、英文导游",
-        notIncluded: "餐饮"
+        included: "教练、设备、船、接送",
+        notIncluded: "个人消费"
       },
       ko: {
         title: "다이빙 투어",
-        short: "강사와 함께하는 다이빙",
+        short: "강사와 함께 다이빙",
         time: "08:00 – 14:00",
-        program: "다이빙 포인트 이동. 브리핑. 두 번의 다이빙.",
-        take: "수영복, 타월",
-        included: "강사, 장비, 교통, 가이드",
-        notIncluded: "식사"
+        program: "호텔 픽업. 다이빙 포인트 이동. 교육. 두 번 다이빙.",
+        take: "수영복, 수건",
+        included: "강사, 장비, 보트, 픽업",
+        notIncluded: "개인 비용"
       },
       fr: {
-        title: "Plongée Sous-marine",
+        title: "Plongée",
         short: "Plongée avec instructeur",
         time: "08:00 – 14:00",
-        program: "Transfert vers le site. Briefing. Deux plongées. Repos.",
+        program: "Transfert hôtel. Bateau. Briefing. Deux plongées. Retour.",
         take: "Maillot, serviette",
-        included: "Instructeur, équipement, transport, guide",
-        notIncluded: "Repas"
+        included: "Instructeur, équipement, bateau",
+        notIncluded: "Dépenses personnelles"
       },
       tr: {
         title: "Dalış Turu",
         short: "Eğitmenli dalış",
         time: "08:00 – 14:00",
-        program: "Dalış noktasına transfer. Bilgilendirme. İki dalış.",
+        program: "Otelden transfer. Tekne. Güvenlik eğitimi. İki dalış.",
         take: "Mayo, havlu",
-        included: "Eğitmen, ekipman, transfer, rehber",
-        notIncluded: "Yemek"
+        included: "Eğitmen, ekipman, tekne",
+        notIncluded: "Kişisel harcamalar"
       }
     }
   },
 
-  /* 4 — NEMO SNORKELING */
   "nemo": {
     image: "img/nemo/1.jpg",
-    whatsapp: WHATSAPP,
     texts: {
       en: {
-        title: "Nemo Snorkeling Trip",
-        short: "Perfect for families and beginners",
+        title: "Snorkeling Nemo",
+        short: "Perfect for families",
         time: "08:00 – 15:00",
-        program: "Boat trip. Snorkeling with colorful fish. Floating platforms. Lunch.",
+        program: "Boat trip. Floating park. Snorkeling. Games in the sea. Lunch. Return.",
         take: "Swimsuit, towel",
-        included: "Boat, snorkeling gear, lunch, English guide",
+        included: "Boat, lunch, snorkeling gear, guide",
         notIncluded: "Personal expenses"
       },
       ru: {
         title: "Снорклинг Немо",
-        short: "Идеально для семей и новичков",
+        short: "Идеально для семей",
         time: "08:00 – 15:00",
-        program: "Прогулка на лодке. Снорклинг с рыбами. Платформы. Обед.",
+        program: "Катер. Плавучий парк. Снорклинг. Игры в море. Обед.",
         take: "Купальник, полотенце",
-        included: "Лодка, снаряжение, обед, гид",
+        included: "Катер, обед, оборудование, гид",
         notIncluded: "Личные расходы"
       },
       vi: {
-        title: "Snorkeling Nemo",
+        title: "Tour Nemo",
         short: "Phù hợp cho gia đình",
         time: "08:00 – 15:00",
-        program: "Đi thuyền. Lặn ngắm cá. Khu nổi. Ăn trưa.",
+        program: "Đi tàu. Khu vui chơi nổi. Lặn biển. Trò chơi nước. Ăn trưa.",
         take: "Đồ bơi, khăn",
-        included: "Thuyền, đồ lặn, ăn trưa, HDV",
+        included: "Tàu, ăn trưa, dụng cụ lặn",
         notIncluded: "Chi phí cá nhân"
       },
       zh: {
         title: "尼莫浮潜",
-        short: "适合家庭和新手",
+        short: "适合家庭",
         time: "08:00 – 15:00",
-        program: "乘船出海。浮潜看鱼。浮动平台。午餐。",
+        program: "乘船。水上乐园。浮潜。午餐。",
         take: "泳衣、毛巾",
-        included: "船、装备、午餐、英文导游",
+        included: "船、午餐、装备",
         notIncluded: "个人消费"
       },
       ko: {
         title: "니모 스노클링",
-        short: "가족과 초보자에게 적합",
+        short: "가족에게 적합",
         time: "08:00 – 15:00",
-        program: "보트 이동. 스노클링. 플랫폼. 점심.",
-        take: "수영복, 타월",
-        included: "보트, 장비, 점심, 가이드",
+        program: "보트. 해상 놀이. 스노클링. 점심.",
+        take: "수영복, 수건",
+        included: "보트, 점심, 장비",
         notIncluded: "개인 비용"
       },
       fr: {
         title: "Snorkeling Nemo",
         short: "Idéal pour les familles",
         time: "08:00 – 15:00",
-        program: "Sortie en bateau. Snorkeling. Plateformes flottantes. Déjeuner.",
+        program: "Bateau. Parc flottant. Snorkeling. Déjeuner.",
         take: "Maillot, serviette",
-        included: "Bateau, équipement, déjeuner, guide",
+        included: "Bateau, déjeuner, équipement",
         notIncluded: "Dépenses personnelles"
       },
       tr: {
         title: "Nemo Şnorkel",
         short: "Aileler için ideal",
         time: "08:00 – 15:00",
-        program: "Tekne turu. Şnorkel. Platformlar. Öğle yemeği.",
+        program: "Tekne turu. Yüzen park. Şnorkel. Öğle yemeği.",
         take: "Mayo, havlu",
-        included: "Tekne, ekipman, öğle yemeği, rehber",
+        included: "Tekne, yemek, ekipman",
         notIncluded: "Kişisel harcamalar"
       }
     }
   },
 
-  /* 5 — CITY TOUR */
   "city-tour": {
-    image: "img/city-tour/1.jpg",
-    whatsapp: WHATSAPP,
+    image: "img/city/1.jpg",
     texts: {
       en: {
         title: "Nha Trang City Tour",
-        short: "Main sights of the city",
-        time: "09:00 – 15:30",
-        program: "Pagoda, Cathedral, local market, cultural spots. Lunch.",
+        short: "City sightseeing",
+        time: "08:30 – 14:30",
+        program: "Pagoda. Cathedral. Local market. Cham towers. Lunch.",
         take: "Comfortable clothes",
-        included: "Transport, English-speaking guide, lunch",
+        included: "Transport, guide, lunch",
         notIncluded: "Entrance tickets"
       },
       ru: {
         title: "Сити тур Нячанг",
-        short: "Главные достопримечательности города",
-        time: "09:00 – 15:30",
-        program: "Пагода, собор, рынок, культурные места. Обед.",
+        short: "Обзор города",
+        time: "08:30 – 14:30",
+        program: "Пагода. Собор. Рынок. Чамские башни. Обед.",
         take: "Удобная одежда",
-        included: "Транспорт, англоговорящий гид, обед",
+        included: "Транспорт, гид, обед",
         notIncluded: "Входные билеты"
       },
       vi: {
         title: "City Tour Nha Trang",
         short: "Tham quan thành phố",
-        time: "09:00 – 15:30",
-        program: "Chùa, nhà thờ, chợ, điểm văn hóa. Ăn trưa.",
+        time: "08:30 – 14:30",
+        program: "Chùa. Nhà thờ. Chợ. Tháp Chăm. Ăn trưa.",
         take: "Trang phục thoải mái",
-        included: "Xe, HDV tiếng Anh, ăn trưa",
-        notIncluded: "Vé vào cổng"
+        included: "Xe, HDV, ăn trưa",
+        notIncluded: "Vé tham quan"
       },
       zh: {
         title: "芽庄城市游",
-        short: "城市主要景点",
-        time: "09:00 – 15:30",
-        program: "寺庙、大教堂、市场、文化景点。午餐。",
-        take: "舒适的衣服",
-        included: "交通、英文导游、午餐",
+        short: "城市观光",
+        time: "08:30 – 14:30",
+        program: "寺庙。教堂。市场。占婆塔。午餐。",
+        take: "舒适衣物",
+        included: "交通、导游、午餐",
         notIncluded: "门票"
       },
       ko: {
         title: "나트랑 시티 투어",
-        short: "도시 주요 명소",
-        time: "09:00 – 15:30",
-        program: "사원, 성당, 시장, 문화 명소. 점심.",
-        take: "편한 옷",
-        included: "교통, 영어 가이드, 점심",
+        short: "도시 관광",
+        time: "08:30 – 14:30",
+        program: "사원. 성당. 시장. 참 타워. 점심.",
+        take: "편한 복장",
+        included: "차량, 가이드, 점심",
         notIncluded: "입장권"
       },
       fr: {
-        title: "City Tour Nha Trang",
-        short: "Principaux sites de la ville",
-        time: "09:00 – 15:30",
-        program: "Pagode, cathédrale, marché, sites culturels. Déjeuner.",
+        title: "Visite de Nha Trang",
+        short: "Tour de la ville",
+        time: "08:30 – 14:30",
+        program: "Pagode. Cathédrale. Marché. Tours Cham. Déjeuner.",
         take: "Vêtements confortables",
-        included: "Transport, guide anglophone, déjeuner",
-        notIncluded: "Billets d'entrée"
+        included: "Transport, guide, déjeuner",
+        notIncluded: "Billets"
       },
       tr: {
         title: "Nha Trang Şehir Turu",
-        short: "Şehrin ana noktaları",
-        time: "09:00 – 15:30",
-        program: "Tapınak, katedral, pazar, kültürel alanlar. Öğle yemeği.",
-        take: "Rahat kıyafetler",
-        included: "Ulaşım, İngilizce rehber, öğle yemeği",
+        short: "Şehir gezisi",
+        time: "08:30 – 14:30",
+        program: "Pagoda. Katedral. Pazar. Cham kuleleri. Öğle yemeği.",
+        take: "Rahat kıyafet",
+        included: "Ulaşım, rehber, yemek",
         notIncluded: "Giriş biletleri"
       }
     }
   }
-
-};
-
-/* END OF FILE — DO NOT MODIFY */
