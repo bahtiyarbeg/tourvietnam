@@ -1,26 +1,14 @@
-{
-  id: "de-luxe",
-  title: "De Luxe",
-  subtitle: "Премиум отдых",
-  image: "img/de-luxe/1.jpg",
-
-  time: "08:00 – 16:00",
-  guide: "English-speaking guide",
-  bring: [
-    "Купальник",
-    "Полотенце",
-    "Солнцезащитный крем",
-    "Головной убор"
-  ],
-  included: [
-    "Трансфер",
-    "Катер",
-    "Обед",
-    "Снорклинг",
-    "Гид"
-  ],
-  notIncluded: [
-    "Личные расходы",
-    "Алкоголь"
-  ]
-}
+const tours = [
+  {
+    id: "robinson",
+    title: "Tour Robinson",
+    subtitle: "Тихий остров вдали от толп",
+    image: "img/robinson/1.jpg"
+  },
+  {
+    id: "de-luxe",
+    title: "De Luxe",
+    subtitle: "Премиум отдых",
+    image: "img/de-luxe/1.jpg"
+  }
+];
