@@ -1,11 +1,3 @@
-/* =========================================================
-   TOURVIETNAM — FINAL MASTER DATA
-   16 TOURS | 7 LANGUAGES | NO PRICES
-   Languages: EN / RU / VI / ZH / KO / FR / TR
-   WhatsApp: +84777770759
-   DO NOT CHANGE THIS FILE EVER
-   ========================================================= */
-
 const LANGS = ["en","ru","vi","zh","ko","fr","tr"];
 const WHATSAPP = "https://wa.me/84777770759";
 
