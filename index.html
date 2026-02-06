@@ -1,44 +1,94 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TourVietnam — Экскурсии</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Экскурсии по Вьетнаму - острова, море, снорклинг, Хон Там">
+  <title>TourVietnam — Экскурсии по Вьетнаму</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container">
+      <!-- Переключатель языков -->
+      <div class="lang-switch" role="group" aria-label="Выбор языка">
+        <button data-lang="ru" aria-label="Русский">RU</button>
+        <button data-lang="en" aria-label="English">EN</button>
+        <button data-lang="vi" aria-label="Tiếng Việt">VI</button>
+        <button data-lang="zh" aria-label="中文">中文</button>
+        <button data-lang="ko" aria-label="한국어">KO</button>
+        <button data-lang="fr" aria-label="Français">FR</button>
+        <button data-lang="tr" aria-label="Türkçe">TR</button>
+      </div>
 
-<header class="site-header">
-  <div class="lang-switch">
-    <button data-lang="ru">RU</button>
-    <button data-lang="en">EN</button>
-    <button data-lang="vi">VI</button>
-    <button data-lang="zh">中文</button>
-    <button data-lang="ko">KO</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="tr">TR</button>
-  </div>
+      <!-- Логотип -->
+      <a href="index.html" class="logo">
+        <span class="logo__icon">🌴</span>
+        <span class="logo__text">Tour<span>Vietnam</span></span>
+      </a>
 
-  <img src="logo.png" alt="TourVietnam" class="logo" />
+      <!-- Герой -->
+      <div class="hero">
+        <h1 class="hero__title" data-i18n="title">Туры по Вьетнаму</h1>
+        <p class="hero__subtitle" data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
+        <a href="#tours" class="hero__cta" data-i18n="cta">Выбрать тур</a>
+      </div>
+    </div>
+  </header>
 
-  <div class="hero">
-    <h1 data-i18n="title">Туры по Вьетнаму</h1>
-    <p data-i18n="subtitle">Острова • Море • Снорклинг • Хон Там</p>
-  </div>
-</header>
+  <!-- Основной контент -->
+  <main class="main">
+    <div class="container">
+      <!-- Секция туров -->
+      <section id="tours" class="tours-section">
+        <h2 class="section-title" data-i18n="popular">Популярные туры</h2>
+        <div id="toursGrid" class="tours-grid"></div>
+      </section>
 
-<main class="container">
-  <section id="toursGrid"></section>
-</main>
+      <!-- Почему мы -->
+      <section class="features">
+        <div class="feature">
+          <span class="feature__icon">🚤</span>
+          <h3 data-i18n="feat1">Современные катера</h3>
+          <p data-i18n="feat1desc">Комфортное путешествие к островам</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon">🏝️</span>
+          <h3 data-i18n="feat2">Лучшие острова</h3>
+          <p data-i18n="feat2desc">Только живописные локации</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon">🤿</span>
+          <h3 data-i18n="feat3">Снорклинг</h3>
+          <p data-i18n="feat3desc">Снаряжение включено</p>
+        </div>
+        <div class="feature">
+          <span class="feature__icon">🍽️</span>
+          <h3 data-i18n="feat4">Обед включен</h3>
+          <p data-i18n="feat4desc">Местная кухня на острове</p>
+        </div>
+      </section>
+    </div>
+  </main>
 
-<a class="whatsapp" href="https://wa.me/84777770759" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" width="24" height="24">
-    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.89 5.83L2 22l4.29-1.89A9.93 9.93 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.4 14.6c-.2.56-1.15 1.05-1.6 1.12-.43.06-.88.1-2.6-.55-2.2-.9-3.62-3.1-3.73-3.24-.11-.14-.89-1.18-.89-2.25 0-1.07.56-1.6.76-1.81.2-.2.43-.25.57-.25.14 0 .29 0 .41.01.13 0 .3-.05.47.36.16.4.57 1.39.62 1.49.05.1.08.22.02.35-.06.13-.1.2-.19.3-.1.1-.2.22-.29.29-.1.08-.2.16-.09.39.12.23.53.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.05.12-.13.5-.58.64-.78.13-.2.27-.17.45-.1.18.07 1.15.54 1.35.64.2.1.33.15.38.23.05.08.05.46-.15 1.02z"/>
-  </svg>
-  WhatsApp
-</a>
+  <!-- Подвал -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 TourVietnam. <span data-i18n="rights">Все права защищены</span></p>
+      <a href="tel:+84777770759" class="footer__phone">+84 777 770 759</a>
+    </div>
+  </footer>
 
-<script src="data/tours.js"></script>
-<script src="script.js"></script>
+  <!-- WhatsApp кнопка -->
+  <a href="https://wa.me/84777770759" class="whatsapp" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- Скрипты -->
+  <script src="js/tours-data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
