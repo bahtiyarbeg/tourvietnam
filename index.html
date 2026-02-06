@@ -1,40 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>TourVietnam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="lang-switch">
-    <button data-lang="en">EN</button>
-    <button data-lang="ru">RU</button>
-    <button data-lang="vi">VI</button>
-    <button data-lang="zh">中文</button>
-    <button data-lang="kr">KR</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="tr">TR</button>
-  </div>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="lang-switch">
+      <button>RU</button>
+      <button>EN</button>
+      <button>VI</button>
+      <button>中文</button>
+      <button>KR</button>
+      <button>FR</button>
+      <button>TR</button>
+    </div>
 
-  <img src="logo.png" class="logo" alt="TourVietnam">
+    <img src="logo.png" class="logo" alt="TourVietnam">
 
-  <h1 id="title"></h1>
-  <p id="subtitle"></p>
-</header>
+    <div class="hero">
+      <h1>Туры по Вьетнаму</h1>
+      <p>Острова • Море • Снорклинг • Хон Там</p>
+    </div>
+  </header>
 
-<main>
-  <section id="tours" class="tours-grid"></section>
-</main>
+  <!-- ================= MAIN ================= -->
+  <main class="container">
 
-<a class="whatsapp" href="https://wa.me/84777770759" target="_blank">
-  WhatsApp
-</a>
+    <!-- ВАЖНО: JS будет вставлять карточки СЮДА -->
+    <section class="tours-grid" id="toursGrid"></section>
 
-<script src="data/tours.js"></script>
-<script src="script.js"></script>
+  </main>
+
+  <!-- ================= WHATSAPP ================= -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/84777770759"
+    target="_blank">
+    WhatsApp
+  </a>
+
+  <!-- ================= JS ================= -->
+  <!-- 1. ДАННЫЕ -->
+  <script src="data/tours-all.js"></script>
+
+  <!-- 2. ЛОГИКА -->
+  <script src="script.js"></script>
+
 </body>
 </html>
