@@ -1,58 +1,36 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>TourVietnam — Tours in Vietnam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 🔥 ВАЖНО: ПОДКЛЮЧЕНИЕ СТИЛЕЙ -->
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
+<header>
+  <div class="lang-switch">
+    <button class="active">EN</button>
+    <button>RU</button>
+    <button>VI</button>
+    <button>中文</button>
+    <button>KR</button>
+    <button>FR</button>
+    <button>TR</button>
+  </div>
 
-    <!-- LANG -->
-    <div class="lang-switch">
-      <button>EN</button>
-      <button>RU</button>
-      <button>VI</button>
-      <button>中文</button>
-      <button>KR</button>
-      <button>FR</button>
-      <button>TR</button>
-    </div>
+  <img src="logo.png" class="logo" alt="TourVietnam">
 
-    <!-- LOGO -->
-    <img src="logo.png" class="logo" alt="TourVietnam">
+  <div class="hero">
+    <h1>Туры по Вьетнаму</h1>
+    <p>Острова • Море • Подводное плавание • Хон Там</p>
+  </div>
+</header>
 
-    <!-- HERO -->
-    <div class="hero">
-      <h1>Туры по Вьетнаму</h1>
-      <p>Острова • Море • Подводное плавание • Хон Там</p>
-    </div>
+<main class="container">
+  <section class="tours-grid" id="toursGrid">
+    <!-- карточки вставляет JS -->
+  </section>
+</main>
 
-  </header>
+<a class="whatsapp"
+   href="https://wa.me/84777770759"
+   target="_blank">
+  WhatsApp
+</a>
 
-  <!-- MAIN -->
-  <main class="container">
-    <!-- ⚠️ НЕ ТРОГАТЬ -->
-    <section class="tours-grid" id="toursGrid">
-      <!-- карточки вставляет script.js -->
-    </section>
-  </main>
-
-  <!-- WHATSAPP -->
-  <a class="whatsapp"
-     href="https://wa.me/84777770759"
-     target="_blank">
-     WhatsApp
-  </a>
-
-  <!-- SCRIPTS -->
-  <script src="data/tours.js"></script>
-  <script src="script.js"></script>
-
+<script src="data/tours.js?v=1"></script>
+<script src="script.js?v=1"></script>
 </body>
-</html>
