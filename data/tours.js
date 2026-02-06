@@ -125,3 +125,5 @@ const tours = [
       title: "木岛",
       subtitle: "钓鱼和珊瑚礁",
       description: "适合初学者和经验丰富者的绝佳钓鱼体验。色彩斑斓的珊瑚礁，众多鱼类。船上享用捕获的
+        
+window.tours = tours;
