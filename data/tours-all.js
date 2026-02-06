@@ -1,4 +1,3 @@
-<section class="tours-grid" id="toursGrid"></section>
 window.TOURS_ALL = [
 
 /* ===================== МОРЕ И ОСТРОВА ===================== */
