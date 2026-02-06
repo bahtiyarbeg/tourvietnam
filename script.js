@@ -1,53 +1,32 @@
-// ===== CONFIG =====
-let currentLang = "ru";
-
-// ===== SAFE CHECK =====
 document.addEventListener("DOMContentLoaded", () => {
-  if (!window.tours || !Array.isArray(tours)) {
-    console.error("❌ tours.js not loaded or broken");
+  if (!window.tours || !Array.isArray(window.tours)) {
+    console.error("tours.js не загружен или пуст");
     return;
   }
 
   const grid = document.getElementById("toursGrid");
   if (!grid) {
-    console.error("❌ toursGrid not found in HTML");
+    console.error("Нет #toursGrid");
     return;
   }
 
-  renderTours();
-  initLangButtons();
-});
-
-// ===== RENDER =====
-function renderTours() {
-  const grid = document.getElementById("toursGrid");
   grid.innerHTML = "";
 
-  tours.forEach(tour => {
-    const t = tour.lang[currentLang] || tour.lang["en"];
-
+  window.tours.forEach(tour => {
     const card = document.createElement("a");
     card.className = "tour-card";
     card.href = `tour.html?id=${tour.id}`;
 
     card.innerHTML = `
-      <img src="${tour.images[0]}" alt="${t.title}">
-      <div class="tour-info">
-        <h3>${t.title}</h3>
-        <p>${t.subtitle}</p>
+      <div class="tour-image">
+        <img src="${tour.images?.[0] || 'img/placeholder.jpg'}" alt="">
+      </div>
+      <div class="tour-content">
+        <h3>${tour.title?.ru || tour.title?.en || "Tour"}</h3>
+        <p>${tour.short?.ru || tour.short?.en || ""}</p>
       </div>
     `;
 
     grid.appendChild(card);
   });
-}
-
-// ===== LANGUAGE =====
-function initLangButtons() {
-  document.querySelectorAll(".lang-switch button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      currentLang = btn.textContent.toLowerCase();
-      renderTours();
-    });
-  });
-}
+});
