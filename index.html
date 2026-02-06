@@ -5,50 +5,54 @@
   <title>TourVietnam — Tours in Vietnam</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ СТИЛИ (ОБЯЗАТЕЛЬНО) -->
+  <!-- 🔥 ВАЖНО: ПОДКЛЮЧЕНИЕ СТИЛЕЙ -->
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
-<header class="header">
-  <div class="lang-switch">
-    <button data-lang="en">EN</button>
-    <button data-lang="ru">RU</button>
-    <button data-lang="vi">VI</button>
-    <button data-lang="zh">中文</button>
-    <button data-lang="kr">KR</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="tr">TR</button>
-  </div>
+  <!-- HEADER -->
+  <header class="header">
 
-  <img src="logo.png" class="logo" alt="TourVietnam">
+    <!-- LANG -->
+    <div class="lang-switch">
+      <button>EN</button>
+      <button>RU</button>
+      <button>VI</button>
+      <button>中文</button>
+      <button>KR</button>
+      <button>FR</button>
+      <button>TR</button>
+    </div>
 
-  <div class="hero">
-    <h1>Туры по Вьетнаму</h1>
-    <p>Острова • Море • Подводное плавание • Хон Там</p>
-  </div>
-</header>
+    <!-- LOGO -->
+    <img src="logo.png" class="logo" alt="TourVietnam">
 
-<main class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Туры по Вьетнаму</h1>
+      <p>Острова • Море • Подводное плавание • Хон Там</p>
+    </div>
 
-  <!-- 🔒 ФИКСИРОВАННАЯ СЕТКА -->
-  <section class="tours-grid" id="toursGrid">
-    <!-- карточки добавляет JS -->
-  </section>
+  </header>
 
-</main>
+  <!-- MAIN -->
+  <main class="container">
+    <!-- ⚠️ НЕ ТРОГАТЬ -->
+    <section class="tours-grid" id="toursGrid">
+      <!-- карточки вставляет script.js -->
+    </section>
+  </main>
 
-<!-- 🟢 WhatsApp -->
-<a class="whatsapp" href="https://wa.me/84777770759" target="_blank">
-  WhatsApp
-</a>
+  <!-- WHATSAPP -->
+  <a class="whatsapp"
+     href="https://wa.me/84777770759"
+     target="_blank">
+     WhatsApp
+  </a>
 
-<!-- ✅ ДАННЫЕ -->
-<script src="data/tours.js"></script>
-
-<!-- ✅ ЛОГИКА -->
-<script src="script.js"></script>
+  <!-- SCRIPTS -->
+  <script src="data/tours.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
