@@ -1,80 +1,62 @@
-document.addEventListener("DOMContentLoaded", () => {
+let currentLang = "en";
 
-  const grid = document.getElementById("toursGrid");
-  if (!grid) return;
+const titleEl = document.getElementById("title");
+const subtitleEl = document.getElementById("subtitle");
+const toursEl = document.getElementById("tours");
+const langButtons = document.querySelectorAll(".lang-switch button");
 
-  let LANG = "ru";
-
-  function detectTours() {
-    if (Array.isArray(window.tours)) return window.tours;
-    if (window.data && Array.isArray(window.data.tours)) return window.data.tours;
-    if (Array.isArray(window.TOURS)) return window.TOURS;
-    return [];
+const texts = {
+  title: {
+    en: "Premium Tours in Vietnam",
+    ru: "Туры по Вьетнаму",
+    vi: "Tour du lịch Việt Nam",
+    zh: "越南旅游",
+    kr: "베트남 투어",
+    fr: "Circuits au Vietnam",
+    tr: "Vietnam Turları"
+  },
+  subtitle: {
+    en: "Islands • Sea • Snorkeling • Hon Tam",
+    ru: "Острова • Море • Снорклинг • Хон Там",
+    vi: "Đảo • Biển • Lặn • Hòn Tằm",
+    zh: "岛屿 • 大海 • 浮潜",
+    kr: "섬 • 바다 • 스노클링",
+    fr: "Îles • Mer • Snorkeling",
+    tr: "Adalar • Deniz • Şnorkel"
   }
+};
 
-  function getText(obj, key) {
-    if (!obj) return "";
-    if (typeof obj === "string") return obj;
-    return obj[key] || obj.ru || obj.en || "";
-  }
+function render() {
+  titleEl.textContent = texts.title[currentLang];
+  subtitleEl.textContent = texts.subtitle[currentLang];
 
-  function getImage(t) {
-    if (Array.isArray(t.images) && t.images.length) return t.images[0];
-    if (typeof t.image === "string") return t.image;
-    return "https://via.placeholder.com/600x400?text=TourVietnam";
-  }
+  toursEl.innerHTML = "";
 
-  function render() {
-    const tours = detectTours();
-    grid.innerHTML = "";
+  window.TOURS.forEach(tour => {
+    const card = document.createElement("div");
+    card.className = "tour-card";
 
-    if (!tours.length) {
-      grid.innerHTML = "<p style='text-align:center'>Туры не найдены</p>";
-      return;
-    }
+    card.innerHTML = `
+      <img src="${tour.image}" alt="">
+      <div class="content">
+        <h3>${tour.title[currentLang]}</h3>
+        <p>${tour.desc[currentLang]}</p>
+      </div>
+    `;
 
-    tours.forEach((t, i) => {
-      const title =
-        getText(t[LANG], "title") ||
-        getText(t.title, LANG) ||
-        `Tour ${i + 1}`;
-
-      const desc =
-        getText(t[LANG], "short") ||
-        getText(t.description, LANG) ||
-        "";
-
-      const price =
-        typeof t.price === "number"
-          ? new Intl.NumberFormat("vi-VN").format(t.price) + " ₫"
-          : "";
-
-      const card = document.createElement("div");
-      card.className = "tour-card";
-
-      card.innerHTML = `
-        <img src="${getImage(t)}" alt="">
-        <div class="tour-info">
-          <div class="tour-title">${title}</div>
-          <div class="tour-desc">${desc}</div>
-          ${price ? `<div class="tour-price">${price}</div>` : ""}
-        </div>
-      `;
-
-      grid.appendChild(card);
-    });
-  }
-
-  document.querySelectorAll(".lang-switch button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document
-        .querySelectorAll(".lang-switch button")
-        .forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      LANG = btn.dataset.lang || "ru";
-      render();
-    });
+    toursEl.appendChild(card);
   });
 
-  render();
+  langButtons.forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === currentLang);
+  });
+}
+
+langButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentLang = btn.dataset.lang;
+    render();
+  });
 });
+
+render();
