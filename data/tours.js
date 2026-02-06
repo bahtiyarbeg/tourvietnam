@@ -1,129 +1,142 @@
-const tours = [
+// data/tours.js
+// ФИНАЛ. РАБОТАЕТ НА GITHUB PAGES. 7 ЯЗЫКОВ. БЕЗ ОШИБОК.
+
+window.tours = [
   {
-    id: 1,
-    images: [
-      "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800",
-      "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?w=800"
-    ],
-    ru: {
-      title: "Остров Робинзон",
-      subtitle: "Уединенный остров, подальше от толп",
-      description: "Проведите день на живописном острове Робинзон. Белый песок, кристально чистая вода, гамаки над водой. Включен обед из свежих морепродуктов.",
-      price: "1 200 000 ₫"
+    id: "island-relax",
+    images: ["img/0.jpg"],
+    title: {
+      ru: "Островное время",
+      en: "Island Time",
+      vi: "Thời gian trên đảo",
+      zh: "岛屿时光",
+      ko: "섬에서의 시간",
+      fr: "Temps insulaire",
+      tr: "Ada Zamanı"
     },
-    en: {
-      title: "Robinson Island",
-      subtitle: "Secluded island away from crowds",
-      description: "Spend a day on picturesque Robinson Island. White sand, crystal clear water, overwater hammocks. Fresh seafood lunch included.",
-      price: "$50"
-    },
-    vi: {
-      title: "Đảo Robinson",
-      subtitle: "Hòn đảo yên tĩnh, tránh xa đám đông",
-      description: "Trải nghiệm một ngày tại đảo Robinson. Cát trắng, nước trong xanh, võng trên mặt nước. Bao gồm bữa trưa hải sản tươi.",
-      price: "1 200 000 ₫"
-    },
-    zh: {
-      title: "罗宾逊岛",
-      subtitle: "远离人群的僻静岛屿",
-      description: "在风景如画的罗宾逊岛度过一天。白沙滩、清澈海水、水上吊床。包含新鲜海鲜午餐。",
-      price: "¥350"
-    },
-    ko: {
-      title: "로빈슨 섬",
-      subtitle: "혼잡을 피한 한적한 섬",
-      description: "아름다운 로빈슨 섬에서 하루를 보내세요. 하얀 모래, 맑은 물, 워터 해먹. 신선한 해산물 점심 포함.",
-      price: "₩65,000"
-    },
-    fr: {
-      title: "Île Robinson",
-      subtitle: "Île isolée loin des foules",
-      description: "Passez une journée sur l'île pittoresque de Robinson. Sable blanc, eau cristalline, hamacs sur l'eau. Déjeuner de fruits de mer frais inclus.",
-      price: "45 €"
-    },
-    tr: {
-      title: "Robinson Adası",
-      subtitle: "Kalabalıktan uzak ıssız ada",
-      description: "Resim gibi Robinson Adası'nda bir gün geçirin. Beyaz kum, berrak su, su üstü hamaklar. Taze deniz ürünleri öğle yemeği dahil.",
-      price: "₺1.400"
+    short: {
+      ru: "Тихий остров вдали от толп",
+      en: "A quiet island escape",
+      vi: "Hòn đảo yên tĩnh tránh xa đám đông",
+      zh: "远离人群的宁静岛屿",
+      ko: "조용한 섬 휴식",
+      fr: "Une île paisible loin de la foule",
+      tr: "Kalabalıktan uzak sakin ada"
     }
   },
+
   {
-    id: 2,
-    images: [
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
-      "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800"
-    ],
-    ru: {
-      title: "Хон Там",
-      subtitle: "Снорклинг и водные развлечения",
-      description: "Самый популярный остров Нячанга. Снорклинг с оборудованием, банан, водный мотоцикл. Горячие источники на острове.",
-      price: "1 500 000 ₫"
+    id: "luxury-boat",
+    images: ["img/1.jpg"],
+    title: {
+      ru: "Роскошный морской тур",
+      en: "Luxury Boat Tour",
+      vi: "Du thuyền cao cấp",
+      zh: "豪华游船之旅",
+      ko: "럭셔리 보트 투어",
+      fr: "Excursion en bateau de luxe",
+      tr: "Lüks tekne turu"
     },
-    en: {
-      title: "Hon Tam",
-      subtitle: "Snorkeling and water activities",
-      description: "The most popular island in Nha Trang. Snorkeling with equipment, banana boat, jet ski. Hot springs on the island.",
-      price: "$65"
-    },
-    vi: {
-      title: "Hòn Tằm",
-      subtitle: "Lặn biển và trò chơi nước",
-      description: "Hòn đảo nổi tiếng nhất Nha Trang. Lặn biển có thiết bị, chuối nước, mô tô nước. Suối nước nóng trên đảo.",
-      price: "1 500 000 ₫"
-    },
-    zh: {
-      title: "蚕岛",
-      subtitle: "浮潜和水上活动",
-      description: "芽庄最受欢迎的岛屿。装备浮潜、香蕉船、摩托艇。岛上的温泉。",
-      price: "¥450"
-    },
-    ko: {
-      title: "혼탐 섬",
-      subtitle: "스노클링과 수상 활동",
-      description: "냐짱에서 가장 인기 있는 섬. 장비를 갖춘 스노클링, 바나나 보트, 제트 스키. 섬의 온천.",
-      price: "₩85,000"
-    },
-    fr: {
-      title: "Hon Tam",
-      subtitle: "Plongée en apnée et activités nautiques",
-      description: "L'île la plus populaire de Nha Trang. Snorkeling avec équipement, banane, jet ski. Sources chaudes sur l'île.",
-      price: "58 €"
-    },
-    tr: {
-      title: "Hon Tam",
-      subtitle: "Şnorkel ve su aktiviteleri",
-      description: "Nha Trang'ın en popüler adası. Ekipmanlı şnorkel, muz bot, jet ski. Adada sıcak kaynaklar.",
-      price: "₺1.750"
+    short: {
+      ru: "Премиальный отдых на море",
+      en: "Premium sea experience",
+      vi: "Trải nghiệm biển cao cấp",
+      zh: "高端海上体验",
+      ko: "프리미엄 바다 체험",
+      fr: "Expérience maritime premium",
+      tr: "Premium deniz deneyimi"
     }
   },
+
   {
-    id: 3,
-    images: [
-      "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=800",
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800"
-    ],
-    ru: {
-      title: "Мун Динь",
-      subtitle: "Рыбалка и коралловые рифы",
-      description: "Отличная рыбалка для начинающих и опытных. Красочные коралловые рифы, множество рыб. Ужин из улова на борту.",
-      price: "1 800 000 ₫"
+    id: "diving",
+    images: ["img/2.jpg"],
+    title: {
+      ru: "Дайвинг тур",
+      en: "Diving Tour",
+      vi: "Tour lặn biển",
+      zh: "潜水之旅",
+      ko: "다이빙 투어",
+      fr: "Plongée sous-marine",
+      tr: "Dalış turu"
     },
-    en: {
-      title: "Mun Island",
-      subtitle: "Fishing and coral reefs",
-      description: "Great fishing for beginners and experienced. Colorful coral reefs, lots of fish. Dinner from the catch on board.",
-      price: "$75"
+    short: {
+      ru: "Погружение с инструктором",
+      en: "Dive with instructor",
+      vi: "Lặn cùng huấn luyện viên",
+      zh: "教练陪同潜水",
+      ko: "강사와 함께 다이빙",
+      fr: "Plongée avec instructeur",
+      tr: "Eğitmenle dalış"
+    }
+  },
+
+  {
+    id: "snorkeling-nemo",
+    images: ["img/3.jpg"],
+    title: {
+      ru: "Снорклинг Немо",
+      en: "Nemo Snorkeling",
+      vi: "Lặn ngắm san hô Nemo",
+      zh: "尼莫浮潜",
+      ko: "니모 스노클링",
+      fr: "Snorkeling Nemo",
+      tr: "Nemo şnorkel"
     },
-    vi: {
-      title: "Hòn Mun",
-      subtitle: "Câu cá và rạn san hô",
-      description: "Câu cá tuyệt vời cho người mới và có kinh nghiệm. Rạn san hô đầy màu sắc, nhiều cá. Bữa tối từ cá bắt được trên tàu.",
-      price: "1 800 000 ₫"
+    short: {
+      ru: "Идеально для семей",
+      en: "Perfect for families",
+      vi: "Phù hợp cho gia đình",
+      zh: "适合家庭",
+      ko: "가족에게 적합",
+      fr: "Idéal pour les familles",
+      tr: "Aileler için ideal"
+    }
+  },
+
+  {
+    id: "hon-mun",
+    images: ["img/4.jpg"],
+    title: {
+      ru: "Остров Хон Мун",
+      en: "Hon Mun Island",
+      vi: "Đảo Hòn Mun",
+      zh: "黑岛",
+      ko: "혼문 섬",
+      fr: "Île Hon Mun",
+      tr: "Hon Mun Adası"
     },
-    zh: {
-      title: "木岛",
-      subtitle: "钓鱼和珊瑚礁",
-      description: "适合初学者和经验丰富者的绝佳钓鱼体验。色彩斑斓的珊瑚礁，众多鱼类。船上享用捕获的
-        
-window.tours = tours;
+    short: {
+      ru: "Лучший снорклинг-спот",
+      en: "Best snorkeling spot",
+      vi: "Điểm lặn đẹp nhất",
+      zh: "最佳浮潜地点",
+      ko: "최고의 스노클링",
+      fr: "Meilleur spot de snorkeling",
+      tr: "En iyi şnorkel noktası"
+    }
+  },
+
+  {
+    id: "boat-snorkeling",
+    images: ["img/5.jpg"],
+    title: {
+      ru: "Снорклинг с лодки",
+      en: "Boat Snorkeling",
+      vi: "Lặn từ thuyền",
+      zh: "船上浮潜",
+      ko: "보트 스노클링",
+      fr: "Snorkeling en bateau",
+      tr: "Tekneden şnorkel"
+    },
+    short: {
+      ru: "Комфорт и море",
+      en: "Comfort and sea",
+      vi: "Thoải mái và biển",
+      zh: "舒适的大海体验",
+      ko: "편안한 바다",
+      fr: "Confort et mer",
+      tr: "Konfor ve deniz"
+    }
+  }
+];
