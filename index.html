@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="header">
@@ -22,15 +23,11 @@
   <img src="logo.png" class="logo" alt="TourVietnam">
 
   <h1>Туры по Вьетнаму</h1>
-  <p class="subtitle">
-    Острова • Море • Снорклинг • Хон Там
-  </p>
+  <p class="subtitle">Острова • Море • Снорклинг • Хон Там</p>
 </header>
 
 <main class="container">
-  <section id="toursGrid" class="tours-grid">
-    <!-- карточки вставляет JS -->
-  </section>
+  <section id="toursGrid" class="tours-grid"></section>
 </main>
 
 <a class="whatsapp-btn"
@@ -39,7 +36,9 @@
   WhatsApp
 </a>
 
+<!-- ⚠️ ПОРЯДОК КРИТИЧЕН -->
 <script src="data/tours.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
