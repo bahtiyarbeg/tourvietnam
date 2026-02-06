@@ -1,136 +1,77 @@
-/* ===== RESET ===== */
+/* TEST — ЕСЛИ ЭТО НЕ ВИДНО, CSS НЕ ГРУЗИТСЯ */
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Arial, sans-serif;
 }
 
-/* ===== BODY ===== */
 body {
-  background: #f7f1de;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3ecd9;
   color: #222;
-  line-height: 1.4;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header {
   text-align: center;
-  padding: 20px 10px 10px;
+  padding: 20px;
 }
 
-/* ===== LANG SWITCH ===== */
+/* LANG */
 .lang-switch {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 15px;
 }
 
 .lang-switch button {
   padding: 6px 10px;
-  border: 1px solid #aaa;
-  background: #fff;
   border-radius: 6px;
-  font-size: 13px;
+  border: 1px solid #999;
+  background: #fff;
   cursor: pointer;
 }
 
-.lang-switch button:hover {
-  background: #eee;
-}
-
-/* ===== LOGO ===== */
+/* LOGO */
 .logo {
   width: 180px;
-  max-width: 80%;
-  margin: 10px auto 10px;
+  margin: 10px auto;
   display: block;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero h1 {
   font-size: 28px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .hero p {
-  margin-top: 6px;
-  font-size: 15px;
   color: #555;
 }
 
-/* ===== MAIN CONTAINER ===== */
+/* GRID */
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 14px 100px;
+  padding: 20px;
 }
 
-/* ===== TOURS GRID (ФИКСИРОВАНО) ===== */
 .tours-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
-/* ===== TOUR CARD ===== */
-.tour-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform .15s ease;
-}
-
-.tour-card:hover {
-  transform: translateY(-3px);
-}
-
-.tour-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-}
-
-.tour-card .content {
-  padding: 12px;
-}
-
-.tour-card h3 {
-  font-size: 17px;
-  margin-bottom: 4px;
-}
-
-.tour-card p {
-  font-size: 14px;
-  color: #666;
-}
-
-/* ===== WHATSAPP BUTTON ===== */
+/* WHATSAPP */
 .whatsapp {
   position: fixed;
-  right: 16px;
-  bottom: 16px;
+  right: 20px;
+  bottom: 20px;
   background: #25d366;
   color: #fff;
   padding: 14px 18px;
-  border-radius: 999px;
+  border-radius: 50px;
   text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-  z-index: 999;
-}
-
-/* ===== MOBILE FIX ===== */
-@media (max-width: 420px) {
-  .hero h1 {
-    font-size: 24px;
-  }
-
-  .tours-grid {
-    gap: 12px;
-  }
+  font-weight: bold;
 }
