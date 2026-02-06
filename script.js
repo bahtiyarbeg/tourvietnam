@@ -1,8 +1,17 @@
-const grid = document.getElementById('toursGrid');
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('toursGrid');
 
-if (!grid || !window.tours) {
-  console.error('Tours data not found');
-} else {
+  if (!grid) {
+    console.error('❌ toursGrid not found');
+    return;
+  }
+
+  if (!window.tours || !Array.isArray(window.tours)) {
+    console.error('❌ tours data not found');
+    grid.innerHTML = '<p>Туры временно недоступны</p>';
+    return;
+  }
+
   grid.innerHTML = '';
 
   window.tours.forEach(tour => {
@@ -20,4 +29,4 @@ if (!grid || !window.tours) {
 
     grid.appendChild(card);
   });
-}
+});
