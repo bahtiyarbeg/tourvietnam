@@ -1,62 +1,114 @@
-let currentLang = "en";
-
-const titleEl = document.getElementById("title");
-const subtitleEl = document.getElementById("subtitle");
-const toursEl = document.getElementById("tours");
-const langButtons = document.querySelectorAll(".lang-switch button");
-
-const texts = {
-  title: {
-    en: "Premium Tours in Vietnam",
-    ru: "Туры по Вьетнаму",
-    vi: "Tour du lịch Việt Nam",
-    zh: "越南旅游",
-    kr: "베트남 투어",
-    fr: "Circuits au Vietnam",
-    tr: "Vietnam Turları"
+window.tours = [
+  {
+    id: 'robinson',
+    images: ['img/robinson/1.jpg'],
+    ru: {
+      title: 'Остров Робинзон',
+      subtitle: 'Уединённый остров без толп туристов',
+      price: '$45',
+      startTime: '08:00',
+      endTime: '16:00',
+      duration: '8 часов',
+      guide: 'Русскоговорящий',
+      fullDescription: 'Остров Робинзон — настоящий тропический рай в 2 часах от Нячанга. Нет навязчивых продавцов, только вы, бирюзовое море и белый песок. Комфортабельный катер, обед из морепродуктов, снорклинг.',
+      include: ['Трансфер', 'Катер', 'Обед', 'Снорклинг', 'Страховка', 'Гид'],
+      exclude: ['Алкоголь', 'Фото с орлом ($5)'],
+      bring: ['Купальник', 'Солнцезащитный крем SPF50+', 'Полотенце', 'Шапку', 'Очки', 'Водонепроницаемый чехол']
+    },
+    en: { title: 'Robinson Island', subtitle: 'Secluded island without crowds', price: '$45', startTime: '08:00', endTime: '16:00', duration: '8 hours', guide: 'English speaking', fullDescription: 'Robinson Island is a true tropical paradise 2 hours from Nha Trang. No pushy vendors, just you, turquoise sea and white sand. Comfortable boat, seafood lunch, snorkeling.', include: ['Transfer', 'Boat', 'Lunch', 'Snorkeling', 'Insurance', 'Guide'], exclude: ['Alcohol', 'Eagle photo ($5)'], bring: ['Swimsuit', 'Sunscreen SPF50+', 'Towel', 'Hat', 'Sunglasses', 'Waterproof case'] },
+    vi: { title: 'Đảo Robinson', subtitle: 'Hòn đảo yên tĩnh không đông khách', price: '$45', startTime: '08:00', endTime: '16:00', duration: '8 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Đảo Robinson là thiên đường nhiệt đới cách Nha Trang 2 giờ. Không người bán hàng phiền phức, chỉ có bạn và biển xanh.', include: ['Đón khách', 'Thuyền', 'Ăn trưa', 'Lặn ống thở', 'Bảo hiểm', 'Hướng dẫn'], exclude: ['Rượu', 'Chụp ảnh đại bàng ($5)'], bring: ['Đồ bơi', 'Kem chống nắng', 'Khăn', 'Mũ', 'Kính', 'Túi chống nước'] },
+    zh: { title: '罗宾逊岛', subtitle: '没有人群的僻静岛屿', price: '$45', startTime: '08:00', endTime: '16:00', duration: '8小时', guide: '中文导游', fullDescription: '罗宾逊岛是距离芽庄2小时船程的真正热带天堂。没有烦人的小贩，只有您、碧绿的大海和白色的沙滩。', include: ['接送', '船', '午餐', '浮潜', '保险', '导游'], exclude: ['酒精', '与鹰合影($5)'], bring: ['泳衣', '防晒霜SPF50+', '毛巾', '帽子', '太阳镜', '防水套'] },
+    ko: { title: '로빈슨 섬', subtitle: '관광객이 없는 한적한 섬', price: '$45', startTime: '08:00', endTime: '16:00', duration: '8시간', guide: '한국어 가이드', fullDescription: '로빈슨 섬은 나트랑에서 2시간 떨어진 진정한 열대 천국입니다. 성가신 장사꾼이 없고 당신과 터키석빛 바다만 있습니다.', include: ['픽업', '보트', '점심', '스노클링', '보험', '가이드'], exclude: ['알코올', '독수리 사진($5)'], bring: ['수영복', '선크림 SPF50+', '수건', '모자', '선글라스', '방수 케이스'] },
+    fr: { title: 'Île Robinson', subtitle: 'Île isolée sans foules', price: '$45', startTime: '08:00', endTime: '16:00', duration: '8 heures', guide: 'Guide francophone', fullDescription: 'L\'île Robinson est un véritable paradis tropical à 2 heures de Nha Trang. Pas de vendeurs insistants, juste vous, la mer turquoise et le sable blanc.', include: ['Transfert', 'Bateau', 'Déjeuner', 'Snorkeling', 'Assurance', 'Guide'], exclude: ['Alcool', 'Photo aigle ($5)'], bring: ['Maillot', 'Crème solaire SPF50+', 'Serviette', 'Chapeau', 'Lunettes', 'Pochette étanche'] },
+    tr: { title: 'Robinson Adası', subtitle: 'Kalabalık olmayan ıssız ada', price: '$45', startTime: '08:00', endTime: '16:00', duration: '8 saat', guide: 'Türkçe rehber', fullDescription: 'Robinson Adası, Nha Trang\'a 2 saat mesafede gerçek bir tropikal cennettir. Israrcı satıcı yok, sadece siz, turkuaz deniz ve beyaz kum.', include: ['Transfer', 'Tekne', 'Öğle yemeği', 'Şnorkel', 'Sigorta', 'Rehber'], exclude: ['Alkol', 'Kartal fotoğrafı ($5)'], bring: ['Mayo', 'Güneş kremi SPF50+', 'Havlu', 'Şapka', 'Gözlük', 'Su geçirmez kılıf'] }
   },
-  subtitle: {
-    en: "Islands • Sea • Snorkeling • Hon Tam",
-    ru: "Острова • Море • Снорклинг • Хон Там",
-    vi: "Đảo • Biển • Lặn • Hòn Tằm",
-    zh: "岛屿 • 大海 • 浮潜",
-    kr: "섬 • 바다 • 스노클링",
-    fr: "Îles • Mer • Snorkeling",
-    tr: "Adalar • Deniz • Şnorkel"
-  }
-};
 
-function render() {
-  titleEl.textContent = texts.title[currentLang];
-  subtitleEl.textContent = texts.subtitle[currentLang];
+  {
+    id: 'de-luxe',
+    images: ['img/de-luxe/1.jpg'],
+    ru: { title: 'Делюкс тур', subtitle: 'VIP-программа на катере', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5 часов', guide: 'Русскоговорящий', fullDescription: 'Премиум-программа на современном скоростном катере. 3 лучших острова, избегая толп. Прохладные полотенца, фрукты, премиум-напитки. Группа до 15 человек.', include: ['Трансфер', 'Скоростной катер', '3 острова', 'VIP-обед', 'Премиум напитки', 'Полотенца', 'Снорклинг', 'Страховка'], exclude: ['Алкоголь', 'Водные развлечения'], bring: ['Паспорт', 'Купальник', 'Солнцезащитный крем', 'Кепку', 'Очки', 'Деньги'] },
+    en: { title: 'Deluxe Tour', subtitle: 'VIP program on speedboat', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5 hours', guide: 'English speaking', fullDescription: 'Premium program on modern speedboat. 3 best islands, avoiding crowds. Cool towels, fruits, premium drinks. Group up to 15 people.', include: ['Transfer', 'Speedboat', '3 islands', 'VIP lunch', 'Premium drinks', 'Towels', 'Snorkeling', 'Insurance'], exclude: ['Alcohol', 'Water sports'], bring: ['Passport', 'Swimsuit', 'Sunscreen', 'Cap', 'Sunglasses', 'Money'] },
+    vi: { title: 'Tour Deluxe', subtitle: 'Chương trình VIP trên cano', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Chương trình cao cấp trên cano tốc độ cao. 3 đảo đẹp nhất, tránh đám đông.', include: ['Đón khách', 'Cano cao tốc', '3 đảo', 'Ăn trưa VIP', 'Đồ uống cao cấp', 'Khăn', 'Lặn', 'Bảo hiểm'], exclude: ['Rượu', 'Thể thao nước'], bring: ['Hộ chiếu', 'Đồ bơi', 'Kem chống nắng', 'Mũ', 'Kính', 'Tiền'] },
+    zh: { title: '豪华游', subtitle: '快艇VIP项目', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5小时', guide: '中文导游', fullDescription: '现代快艇优质项目。3个最佳岛屿，避开人群。', include: ['接送', '快艇', '3个岛屿', 'VIP午餐', '高级饮料', '毛巾', '浮潜', '保险'], exclude: ['酒精', '水上运动'], bring: ['护照', '泳衣', '防晒霜', '帽子', '太阳镜', '现金'] },
+    ko: { title: '디럭스 투어', subtitle: '스피드보트 VIP 프로그램', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5시간', guide: '한국어 가이드', fullDescription: '현대식 스피드보트 프리미엄 프로그램. 최고의 3개 섬, 군중 회피.', include: ['픽업', '스피드보트', '3섬', 'VIP 점심', '프리미엄 음료', '수건', '스노클링', '보험'], exclude: ['알코올', '수상 스포츠'], bring: ['여권', '수영복', '선크림', '모자', '선글라스', '현금'] },
+    fr: { title: 'Tour Deluxe', subtitle: 'Programme VIP en bateau rapide', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5 heures', guide: 'Guide francophone', fullDescription: 'Programme premium sur bateau rapide moderne. 3 meilleures îles, évitant les foules.', include: ['Transfert', 'Bateau rapide', '3 îles', 'Déjeuner VIP', 'Boissons premium', 'Serviettes', 'Snorkeling', 'Assurance'], exclude: ['Alcool', 'Sports nautiques'], bring: ['Passeport', 'Maillot', 'Crème solaire', 'Casquette', 'Lunettes', 'Espèces'] },
+    tr: { title: 'Deluxe Tur', subtitle: 'Hızlı tekne VIP programı', price: '$65', startTime: '08:30', endTime: '17:00', duration: '8.5 saat', guide: 'Türkçe rehber', fullDescription: 'Modern hızlı tekne premium programı. En iyi 3 ada, kalabalıktan kaçınarak.', include: ['Transfer', 'Hızlı tekne', '3 ada', 'VIP öğle yemeği', 'Premium içecekler', 'Havlu', 'Şnorkel', 'Sigorta'], exclude: ['Alkol', 'Su sporları'], bring: ['Pasaport', 'Mayo', 'Güneş kremi', 'Şapka', 'Gözlük', 'Nakit'] }
+  },
 
-  toursEl.innerHTML = "";
+  {
+    id: 'nemo',
+    images: ['img/nemo/1.jpg'],
+    ru: { title: 'Подводная лодка Немо', subtitle: 'Субмарина на 30 метров глубину', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6 часов', guide: 'Русскоговорящий', fullDescription: 'Уникальная субмарина с иллюминаторами. Спуск на 30 метров. Кораллы, черепахи, скаты, тропические рыбы. Обед на платформе.', include: ['Трансфер', 'Погружение', 'Обед', 'Снорклинг', 'Видео', 'Страховка'], exclude: ['Фото', 'Сувениры'], bring: ['Паспорт', 'Куртку', 'Камеру', 'Деньги'] },
+    en: { title: 'Submarine Nemo', subtitle: 'Submarine to 30 meters depth', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6 hours', guide: 'English speaking', fullDescription: 'Unique submarine with portholes. Dive to 30 meters. Corals, turtles, stingrays, tropical fish. Lunch on platform.', include: ['Transfer', 'Dive', 'Lunch', 'Snorkeling', 'Video', 'Insurance'], exclude: ['Photos', 'Souvenirs'], bring: ['Passport', 'Jacket', 'Camera', 'Money'] },
+    vi: { title: 'Tàu Ngầm Nemo', subtitle: 'Tàu ngầm xuống 30 mét', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Tàu ngầm độc đáo với cửa sổ. Lặn xuống 30 mét. San hô, rùa, cá đuối, cá nhiệt đới.', include: ['Đón khách', 'Lặn', 'Ăn trưa', 'Lặn ống thở', 'Video', 'Bảo hiểm'], exclude: ['Ảnh', 'Quà lưu niệm'], bring: ['Hộ chiếu', 'Áo khoác', 'Máy ảnh', 'Tiền'] },
+    zh: { title: '尼莫潜水艇', subtitle: '下潜30米的潜水艇', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6小时', guide: '中文导游', fullDescription: '带舷窗的独特潜水艇。下潜30米。珊瑚、海龟、黄貂鱼、热带鱼。', include: ['接送', '下潜', '午餐', '浮潜', '视频', '保险'], exclude: ['照片', '纪念品'], bring: ['护照', '外套', '相机', '现金'] },
+    ko: { title: '네모 잠수정', subtitle: '30미터 깊이 잠수정', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6시간', guide: '한국어 가이드', fullDescription: '창문이 있는 독특한 잠수정. 30미터 잠수. 산호, 거북이, 가오리, 열대어.', include: ['픽업', '잠수', '점심', '스노클링', '비디오', '보험'], exclude: ['사진', '기념품'], bring: ['여권', '재킷', '카메라', '현금'] },
+    fr: { title: 'Sous-marin Nemo', subtitle: 'Sous-marin à 30 mètres', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6 heures', guide: 'Guide francophone', fullDescription: 'Sous-marin unique avec hublots. Plongée à 30 mètres. Coraux, tortues, raies, poissons tropicaux.', include: ['Transfert', 'Plongée', 'Déjeuner', 'Snorkeling', 'Vidéo', 'Assurance'], exclude: ['Photos', 'Souvenirs'], bring: ['Passeport', 'Veste', 'Appareil photo', 'Espèces'] },
+    tr: { title: 'Nemo Denizaltı', subtitle: '30 metreye dalan denizaltı', price: '$35', startTime: '09:00', endTime: '15:00', duration: '6 saat', guide: 'Türkçe rehber', fullDescription: 'Pencereli benzersiz denizaltı. 30 metreye dalış. Mercan, kaplumbağa, vatoz, tropikal balık.', include: ['Transfer', 'Dalış', 'Öğle yemeği', 'Şnorkel', 'Video', 'Sigorta'], exclude: ['Fotoğraflar', 'Hediyelik eşya'], bring: ['Pasaport', 'Ceket', 'Kamera', 'Nakit'] }
+  },
 
-  window.TOURS.forEach(tour => {
-    const card = document.createElement("div");
-    card.className = "tour-card";
+  {
+    id: 'hon-mun-hon-tam',
+    images: ['img/hon-mun-hon-tam/1.jpg'],
+    ru: { title: 'Хон Мун + Хон Там', subtitle: 'Снорклинг и пляжный отдых', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5 часов', guide: 'Русскоговорящий', fullDescription: 'Два лучших острова Нячанга. Хон Мун — морской заповедник с кораллами. Хон Там — знаменитый пляж с грязевыми ваннами.', include: ['Трансфер', 'Катер', 'Входные билеты', 'Обед', 'Снорклинг', 'Грязевые ванны', 'Страховка'], exclude: ['Напитки', 'Фото'], bring: ['Купальник', 'Полотенце', 'Солнцезащитный крем', 'Шапку'] },
+    en: { title: 'Hon Mun + Hon Tam', subtitle: 'Snorkeling and beach relax', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5 hours', guide: 'English speaking', fullDescription: 'Two best islands of Nha Trang. Hon Mun — marine reserve with corals. Hon Tam — famous beach with mud baths.', include: ['Transfer', 'Boat', 'Entrance fees', 'Lunch', 'Snorkeling', 'Mud baths', 'Insurance'], exclude: ['Drinks', 'Photos'], bring: ['Swimsuit', 'Towel', 'Sunscreen', 'Hat'] },
+    vi: { title: 'Hòn Mun + Hòn Tằm', subtitle: 'Lặn ngắm san hô và thư giãn', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Hai hòn đảo đẹp nhất Nha Trang. Hòn Mun — khu bảo tồn biển. Hòn Tằm — bãi biển nổi tiếng với tắm bùn.', include: ['Đón khách', 'Thuyền', 'Vé vào cửa', 'Ăn trưa', 'Lặn', 'Tắm bùn', 'Bảo hiểm'], exclude: ['Đồ uống', 'Ảnh'], bring: ['Đồ bơi', 'Khăn', 'Kem chống nắng', 'Mũ'] },
+    zh: { title: '木岛+蚕岛', subtitle: '浮潜和海滩休闲', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5小时', guide: '中文导游', fullDescription: '芽庄两个最佳岛屿。木岛——珊瑚海洋保护区。蚕岛——著名的泥浆浴海滩。', include: ['接送', '船', '门票', '午餐', '浮潜', '泥浆浴', '保险'], exclude: ['饮料', '照片'], bring: ['泳衣', '毛巾', '防晒霜', '帽子'] },
+    ko: { title: '혼문 + 혼탐', subtitle: '스노클링과 해변 휴식', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5시간', guide: '한국어 가이드', fullDescription: '나트랑의 두 최고 섬. 혼문 — 산호 해양 보호구역. 혼탐 — 진흙탕이 있는 유명한 해변.', include: ['픽업', '보트', '입장료', '점심', '스노클링', '진흙탕', '보험'], exclude: ['음료', '사진'], bring: ['수영복', '수건', '선크림', '모자'] },
+    fr: { title: 'Hon Mun + Hon Tam', subtitle: 'Snorkeling et plage', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5 heures', guide: 'Guide francophone', fullDescription: 'Deux meilleures îles de Nha Trang. Hon Mun — réserve marine. Hon Tam — plage célèbre avec bains de boue.', include: ['Transfert', 'Bateau', 'Frais d\'entrée', 'Déjeuner', 'Snorkeling', 'Bains de boue', 'Assurance'], exclude: ['Boissons', 'Photos'], bring: ['Maillot', 'Serviette', 'Crème solaire', 'Chapeau'] },
+    tr: { title: 'Hon Mun + Hon Tam', subtitle: 'Şnorkel ve plaj dinlenmesi', price: '$40', startTime: '08:30', endTime: '16:00', duration: '7.5 saat', guide: 'Türkçe rehber', fullDescription: 'Nha Trang\'ın iki en iyi adası. Hon Mun — mercan deniz rezervi. Hon Tam — çamur banyosu olan ünlü plaj.', include: ['Transfer', 'Tekne', 'Giriş ücretleri', 'Öğle yemeği', 'Şnorkel', 'Çamur banyosu', 'Sigorta'], exclude: ['İçecekler', 'Fotoğraflar'], bring: ['Mayo', 'Havlu', 'Güneş kremi', 'Şapka'] }
+  },
 
-    card.innerHTML = `
-      <img src="${tour.image}" alt="">
-      <div class="content">
-        <h3>${tour.title[currentLang]}</h3>
-        <p>${tour.desc[currentLang]}</p>
-      </div>
-    `;
+  {
+    id: 'hon-mun-mini-beach',
+    images: ['img/hon-mun-mini-beach/1.jpg'],
+    ru: { title: 'Хон Мун + Мини-Бич', subtitle: 'Снорклинг и уединённый пляж', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5 часов', guide: 'Русскоговорящий', fullDescription: 'Снорклинг на Хон Мун + отдых на уединённом Мини-Бич. Мало людей, чистейшая вода.', include: ['Трансфер', 'Катер', 'Билеты', 'Обед', 'Снорклинг', 'Шезлонги', 'Страховка'], exclude: ['Бар', 'Массаж'], bring: ['Купальник', 'Полотенце', 'Крем', 'Шапку', 'Книгу'] },
+    en: { title: 'Hon Mun + Mini Beach', subtitle: 'Snorkeling and secluded beach', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5 hours', guide: 'English speaking', fullDescription: 'Snorkeling at Hon Mun + relax at secluded Mini Beach. Few people, crystal clear water.', include: ['Transfer', 'Boat', 'Tickets', 'Lunch', 'Snorkeling', 'Sunbeds', 'Insurance'], exclude: ['Bar', 'Massage'], bring: ['Swimsuit', 'Towel', 'Sunscreen', 'Hat', 'Book'] },
+    vi: { title: 'Hòn Mun + Mini Beach', subtitle: 'Lặn và bãi biển riêng tư', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Lặn ở Hòn Mun + thư giãn ở Mini Beach riêng tư. Ít người, nước trong vắt.', include: ['Đón khách', 'Thuyền', 'Vé', 'Ăn trưa', 'Lặn', 'Ghế dài', 'Bảo hiểm'], exclude: ['Quầy bar', 'Massage'], bring: ['Đồ bơi', 'Khăn', 'Kem', 'Mũ', 'Sách'] },
+    zh: { title: '木岛+迷你海滩', subtitle: '浮潜和僻静海滩', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5小时', guide: '中文导游', fullDescription: '木岛浮潜+僻静迷你海滩休闲。人少，水清。', include: ['接送', '船', '门票', '午餐', '浮潜', '躺椅', '保险'], exclude: ['酒吧', '按摩'], bring: ['泳衣', '毛巾', '防晒霜', '帽子', '书'] },
+    ko: { title: '혼문 + 미니비치', subtitle: '스노클링과 한적한 해변', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5시간', guide: '한국어 가이드', fullDescription: '혼문 스노클링 + 한적한 미니비치 휴식. 사람 적음, 맑은 물.', include: ['픽업', '보트', '티켓', '점심', '스노클링', '일광욕 의자', '보험'], exclude: ['바', '마사지'], bring: ['수영복', '수건', '선크림', '모자', '책'] },
+    fr: { title: 'Hon Mun + Mini Beach', subtitle: 'Snorkeling et plage isolée', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5 heures', guide: 'Guide francophone', fullDescription: 'Snorkeling à Hon Mun + détente à Mini Beach isolée. Peu de monde, eau cristalline.', include: ['Transfert', 'Bateau', 'Billets', 'Déjeuner', 'Snorkeling', 'Transats', 'Assurance'], exclude: ['Bar', 'Massage'], bring: ['Maillot', 'Serviette', 'Crème', 'Chapeau', 'Livre'] },
+    tr: { title: 'Hon Mun + Mini Beach', subtitle: 'Şnorkel ve ıssız plaj', price: '$42', startTime: '08:30', endTime: '16:00', duration: '7.5 saat', guide: 'Türkçe rehber', fullDescription: 'Hon Mun\'da şnorkel + ıssız Mini Beach\'te dinlenme. Az insan, berrak su.', include: ['Transfer', 'Tekne', 'Biletler', 'Öğle yemeği', 'Şnorkel', 'Şezlonglar', 'Sigorta'], exclude: ['Bar', 'Masaj'], bring: ['Mayo', 'Havlu', 'Krem', 'Şapka', 'Kitap'] }
+  },
 
-    toursEl.appendChild(card);
-  });
+  {
+    id: 'hon-mun-vai-chai',
+    images: ['img/hon-mun-vai-chai/1.jpg'],
+    ru: { title: 'Хон Мун + Вай Чай', subtitle: 'Рыбалка и снорклинг', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10 часов', guide: 'Русскоговорящий', fullDescription: 'Рыбалка на острове Вай Чай + снорклинг на Хон Мун. Отличный улов гарантирован! Обед из свежей рыбы.', include: ['Трансфер', 'Катер', 'Снасти', 'Обед', 'Снорклинг', 'Страховка'], exclude: ['Алкоголь', 'Чаевые'], bring: ['Таблетки от укачивания', 'Купальник', 'Кепку', 'Терпение'] },
+    en: { title: 'Hon Mun + Vai Chai', subtitle: 'Fishing and snorkeling', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10 hours', guide: 'English speaking', fullDescription: 'Fishing at Vai Chai island + snorkeling at Hon Mun. Great catch guaranteed! Fresh fish lunch.', include: ['Transfer', 'Boat', 'Fishing gear', 'Lunch', 'Snorkeling', 'Insurance'], exclude: ['Alcohol', 'Tips'], bring: ['Seasickness pills', 'Swimsuit', 'Cap', 'Patience'] },
+    vi: { title: 'Hòn Mun + Vai Chai', subtitle: 'Câu cá và lặn ngắm san hô', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Câu cá ở đảo Vai Chai + lặn ở Hòn Mun. Đảm bảo bắt được nhiều cá! Ăn trưa cá tươi.', include: ['Đón khách', 'Thuyền', 'Đồ câu', 'Ăn trưa', 'Lặn', 'Bảo hiểm'], exclude: ['Rượu', 'Tiền boa'], bring: ['Thuốc chống say sóng', 'Đồ bơi', 'Mũ', 'Kiên nhẫn'] },
+    zh: { title: '木岛+外柴岛', subtitle: '钓鱼和浮潜', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10小时', guide: '中文导游', fullDescription: '外柴岛钓鱼+木岛浮潜。保证大丰收！新鲜鱼午餐。', include: ['接送', '船', '渔具', '午餐', '浮潜', '保险'], exclude: ['酒精', '小费'], bring: ['晕船药', '泳衣', '帽子', '耐心'] },
+    ko: { title: '혼문 + 바이 차이', subtitle: '낚시와 스노클링', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10시간', guide: '한국어 가이드', fullDescription: '바이 차이 섬 낚시 + 혼문 스노클링. 풍성한 낚시 보장! 신선한 생선 점심.', include: ['픽업', '보트', '낚시 도구', '점심', '스노클링', '보험'], exclude: ['알코올', '팁'], bring: ['멀미약', '수영복', '모자', '인내심'] },
+    fr: { title: 'Hon Mun + Vai Chai', subtitle: 'Pêche et snorkeling', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10 heures', guide: 'Guide francophone', fullDescription: 'Pêche à l\'île Vai Chai + snorkeling à Hon Mun. Excellente prise garantie! Déjeuner poisson frais.', include: ['Transfert', 'Bateau', 'Matériel pêche', 'Déjeuner', 'Snorkeling', 'Assurance'], exclude: ['Alcool', 'Pourboires'], bring: ['Pilules mal mer', 'Maillot', 'Casquette', 'Patience'] },
+    tr: { title: 'Hon Mun + Vai Chai', subtitle: 'Balıkçılık ve şnorkel', price: '$48', startTime: '07:00', endTime: '17:00', duration: '10 saat', guide: 'Türkçe rehber', fullDescription: 'Vai Chai adasında balıkçılık + Hon Mun\'da şnorkel. Harika av garantili! Taze balık öğle yemeği.', include: ['Transfer', 'Tekne', 'Olta takımı', 'Öğle yemeği', 'Şnorkel', 'Sigorta'], exclude: ['Alkol', 'Bahşiş'], bring: ['Deniz tutması hapı', 'Mayo', 'Şapka', 'Sabır'] }
+  },
 
-  langButtons.forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.lang === currentLang);
-  });
-}
+  {
+    id: 'mini-beach-hon-tam',
+    images: ['img/mini-beach-hon-tam/1.jpg'],
+    ru: { title: 'Мини-Бич + Хон Там', subtitle: 'Два райских пляжа', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5 часов', guide: 'Русскоговорящий', fullDescription: 'Сочетание уединённого Мини-Бич и развитого Хон Там с бассейнами и спа. Лучшее от обоих миров!', include: ['Трансфер', 'Катер', 'Вход', 'Обед', 'Бассейны', 'Грязевые ванны', 'Страховка'], exclude: ['СПА-процедуры', 'Бар'], bring: ['Купальник', 'Полотенце', 'Крем', 'Книгу'] },
+    en: { title: 'Mini Beach + Hon Tam', subtitle: 'Two paradise beaches', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5 hours', guide: 'English speaking', fullDescription: 'Combination of secluded Mini Beach and developed Hon Tam with pools and spa. Best of both worlds!', include: ['Transfer', 'Boat', 'Entrance', 'Lunch', 'Pools', 'Mud baths', 'Insurance'], exclude: ['SPA treatments', 'Bar'], bring: ['Swimsuit', 'Towel', 'Sunscreen', 'Book'] },
+    vi: { title: 'Mini Beach + Hòn Tằm', subtitle: 'Hai bãi biển thiên đường', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Kết hợp Mini Beach riêng tư và Hòn Tằm phát triển với hồ bơi và spa.', include: ['Đón khách', 'Thuyền', 'Vé', 'Ăn trưa', 'Hồ bơi', 'Tắm bùn', 'Bảo hiểm'], exclude: ['SPA', 'Quầy bar'], bring: ['Đồ bơi', 'Khăn', 'Kem', 'Sách'] },
+    zh: { title: '迷你海滩+蚕岛', subtitle: '两个天堂海滩', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5小时', guide: '中文导游', fullDescription: '僻静迷你海滩和设施完善的蚕岛（带泳池和水疗）的结合。两全其美！', include: ['接送', '船', '门票', '午餐', '泳池', '泥浆浴', '保险'], exclude: ['水疗项目', '酒吧'], bring: ['泳衣', '毛巾', '防晒霜', '书'] },
+    ko: { title: '미니비치 + 혼탐', subtitle: '두 개의 천국 해변', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5시간', guide: '한국어 가이드', fullDescription: '한적한 미니비치와 수영장 및 스파가 있는 혼탐의 조합. 양쪽의 장점!', include: ['픽업', '보트', '입장', '점심', '수영장', '진흙탕', '보험'], exclude: ['스파', '바'], bring: ['수영복', '수건', '선크림', '책'] },
+    fr: { title: 'Mini Beach + Hon Tam', subtitle: 'Deux plages paradisiaques', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5 heures', guide: 'Guide francophone', fullDescription: 'Combinaison de Mini Beach isolée et Hon Tam développé avec piscines et spa. Le meilleur des deux mondes!', include: ['Transfert', 'Bateau', 'Entrée', 'Déjeuner', 'Piscines', 'Bains boue', 'Assurance'], exclude: ['SPA', 'Bar'], bring: ['Maillot', 'Serviette', 'Crème', 'Livre'] },
+    tr: { title: 'Mini Beach + Hon Tam', subtitle: 'İki cennet plajı', price: '$45', startTime: '08:30', endTime: '16:00', duration: '7.5 saat', guide: 'Türkçe rehber', fullDescription: 'Issız Mini Beach ve havuzlu-spalı Hon Tam kombinasyonu. İki dünyanın en iyisi!', include: ['Transfer', 'Tekne', 'Giriş', 'Öğle yemeği', 'Havuzlar', 'Çamur banyosu', 'Sigorta'], exclude: ['SPA', 'Bar'], bring: ['Mayo', 'Havlu', 'Krem', 'Kitap'] }
+  },
 
-langButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    currentLang = btn.dataset.lang;
-    render();
-  });
-});
+  {
+    id: 'one-island-hon-tam',
+    images: ['img/one-island-hon-tam/1.jpg'],
+    ru: { title: 'Тур на Хон Там', subtitle: 'Целый день на острове', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5 часов', guide: 'Русскоговорящий', fullDescription: 'Полный день на самом популярном острове Нячанга. Бассейны, пляж, грязевые ванны, водные горки.', include: ['Трансфер', 'Катер', 'Вход', 'Обед', 'Все бассейны', 'Грязевые ванны', 'Аквапарк', 'Страховка'], exclude: ['Массаж', 'Бар', 'Фото'], bring: ['Купальник', 'Полотенце', 'Крем', 'Шапку'] },
+    en: { title: 'Hon Tam Tour', subtitle: 'Full day on the island', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5 hours', guide: 'English speaking', fullDescription: 'Full day at Nha Trang\'s most popular island. Pools, beach, mud baths, water slides.', include: ['Transfer', 'Boat', 'Entrance', 'Lunch', 'All pools', 'Mud baths', 'Water park', 'Insurance'], exclude: ['Massage', 'Bar', 'Photos'], bring: ['Swimsuit', 'Towel', 'Sunscreen', 'Hat'] },
+    vi: { title: 'Tour Hòn Tằm', subtitle: 'Cả ngày trên đảo', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5 giờ', guide: 'Hướng dẫn viên', fullDescription: 'Cả ngày trên đảo nổi tiếng nhất Nha Trang. Hồ bơi, bãi biển, tắm bùn, cầu trượt nước.', include: ['Đón khách', 'Thuyền', 'Vé', 'Ăn trưa', 'Tất cả hồ bơi', 'Tắm bùn', 'Công viên nước', 'Bảo hiểm'], exclude: ['Massage', 'Quầy bar', 'Ảnh'], bring: ['Đồ bơi', 'Khăn', 'Kem', 'Mũ'] },
+    zh: { title: '蚕岛游', subtitle: '岛上全天', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5小时', guide: '中文导游', fullDescription: '在芽庄最受欢迎的岛屿度过一整天。泳池、海滩、泥浆浴、水滑梯。', include: ['接送', '船', '门票', '午餐', '所有泳池', '泥浆浴', '水上乐园', '保险'], exclude: ['按摩', '酒吧', '照片'], bring: ['泳衣', '毛巾', '防晒霜', '帽子'] },
+    ko: { title: '혼탐 투어', subtitle: '섬에서 하루 종일', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5시간', guide: '한국어 가이드', fullDescription: '나트랑에서 가장 인기 있는 섬에서 하루 종일. 수영장, 해변, 진흙탕, 워터슬라이드.', include: ['픽업', '보트', '입장', '점심', '모든 수영장', '진흙탕', '워터파크', '보험'], exclude: ['마사지', '바', '사진'], bring: ['수영복', '수건', '선크림', '모자'] },
+    fr: { title: 'Tour Hon Tam', subtitle: 'Journée complète sur l\'île', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5 heures', guide: 'Guide francophone', fullDescription: 'Journée complète sur l\'île la plus populaire de Nha Trang. Piscines, plage, bains de boue, toboggans.', include: ['Transfert', 'Bateau', 'Entrée', 'Déjeuner', 'Toutes piscines', 'Bains boue', 'Parc aquatique', 'Assurance'], exclude: ['Massage', 'Bar', 'Photos'], bring: ['Maillot', 'Serviette', 'Crème', 'Chapeau'] },
+    tr: { title: 'Hon Tam Turu', subtitle: 'Adada tam gün', price: '$38', startTime: '08:30', endTime: '17:00', duration: '8.5 saat', guide: 'Türkçe rehber', fullDescription: 'Nha Trang\'ın en popüler adasında tam gün. Havuzlar, plaj, çamur banyosu, su kaydırakları.', include: ['Transfer', 'Tekne', 'Giriş', 'Öğle yemeği', 'Tüm havuzlar', 'Çamur banyosu', 'Su parkı', 'Sigorta'], exclude: ['Masaj', 'Bar', 'Fotoğraflar'], bring: ['Mayo', 'Havlu', 'Güneş kremi', 'Şapka'] }
+  },
 
-render();
+  {
+    id: 'one-island-mini-beach',
+    images: ['img/one-island-mini-beach/1.jpg'],
+    ru: { title: 'Тур на Мини-Бич', subtitle: 'Уединённый отдых', price: '$35', startTime: '09:00', endTime: '16:00', duration: '7 часов', guide: 'Русскоговорящий', fullDescription: 'Тихий отдых на малолюдном пляже. Идеально для пар и тех, кто хочет тишины.', include: ['Трансфер', 'Катер', 'Вход', 'Обед', 'Шезлонг', 'Зонтик', 'Страховка'], exclude: ['Бар', 'Развлечения'], bring: ['Купальник', 'Полотенце', 'Крем', 'Книгу', 'Наушники'] },
+    en: { title: 'Mini Beach Tour', subtitle: 'Secluded relaxation', price: '$35', startTime: '09:00', endTime: '16:00', duration: '7 hours', guide: 'English speaking', fullDescription: 'Quiet rest on a low-crowd beach. Perfect for couples and those who want silence.', include: ['Transfer', 'Boat', 'Entrance', 'Lunch', 'Sunbed', 'Umbrella', 'Insurance'], exclude: ['Bar', 'Entertainment'],
